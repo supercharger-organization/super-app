@@ -1,0 +1,31 @@
+
+<div class="w-100 h-100 position-relative">
+
+    <div class="position-absolute" style="top: 0px; right: 0px;">
+        <span class="material-icons pointer" (click)="closeDialog()">
+            close
+        </span>
+    </div>
+
+    <div class="d-flex text-center justify-content-center">
+        <!-- <img src="assets/imgs/startup-comparison-graph.png" style="width: 1200px !important;" alt="Card image cap"> -->
+        <img [src]="'assets/imgs/lists/'+ chartURL" style="width: 1200px !important;" alt="Card image cap">
+
+    </div>
+    
+    <div class="row">
+        <div class="col text-right">
+            <button mat-flat-button class="super-button white" >
+                <span matPrefix> <i class="fa fa-share-alt text-muted"></i> &nbsp;</span>
+                Share
+            </button>
+        </div>
+        <div class="col text-left">
+            <button mat-flat-button class="super-button blue" >
+                <span matPrefix> <i class="fa fa-download"></i> &nbsp;</span>
+                Download
+            </button>  
+        </div>
+    </div> 
+</div>
+

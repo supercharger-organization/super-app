@@ -1,0 +1,69 @@
+
+<mat-drawer-container class="h-100">
+    
+    <!-- sidebar content -->
+    <mat-drawer mode="side" class="d-flex flex-direction-column" opened>
+        <h1 class="mt-5 text-center font-weight-bold">SUPER <br/> CHARGER</h1>
+
+        <mat-list class="mt-5 flex-grow-1">
+            <mat-list-item style="margin-bottom: 8%;" *ngFor="let page of pages" class="text-muted super-border-radius" [disabled]="page.disabled" [routerLink]="page.url" routerLinkActive="router-link-active" >
+              
+                <mat-icon mat-list-icon>
+                    {{page.icon}}
+                </mat-icon>
+
+                <div class="ml-5 pointer align-items-center d-flex">{{page.title}} <div class="ml-3 super-badge" *ngIf="page.notificationCount > 0"><span>{{page.notificationCount}}</span></div> </div>
+
+            </mat-list-item>
+        </mat-list>
+
+        <!-- ad -->
+        <div style="margin-top: 40%;" class="w-100 justify-content-center text-center">
+            <div class="d-flex justify-content-center">
+                <div class="d-flex align-items-center justify-content-center" style="background: rgb(228, 244, 255); width: 75px; height: 75px; border-radius: 100%;">
+                    <img class="super-img-xs" style="background: rgb(228, 244, 255); " src="assets/imgs/work.png" alt="Card image cap">
+                </div>
+            </div>
+            <br/>
+            <small class="text-muted">Early access to analytics <br/> dashboard. <a href="#">Get 30% Off</a></small>
+            <br/><br/>
+            <app-upgrade-button></app-upgrade-button>
+        </div>
+
+        
+        <!-- greeting -->
+        <div style="margin-top: 40%;" class="d-flex w-100 justify-content-center">
+            <div class="d-flex align-items-center">
+                <div>
+                    <img class="super-startup-img-sm" src="assets/imgs/chatheads/michael_chathead.png" alt="Card image cap">
+                </div>
+                <div class="ml-1">
+                    <!-- TODO: come from user profile -->
+                    <strong>Welcome,<br> {{user.name}}</strong>
+                </div>
+            </div>
+        </div>
+
+    </mat-drawer>
+    
+    <!-- main content -->
+    <mat-drawer-content style="padding-left: 6rem; padding-right: 6rem; padding-top: 3rem; padding-bottom: 3rem;">
+
+        <!-- search bar and buttons -->
+        <div class="row mb-5">
+            <app-search-bar class="col" style="widows: 280px !important;"></app-search-bar>
+        
+            <div class="row col-6 text-right">
+                <div class="col text-right">
+                    <app-invite-button ></app-invite-button>
+                    <app-session-button class="ml-3"></app-session-button>
+                </div>
+            </div>
+        </div>
+
+        <!-- pages -->
+        <router-outlet ></router-outlet>
+
+    </mat-drawer-content>
+
+  </mat-drawer-container>

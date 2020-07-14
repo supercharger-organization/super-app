@@ -1,0 +1,494 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+
+@font-face {
+    font-family: poppins;
+    src: url(assets/fonts/Poppins/Poppins-Regular.ttf) format("truetype");
+  }
+
+body { 
+    margin: 0; 
+    background-color: white !important;
+    font-family: poppins !important;
+}
+
+.bottom {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: poppins, "Helvetica Neue", sans-serif !important; 
+    margin: 0px !important;
+}
+
+.mat-body, .mat-body-1, .mat-typography{
+    font-family: poppins, "Helvetica Neue", sans-serif !important; 
+    font: poppins !important;
+}
+
+.material-icons {
+    font-family: 'Material Icons' !important;
+}
+
+.mat-drawer-content {
+    background-color: white !important;
+}
+
+.router-link-active {
+    color: black !important;
+}
+
+.super-border-radius{
+    border-radius: 13px;
+}
+
+.super-startup-dialogue-list-cell{
+    background: white !important;
+    padding: 10px;
+    font-size: 105%;
+    margin: 2px;
+    border-radius: 13px;
+}
+
+.super-list-dialogue{
+    max-height: 300px;
+    outline: 2px solid rgb(236, 240, 243) !important;
+    border-radius: 13px !important;
+}
+
+.super-button {
+    align-items: center !important;
+    background: #EFF3F6 !important;
+    padding: 10px !important;
+    border-radius: 15px !important;
+    min-height: 66px;
+    min-width: 180px !important;
+    font-size: 100% !important;
+    font-weight: bolder !important;
+}
+
+.super-button.new {
+    color: #FB3A22 !important;
+    background: #FFF2F1 !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    border-radius: 11px !important;
+    min-height: 0px !important;
+    min-width: 0px !important;
+    font-size: 90% !important;
+    line-height: 30px !important;
+}
+
+.super-text-area-box{
+    width: 400px !important;
+    border: 2px solid rgb(236, 240, 243) !important;
+    font-size: medium !important;
+    border-radius: 4px;
+    /*padding: 7px;
+    padding-top: 30px !important;*/
+}
+
+.super-form-progress-bar{
+    background-color: #009AFF !important;
+    height: 3px !important;
+    width: 55% !important;
+}
+
+.super-form-nav-button-bar{
+    width: 100%;
+    padding-top: 30px;
+}
+
+.super-dialogue-content-title{
+    font-weight: bolder !important;
+    font-size: large !important;
+    font-family: poppins !important;
+    text-align: center !important;
+}
+
+.super-dialogue-next-button{
+    font-weight: bold !important;
+    font-size: large !important;
+    font-family: poppins !important;
+    color: rgb(16, 132, 253) !important;
+    background-color: white !important;
+    border-color: rgb(16, 132, 253) !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    margin: 20px !important;
+}
+
+.super-dialogue{
+    align-items: center !important;
+    align-content: center;
+    overflow: hidden;
+    padding:20px !important;
+}
+
+.super-button .material-icons{
+    font-size: 150% !important;
+    margin: 20px !important;
+}
+
+.super-dialogue-align{
+    align-content: center!important;
+    text-align: center!important;
+}
+.super-dialogue-button{
+    font-size: 120% !important;
+    font-style: bold;
+}
+
+.super-button.clear{
+    min-width: 0px !important;
+    background: transparent !important;
+}
+
+.super-button.white{
+    background: white !important;
+    border: 2px solid rgb(213, 217, 219) !important;
+}
+
+.super-button.blue{
+    background: #009AFF !important;
+    color: white !important;
+}
+
+.super-button.blue.confirm{
+    width: 66% !important;
+    background: #009AFF !important;
+    color: white !important;
+}
+
+.super-list-header{
+    background-color: rgb(234, 240, 244);
+}
+
+
+.super-investor-card {
+    position: relative;
+    min-height: 125px;
+    min-width: 140px; 
+    text-align: center;  
+    align-items: center; 
+}
+
+.super-investor-img {
+    max-width: 133px;
+    max-height: 88px;
+}
+
+.super-customer-img {
+    max-width: 100px;
+}
+
+.super-startup-img{
+    max-width: 75px;
+}
+
+.super-startup-img-container{
+    width: 75px;
+    height: 75px;
+}
+
+.super-startup-img-sm{
+    max-height: 45px;
+    max-width: 45px;
+}
+
+.super-startup-img-md{
+    max-height: 60px;
+    max-width: 60px;
+}
+
+.super-chathead-img{
+    max-height: 45px;
+    max-width: 45px;
+}
+
+.super-img-md{
+    height: 75px;
+    width: 75px;
+}
+
+.super-img-lg{
+    height: 150px;
+    width: 150px;
+}
+
+.super-img-xs{
+    max-height: 33px;
+    max-width: 33px;
+}
+
+.super-startup-banner{
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+.super-list-head-img{
+    width: 100% !important;
+    height: 250px;
+
+    border-radius: 15px !important;
+}
+
+.super-list-head-labels{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 100px !important;
+}
+
+mat-drawer{
+    width: 275px;
+    padding: 20px;
+}
+
+.super-label-xl{
+    font-size: 300% !important;
+}
+
+.super-list{
+    border-radius: 15px;
+}
+
+.super-list.card{
+    font-size: 100%;
+    border: solid 1.25px rgb(188, 204, 215) !important;
+    height:100%;   
+}
+
+.super-list .card-header{
+    border-radius: 13px !important;
+}
+
+.super-list.scale-to-fit{
+    height: fit-content !important;
+}
+
+.mat-list-item{
+    font-family: poppins !important;
+}
+
+.mat-list-item-content{
+    padding: 0px !important;
+}
+
+.super-list mat-list-item{
+    font-size: 80% !important;
+    margin-top: 13px;
+    height: fit-content !important;
+}
+
+mat-list-item strong {
+    margin-right: 3px !important;
+}
+
+.super-list mat-list-item span{
+    color: #B8B9BA !important;    
+}
+
+.super-list mat-list-item a{
+    margin-left: 3px;
+}
+
+.super-list mat-list-item mat-icon.super-icon-star{
+    cursor: pointer;
+    font-size: 166%;
+}
+
+.super-mini-fab {
+    box-shadow: 0px 0px 0px !important;
+    background-color: transparent;
+    border: 2px solid rgb(236, 240, 243) !important;
+}
+
+.super-mini-fab-transparent {
+    box-shadow: 0px 0px 0px !important;
+    background-color: transparent !important;
+}
+
+.super-border{
+    border-radius: 15px;
+    padding: 20px;
+    border: solid 1.25px rgb(188, 204, 215) !important;
+}
+
+.super-card{
+    border-radius: 15px;
+    font-size: 90%;
+    padding: 20px;
+    border: solid 1.25px rgb(188, 204, 215) !important;
+}
+
+.super-card.news{
+    padding: 15px;
+    height: 280px;
+}
+
+.super-dialogue-box{
+    height: 1000px;
+}
+
+.super-card.startup-detail{
+    font-size: 110%;
+}
+
+.super-card-list{
+    border-radius: 15px;
+    font-size: 90%;
+    border: solid 1.25px rgb(188, 204, 215) !important;
+    padding-left: 20px !important;
+    padding-right: 10px !important;
+}
+
+.super-column-header{
+    margin-bottom: 10px;
+}
+
+.super-column-header .card-body {
+    padding: 10px;
+}
+
+.super-column{
+    width: 250px;
+    height: 100%;
+    margin-right: 10px;
+}
+
+/* Animate items as they're being sorted. */
+.cdk-drop-list-dragging .cdk-drag {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Animate an item that has been dropped. */
+.cdk-drag-animating {
+    transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.pointer {cursor: pointer;}
+
+h1.pointer:hover, h2.pointer:hover, h3.pointer:hover, h4.pointer:hover,  a.pointer:hover,  div.pointer:hover {
+    text-decoration: underline;
+}
+
+/** remove focus **/
+button:focus, mat-list-item {
+    outline: 0px solid transparent;
+}
+
+.ellipsis { 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis !important; 
+}
+
+mat-chip {
+    font-size: 66% !important;
+    text-align: center !important;
+}
+
+.super-popover-content {
+    background-color: white;
+    border-radius: 13px;
+    border: 2px solid rgb(236, 240, 243) !important;
+    padding: 13px;
+}
+
+.super-popover-content-filter {
+    background-color: white;
+    border-radius: 13px;
+    border: 2px solid rgb(236, 240, 243) !important;
+    padding: 13px;
+    width: 300px;
+    height: 200px;
+}
+
+/** angular material override **/
+.mat-list-base {
+    padding-top: 0px !important;
+}
+
+.super-badge {
+    border-radius: 100%;
+    padding: 10px;
+    color: white;
+    background: red;
+    align-items: center;
+    position: relative;
+    font-size: 80%;
+}
+
+.super-badge span{
+    position: absolute;
+    margin: auto;
+    top: 1px;
+    left: 6.5px;
+}
+
+mat-chip {
+    padding: 5px !important;
+    border-radius: 11px !important;
+    background-color: #ABBFCE !important;
+    color: white !important;
+    font-size: 80% !important;
+}
+
+p {
+    color: #A7ABB4 !important;
+}
+
+mat-dialog-container { 
+    border-radius: 13px !important;
+}
+
+.super-calendar{
+    background-color: #ABBFCE !important;
+
+    background: #EFF3F6 !important;
+    border-radius: 13px !important;
+}
+
+/** tbd **/
+
+.mat-h1, .mat-headline, .mat-typography h1 {
+    font: 400 24px/32px poppins, "Helvetica Neue", sans-serif ;
+    font-family: poppins !important;
+    letter-spacing: normal;
+    margin: 0 0 16px;
+}
+
+.mat-form-field-infix {
+    font:poppins, "Helvetica Neue", sans-serif !important;
+    letter-spacing: normal !important;
+    margin: 0 0 16px;
+}
+
+.super-chip {
+    font-size: 90% !important;
+}
+
+.super-chip.blue {
+    background: #009AFF !important;
+    color: white !important;
+}
+
+.super-chip.white {
+    background: white !important;
+    border-radius: 13px !important;
+    border: 1px solid #707070 !important;
+    color: #707070 !important;
+}
+
+.startup-selected {
+    background-color: blue !important;
+}

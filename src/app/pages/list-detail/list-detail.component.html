@@ -1,0 +1,199 @@
+    
+    
+    <section class="row align-items-center">
+        <div class="col-3">
+          <h1 class="font-weight-bold super-label-xl">{{list?.title}}</h1>
+        </div>
+        <div class="col text-right">
+      
+          <button mat-flat-button class="super-button align-items-center ml-3" [mdePopoverTriggerFor]="appPopover"
+      mdePopoverTriggerOn="click" #popoverTrigger="mdePopoverTrigger">
+        Funding
+        <i class="fa super-chevron fa-chevron-down" aria-hidden="true" [ngClass]="{'fa-chevron-up': filters[0].active}"></i>
+      </button>
+      <!--Drop Down Box-->
+      <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+        <div class="super-popover-content">
+          <mat-list class="super-list scale-to-fit">
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByFunding(0, 5000000000)"> All </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByFunding(0, 500000)"> Less Then $500,000</span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByFunding(500000, 1000000)"> $500,000 -> $1,000,000</span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByFunding(1000000, 5000000)"> $1,000,000 -> $5,000,000</span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByFunding(5000000, 50000000)"> $5,000,000 -> $50,000,000</span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByFunding(50000000, 5000000000)"> Greater Then $50,000,000</span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </mde-popover>
+
+      <button mat-flat-button class="super-button align-items-center ml-3" [mdePopoverTriggerFor]="locationPopover"
+      mdePopoverTriggerOn="click" #popoverTrigger="mdePopoverTrigger">
+        Location
+        <i class="fa super-chevron fa-chevron-down" aria-hidden="true" [ngClass]="{'fa-chevron-up': filters[1].active}"></i>
+      </button>
+      <mde-popover #locationPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+        <div class="super-popover-content">
+          <mat-list class="super-list scale-to-fit">
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByLocation('')"> All </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByLocation('USA')"> USA </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByLocation('USA')"> Spain </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByLocation('USA')"> India </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByLocation('USA')"> Netherlands </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByLocation('USA')"> England</span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </mde-popover>
+
+      <button mat-flat-button class="super-button align-items-center ml-3" [mdePopoverTriggerFor]="employeePopover"
+      mdePopoverTriggerOn="click" #popoverTrigger="mdePopoverTrigger">
+        Employees
+        <i class="fa super-chevron fa-chevron-down" aria-hidden="true" [ngClass]="{'fa-chevron-up': filters[0].active}"></i>
+      </button>
+      <mde-popover #employeePopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+        <div class="super-popover-content">
+          <mat-list class="super-list scale-to-fit">
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByEmployeeCount(0, 500000)"> All </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByEmployeeCount(0, 10)"> Less Then 10</span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByEmployeeCount(10, 50)"> 10 -> 50 </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByEmployeeCount(50, 100)"> 50 -> 100 </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByEmployeeCount(100, 500)"> 100 -> 500 </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByEmployeeCount(500, 5000000)"> Greater Then 500</span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </mde-popover>
+
+      <button mat-flat-button class="super-button align-items-center ml-3" [mdePopoverTriggerFor]="tagPopover"
+      mdePopoverTriggerOn="click" #popoverTrigger="mdePopoverTrigger">
+        Interest Areas
+        <i class="fa super-chevron fa-chevron-down" aria-hidden="true" [ngClass]="{'fa-chevron-up': filters[0].active}"></i>
+      </button>
+      <mde-popover #tagPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+        <div class="super-popover-content">
+          <mat-list class="super-list scale-to-fit">
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByLocation('')"> All </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByTag('Artificial Intelligence')"> Artificial Intelligence </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByTag('Retail Technology')"> Retail Technology </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByTag('Robotics')"> Robotics </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByTag('Internet of Things')"> Internet of Things </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center pointer">
+              <span class="align-items-center" (click)="filterByTag('Machine Learning')"> Machine Learning </span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </mde-popover>
+      
+        </div>
+      </section> 
+     
+
+      <div class="mt-5">
+
+        <div class="card super-card-list z-depth-1 mt-3" *ngFor="let card of cards">
+  
+          <div class="card-body row align-items-center">
+    
+            <div class="col-2 col-sm-2 col-md-2 col-lg-1">
+              <img class="super-startup-img " [src]="card.imgURL" alt="Card image cap">
+            </div>
+            <div class="col">
+    
+              <div class="row align-items-center">
+                <div class="col d-flex align-items-center">
+                  <div >
+                    <h2 class="font-weight-bold pointer mb-0" [routerLink]="['/startup/' + card.startupId]" routerLinkActive="router-link-active">{{card.name}}</h2>
+                  </div>
+                  <div class="ml-1">
+                    <button mat-button class="ml-1 super-button new">NEW</button>
+                  </div>
+                </div>
+                <div class="col-2 text-right">
+                  <button mat-icon-button color="primary"
+                    [mdePopoverTriggerFor]="appPopover"
+                    mdePopoverTriggerOn="click" #popoverTrigger="mdePopoverTrigger">
+                    <mat-icon >more_vert</mat-icon>
+                  </button>
+                
+                  <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+                    <div class="super-popover-content">
+                      <mat-list class="super-list scale-to-fit">
+                        <mat-list-item class="align-items-center mt-0 pointer">
+                          <span class="material-icons">
+                            playlist_add
+                            </span>
+                          <span class="align-items-center" (click)="openListDialogue()">add to existing list </span>
+                        </mat-list-item>
+                        <mat-list-item class="pointer">
+                          <span class="material-icons">
+                            library_add
+                            </span>
+                          <span class="align-items-center" (click)="openListDialogue()">add to new list </span>                  
+                        </mat-list-item>
+                      </mat-list>
+                    </div>
+                  </mde-popover>
+                </div>
+              </div>
+    
+              <p class="card-text">{{card.description}}</p>
+      
+              <!-- tags -->
+              <div class="mt-1">
+                <mat-chip-list  aria-label="tags">
+                  <mat-chip *ngFor="let tag of card.industryTags" class="super-chip">{{tag}}</mat-chip>
+                </mat-chip-list>
+              </div>
+            </div>
+    
+    
+          </div>
+          
+        </div>
+      </div>
+
+      
+  

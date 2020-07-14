@@ -1,0 +1,103 @@
+
+
+<section class="row align-items-center">
+    <div class="col">
+      <h1 class="font-weight-bold super-label-xl">Lists</h1>
+    </div>
+    <div class="col-3 text-right">
+  
+      <div>
+        <app-list-button></app-list-button>
+      </div>
+      
+    </div>
+  </section> 
+  
+  <div class="mt-5">
+  
+      <!-- lists -->
+      <div class="row" *ngIf="board">
+
+        <div class="col-sm-6 col-lg-4 col-xl-4 mb-4" *ngFor="let list of board.lists">
+          <div class="card super-list z-depth-1" >
+      
+            <div class="card-header border-0 align-items-center text-center super-list-header position-relative p-0">
+              <img class="super-list-head-img" [src]="list.imgURL" alt="Card image cap">
+              <div class="super-list-head-labels" [ngClass]="{'text-white': list.imgDark}">
+                <h1 class="m-0 font-weight-bold pointer" [routerLink]="['/list/' + list._id]" routerLinkActive="router-link-active">{{list.title}}</h1>
+                <h5 >{{list.description}}</h5>
+              </div>
+            </div>
+
+            <div class="card-body w-100">
+
+              <mat-list class="super-list w-100" role="list">
+
+                <mat-list-item class="w-100" *ngFor="let startup of list.bsStartups">
+  
+                  <div class="w-100 row align-items-center">
+            
+                    <div class="col-3 align-items-center">
+                      <img class="super-startup-img-sm" [src]="startup.imgURL" alt="Card image cap">
+                    </div>
+                    
+                    <div class="col align-items-center">
+                      <h3 class="font-weight-bold pointer pb-0 mb-0" [routerLink]="['/startup/' + startup._id]" routerLinkActive="router-link-active">{{startup.name}}</h3>
+                      <p class="ellipsis w-100">{{startup.description}}</p>
+                    </div>
+  
+                    <div class="col-1 align-items-center">
+                      <mat-icon class="super-icon-star text-muted" (click)="toggleFavorite(startup)">{{startup.isFavorite ? "star" : "star_outline" }}</mat-icon>
+                    </div>
+            
+                  </div>
+                  
+                </mat-list-item>
+              </mat-list>
+              
+            </div>
+
+            <div class="row">
+              <div class="col text-right">
+                <button mat-mini-fab disabled color="white" class="super-mini-fab-transparent">
+                  <mat-icon>west</mat-icon>
+                </button>
+              </div>
+
+              <div class="col text-left">
+                <button mat-mini-fab disabled color="white" class="super-mini-fab-transparent">
+                  <mat-icon >east</mat-icon>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- compare btn -->
+            <div class="mt-3 d-flex justify-content-center">
+              <app-compare-startups-button [chartURL]="list.commonName + '/list.png'"></app-compare-startups-button>
+            </div>
+            
+            <div class="mt-3 card-footer bg-transparent pt-4">
+
+              <div class="px-4 row align-items-center" *ngIf="list.chatHeads">
+                
+                <div class="col" *ngFor="let chatHead of list.chatHeads">
+                  <img class="super-startup-img-sm" [src]="chatHead.url" alt="Card image cap">
+                </div>
+                <div class="col border-1">
+                  <button mat-mini-fab color="white" class="super-mini-fab" (click)="addUserToList(list)">
+                    <mat-icon class="text-muted">person_add_alt_1</mat-icon>
+                  </button>
+                </div>
+                
+              </div>
+
+
+            </div>
+
+          </div>
+        
+        </div>
+      </div>
+
+  </div>
