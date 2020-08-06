@@ -18,7 +18,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ProdApiService {
-  baseUrl = environment.host;
+  baseUrl = environment.host + ":3000/"
   
   constructor(private http: HttpClient) { }
 
