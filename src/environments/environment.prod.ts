@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  host: "http://api.supercharge.work"
+  host: "http://3.128.94.99"
 };
