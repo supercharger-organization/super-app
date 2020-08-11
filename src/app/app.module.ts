@@ -31,6 +31,9 @@ import {MatListModule} from '@angular/material/list';
 import {MatSliderModule} from '@angular/material/slider';
 import { UpgradeButtonComponent } from './components/upgrade-button/upgrade-button.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LogInComponent } from './pages/auth/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
+import { ForgotPasswordComponent } from './pages/auth/forgotPassword/forgotPassword.component';
 import { DiscoverComponent } from './pages/discover/discover.component';
 import { ListsComponent } from './pages/lists/lists.component';
 import { ArchiveComponent } from './pages/archive/archive.component';
@@ -47,6 +50,22 @@ import {MatCardModule} from '@angular/material/card';
 import { IpService } from './services/ip-service/ip.service';
 import { CompareStartupsButtonComponent, CompareDialog } from './components/compare-startups-button/compare-startups-button.component';
 import { ListButtonComponent, ListDialog } from './components/list-button/list-button.component';
+
+import { LogOutButtonComponent } from './components/logout-button/logout-button.component'; 
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AuthService } from './services/auth/auth.service';
+
+var config = {
+  apiKey: "AIzaSyCbRakyCmZUXNvVetabwjMGvDveI7Hm5Ms",
+  authDomain: "supercharger-3e6d7.firebaseapp.com",
+  databaseURL: "https://supercharger-3e6d7.firebaseio.com",
+  projectId: "supercharger-3e6d7",
+  storageBucket: "supercharger-3e6d7.appspot.com",
+  messagingSenderId: "182064045012",
+  appId: "1:182064045012:web:c678989c8dc3684805d441",
+  measurementId: "G-1P7PQYV1VR"
+};
 
 @NgModule({
   declarations: [
@@ -66,7 +85,11 @@ import { ListButtonComponent, ListDialog } from './components/list-button/list-b
     CompareStartupsButtonComponent,
     CompareDialog,
     ListButtonComponent,
-    ListDialog
+    ListDialog,
+    LogInComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
+    LogOutButtonComponent
   ],
   imports: [
     AppRoutingModule,
@@ -94,9 +117,12 @@ import { ListButtonComponent, ListDialog } from './components/list-button/list-b
     MatCardModule,
     XunkCalendarModule,
     HttpClientModule,
-    MatSliderModule
+    MatSliderModule,
+    AngularFireModule.initializeApp(config),
+    AngularFireAuthModule
   ],
   providers: [
+    AuthService,
     DebugApiService,
     ProdApiService,
     IpService,
