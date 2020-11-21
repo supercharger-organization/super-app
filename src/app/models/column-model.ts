@@ -2,7 +2,7 @@ import { Card } from './card-model';
 
 export class Column {
     id: number;
-    title: String;
+    title: string;
     position: number;
     boardId: number;
     cardIds: [number];
@@ -18,7 +18,7 @@ export class Column {
 
     // Temp Solution until ui is resolved
     // This is soon to be the constructor
-    GenerateCard(id:number, title: String, position: number, boardId: number, cardIds:[number]){
+    GenerateCard(id:number, title: string, position: number, boardId: number, cardIds:[number]){
         this.id = id;
         this.title = title;
         this.position = position;

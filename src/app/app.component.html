@@ -47,7 +47,9 @@
         <!-- Logout -->
         <div style="margin-top: 10%;" class="d-flex w-100 justify-content-center">
             <div class="d-flex align-items-center">
-                <app-logout-button></app-logout-button>
+                <button mat-flat-button color="accent" (click)="authService.SignOut()">
+                    Log Out
+                </button>
             </div>
         </div>
 
@@ -62,8 +64,17 @@
         
             <div class="row col-6 text-right">
                 <div class="col text-right">
-                    <app-invite-button ></app-invite-button>
-                    <app-session-button class="ml-3"></app-session-button>
+                    <button mat-flat-button class="super-button white" (click)="openInviteDialog()">
+                        <span matPrefix> <i class="fa fa-user-plus text-muted"></i> &nbsp;</span>
+                        Invite Startup
+                    </button>
+                    
+                    <button mat-flat-button class="super-button blue" (click)="openSessionDialog()">
+                        <i class="fa fa-video" aria-hidden="true"></i>
+                        &nbsp;
+                        Virtual Session
+                    </button>
+
                 </div>
             </div>
         </div>

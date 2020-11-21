@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListButtonComponent } from './list-button.component';
+import { InviteDialogComponent } from './invite-dialog.component';
 
-describe('ListButtonComponent', () => {
-  let component: ListButtonComponent;
-  let fixture: ComponentFixture<ListButtonComponent>;
+describe('InviteDialogComponent', () => {
+  let component: InviteDialogComponent;
+  let fixture: ComponentFixture<InviteDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListButtonComponent ]
+      declarations: [ InviteDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListButtonComponent);
+    fixture = TestBed.createComponent(InviteDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -3,7 +3,7 @@ import { Startup } from './startup-model';
 
 export class List {
     id: number;
-    title: String;
+    title: string;
     position: number;
     boardId: number;
     startupIds: [number];
@@ -19,7 +19,7 @@ export class List {
     imgDark:boolean
     comparisonIMG:string
 
-    commonName: String;
+    commonName: string;
 
     bsStartups: any[]
 
@@ -31,7 +31,7 @@ export class List {
 
     // Temp Solution until ui is resolved
     // This is soon to be the constructor
-    GenerateCard(id:number, title: String, position: number, boardId: number, startupIds:[number]){
+    GenerateCard(id:number, title: string, position: number, boardId: number, startupIds:[number]){
         this.id = id;
         this.title = title;
         this.position = position;

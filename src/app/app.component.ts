@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { User } from './models/user-model';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { InviteDialogComponent } from './components/dialogs/invite-dialog/invite-dialog.component';
+import { SessionDialogComponent } from './components/dialogs/session-dialog/session-dialog.component';
+import { AuthService } from './services/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +17,7 @@ export class AppComponent implements OnInit {
   pages = []
   user = null
 
-  constructor(public router: Router, private route: ActivatedRoute){
+  constructor(public router: Router, private route: ActivatedRoute, public dialog: MatDialog, public authService: AuthService){
 
     this.pages = [
       {title:"Discover", icon: "language", url: "discover", notificationCount: 2},
@@ -24,14 +28,33 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
-    // this.user = new User(1, "kwang@supercharge.work", "pass", [0])
-    // this.user.name = "Michael"
     this.user = JSON.parse(localStorage.getItem("user"));
-    console.log(this.user);
     if (this.user) {
       this.user.displayName = "Michael";
       this.router.navigate(['discover']);
     }
+  }
+
+  openSessionDialog(){
+    const dialogRef = this.dialog.open(SessionDialogComponent, 
+      {
+        width: '525px'
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openInviteDialog(){
+    const dialogRef = this.dialog.open(InviteDialogComponent, 
+      {
+        width: '600px'
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

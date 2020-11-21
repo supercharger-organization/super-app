@@ -6,23 +6,25 @@ export class Card {
     note_id: number;
 
     // Phase this shit out it came with the original UI
-    name: String; //_deprecated
-    tags: String[]; //_deprecated
-    description:String;
-    industryTags:String[];
+    name: string; //_deprecated
+    tags: string[]; //_deprecated
+    description:string;
+    industryTags:string[];
 
     isVisible: Boolean;
 
     //tbd
-    imgURL: String = null;
-    industryScore:number
+    imgURL: string = null;
+    industryScore:string
 
-    constructor(name:String, description:String, industryTags: String[], startupId: number){
+    constructor(name:string, description:string, industryTags: string[], industryScore:string, startupId: number, imgURL:string){
         this.name = name;
         this.startupId = startupId;
+        this.imgURL = imgURL;
+        this.industryScore = industryScore;
 
         /** random **/
-        this.industryScore = Math.floor(Math.random() * 25) + 70  
+        //this.industryScore = Math.floor(Math.random() * 25) + 70  
 
         /** to be deleted... **/
         var newTags = []
