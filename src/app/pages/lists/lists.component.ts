@@ -34,7 +34,7 @@ export class ListsComponent implements OnInit {
     this.apiService.getBoardAndAllChildren("5eebf187aa75084db8bdaed8").subscribe(board=>{
       this.board = board[0]
 
-      var mediaRoot = "assets/imgs/lists/"
+      var mediaRoot = "./assets/imgs/lists"
       /** duct tape **/
       this.board.lists.forEach(list => {
 
