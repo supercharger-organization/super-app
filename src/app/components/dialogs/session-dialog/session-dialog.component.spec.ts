@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InviteButtonComponent } from './invite-button.component';
+import { SessionDialogComponent } from './session-dialog.component';
 
-describe('InviteButtonComponent', () => {
-  let component: InviteButtonComponent;
-  let fixture: ComponentFixture<InviteButtonComponent>;
+describe('SessionDialogComponent', () => {
+  let component: SessionDialogComponent;
+  let fixture: ComponentFixture<SessionDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InviteButtonComponent ]
+      declarations: [ SessionDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InviteButtonComponent);
+    fixture = TestBed.createComponent(SessionDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

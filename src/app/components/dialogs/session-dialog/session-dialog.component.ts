@@ -1,16 +1,10 @@
+
 import { Component, OnInit, Inject, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatDialog, MatDialogTitle, MatDialogContent, MatDialogRef, MAT_DIALOG_DATA,  } from '@angular/material/dialog';
-import { MatFormField, } from '@angular/material/form-field';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatDatepickerModule, MatCalendarBody} from '@angular/material/datepicker';
 import { XunkCalendarModule } from 'xunk-calendar';
 import { Startup } from 'src/app/models/startup-model';
 import { ActivatedRoute } from '@angular/router';
-import { Card } from 'src/app/models/card-model';
-import { List } from 'src/app/models/list-model';
 import { ProdApiService } from 'src/app/services/prod-api-service/prod-api.service';
-
-
 
 export interface DialogData {
   Date: string;
@@ -18,35 +12,11 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-session-button',
-  templateUrl: './session-button.component.html',
-  styleUrls: ['./session-button.component.scss']
-})
-export class SessionButtonComponent {
-
-  constructor(public dialog: MatDialog) {}
-
-  openDialog() {
-    const dialogRef = this.dialog.open(SessionDialog, 
-      {
-        width: '525px'
-      });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
-}
-
-
-
-@Component({
-  selector: 'session-dialog',
-  templateUrl: './session-dialog.html',
+  selector: 'app-session-dialog',
+  templateUrl: './session-dialog.component.html',
   styleUrls: ['./session-dialog.component.scss']
 })
-export class SessionDialog implements OnInit {
+export class SessionDialogComponent implements OnInit {
   startups: Startup[] = []
   isStageTwo: boolean;
   isStageOne: boolean;
@@ -54,7 +24,7 @@ export class SessionDialog implements OnInit {
 
   public selDate = { date:1, month:1, year:1 };
   constructor(private apiService: ProdApiService, private route: ActivatedRoute,
-    public dialogRef: MatDialogRef<SessionDialog>,
+    public dialogRef: MatDialogRef<SessionDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
 
     this.selDate = XunkCalendarModule.getToday();

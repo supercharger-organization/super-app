@@ -5,8 +5,8 @@ import { CardFilter } from 'src/app/models/cardfilter-model';
 import { Card } from 'src/app/models/card-model';
 import { ProdApiService } from 'src/app/services/prod-api-service/prod-api.service';
 import { Board } from 'src/app/models/board-model';
-import { startWith } from 'rxjs/operators';
 import { SearchService } from 'src/app/services/search-service/search.service';
+import { S3BucketService } from 'src/app/services/s3-bucket-service/s3-bucket.service';
 
 @Component({
   selector: 'app-discover',
@@ -19,7 +19,9 @@ export class DiscoverComponent implements OnInit {
   filters: CardFilter[]
   board:Board = null
 
-  constructor(private apiService: ProdApiService, private searchService: SearchService) {
+  //selectedFiles: FileList;
+
+  constructor(private apiService: ProdApiService, private searchService: SearchService, private uploadService: S3BucketService) {
 
     this.filters = [
       new CardFilter(1, "Funding"),
@@ -79,76 +81,11 @@ export class DiscoverComponent implements OnInit {
     this.startups.forEach(startup => {
       /** tbd **/
       if (startup.isVisibleInFilter){
-        var startupCard = new Card(startup.name, startup.description, startup.industryTags, startup._id)
-
-        // Textbook (Lol JK, Given the time frame understandable):
-        switch(startup.name.trim()) { 
-          case "Supercharger": { 
-            startupCard.imgURL = "Supercharger_Logo.png"
-            break; 
-          } 
-          case "Lisnr": { 
-            startupCard.imgURL = "Lisnr_Logo.png"
-            break; 
-          }
-          case "Bear Robotics": { 
-            startupCard.imgURL = "BearRobotics_Logo.png"
-            break; 
-          }
-          case "Breinify": { 
-            startupCard.imgURL = "Breinify_Logo.png"
-            break; 
-          } 
-          
-          case "Automation Hero": { 
-            startupCard.imgURL = "AutomationHero_Logo.png"
-            startupCard.industryScore = 98;
-            break; 
-          } 
-          case "Blue Cart": { 
-            startupCard.imgURL = "BlueCart_Logo.png"
-            break; 
-          } 
-          case "Catalytic": { 
-            startupCard.imgURL = "Catalytic_Logo.png"
-            break; 
-          } 
-          case "VenueNext": { 
-            startupCard.imgURL = "VenueNext_Logo.png"
-            break; 
-          } 
-          case "ViaHero": { 
-            startupCard.imgURL = "ViaHero_Logo.jpg"
-            break; 
-          } 
-          case "Grubox": { 
-            startupCard.imgURL = "GruBox_Logo.png"
-            break; 
-          } 
-          case "Self-Healing Elastomer": { 
-            startupCard.imgURL = "SelfHealingRubber_Logo.png"
-            break; 
-          } 
-          case "ROTA": { 
-            startupCard.imgURL = "Rota_Logo.png"
-            break; 
-          } 
-          case "Cabin": { 
-            startupCard.imgURL = "Cabin_Logo.jpg"
-            break; 
-          } 
-          case "C Teleport": { 
-            startupCard.imgURL = "CTeleport_Logo.png"
-            break; 
-          }
-          case "0Chain": { 
-            startupCard.imgURL = "0Chain_Logo.png"
-            break; 
-          }    
-      } 
-     startupCard.imgURL = "assets/imgs/startup/" + startupCard.imgURL;
-      this.cards.push(startupCard);
+        var startupCard = new Card(startup.name, startup.description, startup.industryTags, startup.industryScore, startup._id, startup.imgURL)
+        startupCard.imgURL = "assets/imgs/startup/" + startupCard.imgURL;
+        this.cards.push(startupCard);
       }
+
     });
   }
 
@@ -202,60 +139,6 @@ export class DiscoverComponent implements OnInit {
     });
     this.loadCardsWithCurrentStartups();
   }
-
-
-
-  /*
-  activateFilter(filter){
-    if (filter.active){
-      filter.active = false;
-      //do something here
-      //this.startups = Startup.OrderByName(this.startups);
-      //Resets all cards to visible in filter
-      this.startups.forEach(startUp => {
-        startUp.isVisibleInFilter = true;
-      });
-      this.loadCardsWithCurrentStartups();
-    }
-    else {
-      filter.active = true;
-      let evalMethod;
-      if (filter.name == "Funding")
-      {
-        evalMethod = function(startUp: Startup){
-
-        };
-      }
-      else if (filter.name == "Location")
-      {
-        evalMethod = function(startUp: Startup){
-          
-        };
-      }
-      else if (filter.name == "Employees")
-      {
-        evalMethod = function(startUp: Startup){
-          
-        };
-      }
-      else if (filter.name == "Interest Areas")
-      {
-        evalMethod = function(startUp: Startup){
-          
-        };
-      }
-      else 
-      {
-        evalMethod = function(startUp: Startup){
-          console.log("Error! Unknown Filter found!")
-        };
-      }
-
-      this.startups.forEach(startUp => {
-        startUp.isVisibleInFilter = evalMethod(startUp);
-      });
-    }
-  }*/
 
   openListDialogue(){
     alert("list dialogue")
