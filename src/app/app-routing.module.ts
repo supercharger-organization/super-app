@@ -5,14 +5,22 @@ import { ArchiveComponent } from './pages/archive/archive.component';
 import { ListsComponent } from './pages/lists/lists.component';
 import { StartupDetailComponent } from './pages/startup-detail/startup-detail.component';
 import { ListDetailComponent } from './pages/list-detail/list-detail.component';
+import { LogInComponent } from './pages/auth/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
+import { ForgotPasswordComponent } from './pages/auth/forgotPassword/forgotPassword.component';
+
+import { AuthGuard } from './services/auth/auth.guard';
 
 const routes: Routes = [
-    {path:"", component:DiscoverComponent},
-    {path:"discover", component:DiscoverComponent},
-    {path:"lists", component:ListsComponent},
-    {path:"archive", component:ArchiveComponent},
-    {path:"startup/:id", component:StartupDetailComponent},
-    {path:"list/:id", component:ListDetailComponent},
+    {path:"", component:LogInComponent},
+    {path:"login", component:LogInComponent},
+    {path:"register", component:RegisterComponent},
+    {path:"forgot-password", component: ForgotPasswordComponent },
+    {path:"discover", component:DiscoverComponent, canActivate: [AuthGuard]},
+    {path:"lists", component:ListsComponent, canActivate: [AuthGuard]},
+    {path:"archive", component:ArchiveComponent, canActivate: [AuthGuard]},
+    {path:"startup/:id", component:StartupDetailComponent, canActivate: [AuthGuard]},
+    {path:"list/:id", component:ListDetailComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

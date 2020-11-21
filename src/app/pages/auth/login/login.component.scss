@@ -1,0 +1,84 @@
+.row {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 200px;
+    max-height: 100vh;
+    max-width: 97vw;
+    .authBlock {
+        min-width: 600px;
+        padding: 60px 60px !important;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        padding-bottom: 150px !important;
+        h3 {
+            position: relative;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 32px;
+            line-height: 69px;
+            color: #05386E;
+            margin-bottom: 30px !important;
+        }
+        .formControl {
+            background: #FFFFFF;
+            border: 1px solid #D6D6D6;
+            box-sizing: border-box;
+            border-radius: 10px;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 15px;
+            line-height: 27px;
+            color: #696969;
+            padding-left: 30px;
+            padding-top: 18px;
+            padding-bottom: 18px;
+            padding-right: 30px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .btnPrimary {
+            margin-top: 30px;
+            background: #05386E;
+            border-radius: 5px;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 27px;            
+            color: #FFFFFF;
+            border: 2px solid #05386E;
+            float: left;
+            padding: 10px 50px;
+        }
+        .googleBtn {
+            margin-top: 30px;
+            background: #FFFFFF;
+            border-radius: 5px;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 27px;            
+            color: #05386E;
+            border: 2px solid #05386E;
+            padding: 10px 50px;
+            float: right;
+        }
+    }
+    .redirectToLogin {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+        margin-top: 30px !important;
+        .forgotPassword {
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        a {
+            color: #05386E;
+        }
+    }
+}
