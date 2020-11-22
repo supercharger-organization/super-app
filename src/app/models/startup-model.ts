@@ -1,38 +1,45 @@
-import { Note } from './note-model';
+import { Feature } from './feature-model';
+import { Patent } from './patent-model';
 
 export class Startup {
-    _id:string = "";
-    name:string = "";
-    description:string = "";
-    location:string = "";
-    websiteURL:string = "";
-    employeeCount:string = "";
-    funding:string = "";
-    founder:string = "";
-    initialDiligence:string = "";
-    founderBackground:string = "";
-    notableInvestors:string = "";
-    notablCustomers:string = "";
+    _id:string = ""; //
+    name:string = ""; //
+    yearFounded:string = ""; //
+    oracleIntegration:string = "";
+    sapAppIntegration:string = "";
+    description:string = ""; //
+    initialDiligence:string = ""; //
+    location:string = ""; //
+    websiteURL:string = ""; //
+    employeeCount:string = ""; //
+    industryScore:string = ""; //
+    funding:string = ""; //
+    lastFunding:string = ""; //
+    pricing:string = ""; //
+    founders:string[] = [] // 
+    employeeNames:string[] =[] // 
+    founderBackground:string = ""; // 
+    notableInvestors:string[] = []; // 
+    notableCustomers:string[] = []; // 
+    industryTags:string[] = [];//
+    pagerImgUrl:string = ""; //
+    startupImgUrl:string = ""; //
+    historyImgUrl:string = ""; //
+    patents: Patent[] = [] //
+    features: Feature[] =[] //
+    pitchDeckImgUrls: string[] = [] //
+    customerImgUrls: string[] = [] //
+    customNotes: string[] = [] //
+
+    tags:string = ""
+    videoUrl:string = "";
+    techStackTags:string[] = [];
+    founderEmail:string = ""; 
+    founderName:string = "";
     monthlyRevenue:string = "";
     monthlyBurnRate:string = "";
+    cac:string = "";
 
-    isFavorite: Boolean;
-    sapAppIntegration: Boolean;
-    oracleIntegration: Boolean;
-
-    techStackTags:string[] = [];
-    notableCustomers:string[] = [];
-    industryTags:string[] = [];
-    customNoteIds:string[] = [];
-    customNotes:Note[] = [];
-    founders:string[] = [];
-
-    isVisibleInFilter: Boolean = true;
-
-    /** tbd */
-    imgURL: string = null
-    selected: boolean = false
-    industryScore:string;
 
     constructor(_id:string,name:string,description:string,location:string,websiteURL:string,employeeCount:string,funding:string,founder:string,founderBackground:string,notableInvestors:string,industryTags:string[],customNoteIds:string[])
     {
@@ -43,11 +50,7 @@ export class Startup {
         this.location = location;
         this.employeeCount = employeeCount;
         this.funding = funding;
-        this.founder = founder;
         this.founderBackground = founderBackground;
-        this.notableInvestors = notableInvestors;
-        this.industryTags = industryTags;
-        this.customNoteIds = customNoteIds;
     }
 
     static getFundAsNum(x: Startup): any {
