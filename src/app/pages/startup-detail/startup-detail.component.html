@@ -71,22 +71,45 @@
             </div>
         </div>
 
-        <!-- TODO: Implement these dynamic fields-->
+        <!-- Pricing -->
+        <div class="mt-4 d-flex align-items-center">
+            <h1 class="font-weight-bold">Pricing:</h1> 
+            <span class="ml-1 text-muted">{{startup.pricing}}</span>
+        </div>
 
-            <!-- Pricing -->
+        <!-- Key Product Features... small cards in rows -->
+        <div class=" mt-4">
+            <h1 class="font-weight-bold">Key Product Features</h1>
+            <div class="mt-2">
+                <!--TODO: features-->
+            </div>
+        </div>
 
-            <!-- Key Product Features... small cards in rows -->
+        <!-- Company History -->
+        <div class=" mt-4">
+            <h1 class="font-weight-bold">Company History</h1>
+            <div class="mt-2">
+                <img class="super-startup-banner" [src]="startup.historyImgUrl" alt="Card image cap">
+            </div>
+        </div>
 
-            <!-- Company History... image in card -->
+        <!-- Patents -->
+        <div class=" mt-4">
+            <h1 class="font-weight-bold">Patents</h1>
+            <div class="mt-2">
+                <!--TODO: features-->
+            </div>
+        </div>
 
-            <!-- Patents... card with startup data:
-                Title (Patent)
-                Number (Patent)
-                Abstract
-                Type
-                Filed (date)
-                date of patent
-            -->
+
+        <!-- Patents... card with startup data:
+            Title (Patent)
+            Number (Patent)
+            Abstract
+            Type
+            Filed (date)
+            date of patent
+        -->
 
     </div>
 
