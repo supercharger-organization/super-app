@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input,  OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input,  OnInit, Output, EventEmitter } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { S3BucketService } from 'src/app/services/s3-bucket-service/s3-bucket.service';
 
@@ -8,8 +8,8 @@ import { S3BucketService } from 'src/app/services/s3-bucket-service/s3-bucket.se
   template: `
   <div class="single-file-sel-input">
     <h2 class="single-file-sel-input-lbl">{{ label }}</h2>
-    <input class="single-file-sel-input-btn" id="cid"
-    type="file">
+    <h2 class="single-file-sel-input-lbl">Current Saved Image: {{ currentImgURL }}</h2>
+    <input class="single-file-sel-input-btn" id="cid" type="file" (change)="selectFile($event)">
     <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button> 
   </div>
   `,
@@ -25,8 +25,16 @@ import { S3BucketService } from 'src/app/services/s3-bucket-service/s3-bucket.se
 export class InputFileWithLabelComponent implements OnInit {
     @Input()
     label: string = '';
+    @Input()
     startUpID: string = '';
+    @Input()
+    currentImgURL: string = '';
+
+    @Output('update')
+    outImgURL: EventEmitter<string> = new EventEmitter<string>();
+
     selectedFiles: any;
+
     constructor(private uploadService: S3BucketService){
         
     }
@@ -37,7 +45,10 @@ export class InputFileWithLabelComponent implements OnInit {
     upload() {
         const file = this.selectedFiles.item(0);
         this.uploadService.uploadStartupImg(this.startUpID, file).then(res=>{
-          console.log(res)
+          console.log(res);
+          console.log("Location!: " + res.Location);
+          this.currentImgURL = res.Location;
+          this.outImgURL.emit(this.currentImgURL);
         })
       }
         

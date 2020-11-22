@@ -87,10 +87,10 @@ export class S3BucketService {
 
     let contentType = file.type;
 
-    if (startupId.length == 0)
+    if (!startupId)
     {
       this.toastr.error("Could not upload " + file.name + "! Please save startup before uploading images");
-      throwError(e=>{return e});
+      return null;
     }
 
     let params = {

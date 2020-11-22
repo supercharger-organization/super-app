@@ -36,9 +36,9 @@
                 <multi-item-text-input label="Notable Customers" [values]="currentStartup.notableCustomers"></multi-item-text-input>
                 <multi-item-text-input label="Industry Tags" [values]="currentStartup.industryTags"></multi-item-text-input>
 
-                <app-input-file-with-label label="1 Pager Image"></app-input-file-with-label>
-                <app-input-file-with-label label="Startup Image"></app-input-file-with-label>
-                <app-input-file-with-label label="History Image"></app-input-file-with-label>
+                <app-input-file-with-label label="1 Pager Image" [startUpID]="currentStartup._id" [currentImgURL]="currentStartup.pagerImgUrl" (update)="currentStartup.pagerImgUrl=$event" ></app-input-file-with-label>
+                <app-input-file-with-label label="Startup Image" [startUpID]="currentStartup._id" [currentImgURL]="currentStartup.startupImgUrl" (update)="currentStartup.startupImgUrl=$event" ></app-input-file-with-label>
+                <app-input-file-with-label label="History Image" [startUpID]="currentStartup._id" [currentImgURL]="currentStartup.historyImgUrl" (update)="currentStartup.historyImgUrl=$event" ></app-input-file-with-label>
                 
             </div>
     </div>
