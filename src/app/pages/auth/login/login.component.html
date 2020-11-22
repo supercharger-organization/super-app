@@ -1,8 +1,32 @@
+<style>
+  .super-button-custom {
+    align-items: center !important;
+    border-radius: 15px !important;
+    font-weight: bolder !important;
+    color: white !important;
+}
+
+.super-button-custom.gray {
+    align-items: center !important;
+    border-radius: 15px !important;
+    font-weight: bolder !important;
+    background: #eff3f6 !important;
+    border-color: #eff3f6 !important;
+    color: rgba(0,0,0,.87) !important;
+}
+</style>
+
+
 <div class="row">
     <div class="displayTableCell">
       <div class="authBlock">
-        <h3>Log In</h3>
-        <div class="formGroup">
+        <!-- <h1 class="font-weight-bold super-label-xl">Login</h1> -->
+
+        <div class="text-center">
+          <img style="width: 233px; margin-bottom:30px" src="assets/imgs/supercharger-logo.png">
+        </div>
+
+        <div class="formGroup mt-3">
           <input type="text" class="formControl" placeholder="Username" #userName required>
         </div>
         <div class="formGroup">
@@ -10,11 +34,19 @@
         </div>
         <!-- Calling SignIn Api from AuthService -->
         <div class="formGroup">
-          <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
+          <!-- <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
           <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
             <i class="fab fa-google-plus-g"></i>
             Log in with Google
+          </button> -->
+
+          <button mat-flat-button type="button" class="btn googleBtn super-button-custom gray" (click)="authService.GoogleAuth()">
+            <i class="fab fa-google-plus-g"></i>
+            Log in with Google
           </button>
+
+          <input mat-flat-button type="button" class="btn btnPrimary super-button-custom" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
+          
         </div>
       </div>
       <div class="redirectToLogin">

@@ -4,6 +4,7 @@ import { User } from "../../models/user-model";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class AuthService {
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,  
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning
+    public toastr: ToastrService
   ) {    
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
@@ -42,7 +44,8 @@ export class AuthService {
         });
         // this.SetUserData(result.user);
       }).catch((error) => {
-        window.alert(error.message)
+        //window.alert(error.message)
+        this.toastr.error(error.message)
       })
   }
 
@@ -54,16 +57,19 @@ export class AuthService {
         up and returns promise */
         //this.SetUserData(result.user);
       }).catch((error) => {
-        window.alert(error.message)
+        //window.alert(error.message)
+        this.toastr.error(error.message)
       })
   }
   // Reset Forggot password
   ForgotPassword(passwordResetEmail) {
     return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
     .then(() => {
-      window.alert('Password reset email sent, check your inbox.');
+      //window.alert('Password reset email sent, check your inbox.');
+      this.toastr.success('Password reset email sent, check your inbox.')
     }).catch((error) => {
-      window.alert(error)
+      //window.alert(error)
+      this.toastr.error(error.message)
     })
   }
 
@@ -87,7 +93,7 @@ export class AuthService {
         })
       // this.SetUserData(result.user);
     }).catch((error) => {
-      window.alert(error)
+      this.toastr.error(error.message)
     })
   }
 
