@@ -63,73 +63,73 @@ export class ListDetailComponent implements OnInit {
       /** tbd **/
       if (startup.isVisibleInFilter)
       {
-        var startupCard = new Card(startup.name, startup.description, startup.industryTags, startup.industryScore, startup._id, startup.imgURL)
+        var startupCard = new Card(startup.name, startup.description, startup.industryTags, startup.industryScore, startup._id, startup.startupImgUrl)
 
       // Textbook (Lol JK, Given the time frame understandable):
       switch(startup.name.trim()) { 
         case "Supercharger": { 
-          startupCard.imgURL = "Supercharger_Logo.png"
+          startupCard.startupImgUrl = "Supercharger_Logo.png"
           break; 
         } 
         case "Lisnr": { 
-           startupCard.imgURL = "Lisnr_Logo.png"
+           startupCard.startupImgUrl = "Lisnr_Logo.png"
            break; 
         }
         case "Bear Robotics": { 
-          startupCard.imgURL = "BearRobotics_Logo.png"
+          startupCard.startupImgUrl = "BearRobotics_Logo.png"
           break; 
         }
         case "Breinify": { 
-          startupCard.imgURL = "Breinify_Logo.png"
+          startupCard.startupImgUrl = "Breinify_Logo.png"
           break; 
         } 
         
         case "Automation Hero": { 
-          startupCard.imgURL = "AutomationHero_Logo.png"
+          startupCard.startupImgUrl = "AutomationHero_Logo.png"
           break; 
         } 
         case "Blue Cart": { 
-          startupCard.imgURL = "BlueCart_Logo.png"
+          startupCard.startupImgUrl = "BlueCart_Logo.png"
           break; 
         } 
         case "Catalytic": { 
-          startupCard.imgURL = "Catalytic_Logo.png"
+          startupCard.startupImgUrl = "Catalytic_Logo.png"
           break; 
         } 
         case "VenueNext": { 
-          startupCard.imgURL = "VenueNext_Logo.png"
+          startupCard.startupImgUrl = "VenueNext_Logo.png"
           break; 
         } 
         case "ViaHero": { 
-          startupCard.imgURL = "ViaHero_Logo.jpg"
+          startupCard.startupImgUrl = "ViaHero_Logo.jpg"
           break; 
         } 
         case "Grubox": { 
-          startupCard.imgURL = "GruBox_Logo.png"
+          startupCard.startupImgUrl = "GruBox_Logo.png"
           break; 
         } 
         case "Self-Healing Elastomer": { 
-          startupCard.imgURL = "SelfHealingRubber_Logo.png"
+          startupCard.startupImgUrl = "SelfHealingRubber_Logo.png"
           break; 
         } 
         case "ROTA": { 
-          startupCard.imgURL = "Rota_Logo.png"
+          startupCard.startupImgUrl = "Rota_Logo.png"
           break; 
         } 
         case "Cabin": { 
-          startupCard.imgURL = "Cabin_Logo.jpg"
+          startupCard.startupImgUrl = "Cabin_Logo.jpg"
           break; 
         } 
         case "C Teleport": { 
-          startupCard.imgURL = "CTeleport_Logo.png"
+          startupCard.startupImgUrl = "CTeleport_Logo.png"
           break; 
         }
         case "0Chain": { 
-          startupCard.imgURL = "0Chain_Logo.png"
+          startupCard.startupImgUrl = "0Chain_Logo.png"
           break; 
         }    
      } 
-     startupCard.imgURL = "assets/imgs/startup/" + startupCard.imgURL;
+     startupCard.startupImgUrl = "assets/imgs/startup/" + startupCard.startupImgUrl;
       this.cards.push(startupCard);
       }
     });

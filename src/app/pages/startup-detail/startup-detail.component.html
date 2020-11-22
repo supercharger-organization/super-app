@@ -61,9 +61,9 @@
         </div>
 
         <!-- customers (tbd) -->
-        <!-- <div class="mt-4" *ngIf="startup.notablCustomers && startup.notableCustomers.length == 0">
+        <!-- <div class="mt-4" *ngIf="startup.notableCustomers && startup.notableCustomers.length == 0">
             <h1 class="font-weight-bold">Customers</h1>
-            {{startup.notablCustomers}}
+            {{startup.notableCustomers}}
         </div> -->
 
         <div class="mt-4" *ngIf="startup.name == 'Automation Hero'">
@@ -107,7 +107,7 @@
         <div class="mt-4" *ngIf="startup.notableCustomers.length > 0">
             <h1 class="font-weight-bold">Customers</h1>
             <div class="d-flex mt-2">
-                <div class="p-2" *ngFor="let customer of startup.notablCustomers">
+                <div class="p-2" *ngFor="let customer of startup.notableCustomers">
                     <span >{{customer}}</span>
                 </div>
             </div>

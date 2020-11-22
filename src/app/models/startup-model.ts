@@ -16,17 +16,21 @@ export class Startup {
     funding:string = ""; //
     lastFunding:string = ""; //
     pricing:string = ""; //
+    founder:string = "" // 
     founders:string[] = [] // 
     employeeNames:string[] =[] // 
     founderBackground:string = ""; // 
     notableInvestors:string[] = []; // 
     notableCustomers:string[] = []; // 
     industryTags:string[] = [];//
+
     pagerImgUrl:string = ""; //
     startupImgUrl:string = ""; //
     historyImgUrl:string = ""; //
     patents: Patent[] = [] //
     features: Feature[] =[] //
+
+
     pitchDeckImgUrls: string[] = [] //
     customerImgUrls: string[] = [] //
     customNotes: string[] = [] //
@@ -39,6 +43,13 @@ export class Startup {
     monthlyRevenue:string = "";
     monthlyBurnRate:string = "";
     cac:string = "";
+
+    isVisibleInFilter: boolean = true;
+    isFavorite: boolean = false;
+    selected: boolean = false;
+
+    // Temp to fix bugs !!!!!!!!!
+    imgURL: string;
 
 
     constructor(_id:string,name:string,description:string,location:string,websiteURL:string,employeeCount:string,funding:string,founder:string,founderBackground:string,notableInvestors:string,industryTags:string[],customNoteIds:string[])

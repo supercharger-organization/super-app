@@ -12,15 +12,17 @@ export class Card {
     industryTags:string[];
 
     isVisible: Boolean;
+    // Temp to fix bugs !!!!!!!!!
+    imgURL: string;
 
     //tbd
-    imgURL:string = null;
+    startupImgUrl:string = null;
     industryScore:string
 
     constructor(name:string, description:string, industryTags:string[], industryScore:string, startupId:string, imgURL:string){
         this.name = name;
         this.startupId = startupId;
-        this.imgURL = imgURL;
+        this.startupImgUrl = imgURL;
         this.industryScore = industryScore;
 
         /** random **/

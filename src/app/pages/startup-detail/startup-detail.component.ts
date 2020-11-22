@@ -34,82 +34,82 @@ export class StartupDetailComponent implements OnInit {
         // Textbook (Lol JK, Given the time frame understandable):
         switch(this.startup.name.trim()) { 
           case "Supercharger": { 
-            this.startup.imgURL = "Supercharger_Logo.png"
+            this.startup.startupImgUrl = "Supercharger_Logo.png"
             deckURL = "default"
             break; 
           } 
           case "Lisnr": { 
-            this.startup.imgURL = "Lisnr_Logo.png"
+            this.startup.startupImgUrl = "Lisnr_Logo.png"
             deckURL = "default"
             break; 
           }
           case "Bear Robotics": { 
-            this.startup.imgURL = "BearRobotics_Logo.png"
+            this.startup.startupImgUrl = "BearRobotics_Logo.png"
             deckURL = "default"
             break; 
           }
           case "Breinify": { 
-            this.startup.imgURL = "Breinify_Logo.png"
+            this.startup.startupImgUrl = "Breinify_Logo.png"
             deckURL = "default"
             break; 
           } 
           case "Automation Hero": { 
-            this.startup.imgURL = "AutomationHero_Logo.png"
+            this.startup.startupImgUrl = "AutomationHero_Logo.png"
             deckURL = "AutomationHero"
             break; 
           } 
           case "Blue Cart": { 
-            this.startup.imgURL = "BlueCart_Logo.png"
+            this.startup.startupImgUrl = "BlueCart_Logo.png"
             deckURL = "default"
             break; 
           } 
           case "Catalytic": { 
-            this.startup.imgURL = "Catalytic_Logo.png"
+            this.startup.startupImgUrl = "Catalytic_Logo.png"
             deckURL = "default"
             break; 
           } 
           case "VenueNext": { 
-            this.startup.imgURL = "VenueNext_Logo.png"
+            this.startup.startupImgUrl = "VenueNext_Logo.png"
             deckURL = "default"
             break; 
           } 
           case "ViaHero": { 
-            this.startup.imgURL = "ViaHero_Logo.jpg"
+            this.startup.startupImgUrl = "ViaHero_Logo.jpg"
             deckURL = "default"
             break; 
           } 
           case "Grubox": { 
-            this.startup.imgURL = "GruBox_Logo.png"
+            this.startup.startupImgUrl = "GruBox_Logo.png"
             deckURL = "default"
             break; 
           } 
           case "Self-Healing Elastomer": { 
-            this.startup.imgURL = "SelfHealingRubber_Logo.png"
+            this.startup.startupImgUrl = "SelfHealingRubber_Logo.png"
             deckURL = "default"
             break; 
           } 
           case "ROTA": { 
-            this.startup.imgURL = "Rota_Logo.png"
+            this.startup.startupImgUrl = "Rota_Logo.png"
             deckURL = "default"
             break; 
           } 
           case "Cabin": { 
-            this.startup.imgURL = "Cabin_Logo.jpg"
+            this.startup.startupImgUrl = "Cabin_Logo.jpg"
             deckURL = "Cabin"
             break; 
           } 
           case "C Teleport": { 
-            this.startup.imgURL = "CTeleport_Logo.png"
+            this.startup.startupImgUrl = "CTeleport_Logo.png"
             deckURL = "default"
             break; 
           }
           case "0Chain": { 
-            this.startup.imgURL = "0Chain_Logo.png"
+            this.startup.startupImgUrl = "0Chain_Logo.png"
             deckURL = "default"
             break; 
           }    
         } 
-        this.startup.imgURL = "assets/imgs/startup/" + this.startup.imgURL;
+        this.startup.startupImgUrl = "assets/imgs/startup/" + this.startup.startupImgUrl;
         this.deckURL = `assets/imgs/startup/pitch_deck/${deckURL}`
         
         /** to be deleted... **/
@@ -153,12 +153,13 @@ export class StartupDetailComponent implements OnInit {
     this.newNote = null;
   }
 
+  /*
   postComment(){
     //TODO
-    this.startup.customNotes.push(new Note(1, this.newNote.note, null, null, null, null, null))
+    this.startup.customNotes.push(new Note(null, this.newNote.note, null, null, null, null, null))
 
     this.newNote = null;
-  }
+  }*/
 
   nextImg(){
     this.deckIndex = this.deckIndex + 1

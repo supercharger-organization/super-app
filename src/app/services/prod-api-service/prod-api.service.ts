@@ -138,4 +138,15 @@ export class ProdApiService {
     );
   }
 
+  deleteStartupFromAPI(startupID)
+  {
+    var TargetRoute = "startup/delete/" + startupID;
+    var headers = new HttpHeaders();
+    var messageBody = {    }
+    headers.append('Content-type', 'application/json');
+    return this.http.post(this.baseUrl + TargetRoute, messageBody, {headers: headers}).pipe(
+      map(res => res)
+    );
+  }
+
 }
