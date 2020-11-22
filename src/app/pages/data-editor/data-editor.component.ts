@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Startup } from 'src/app/models/startup-model';
 import { ProdApiService } from 'src/app/services/prod-api-service/prod-api.service';
 import { SearchService } from 'src/app/services/search-service/search.service';
+import { StartupService } from 'src/app/services/startup-service/startup.service';
 
 @Component({
   selector: 'app-data-editor',
@@ -15,7 +16,8 @@ export class DataEditorComponent implements OnInit {
 
   testStringArray: string[]= [];
 
-  constructor(private apiService: ProdApiService, private searchService: SearchService) { 
+  constructor(
+    private startupService: StartupService) { 
   }
 
   ngOnInit(): void {
@@ -29,7 +31,7 @@ export class DataEditorComponent implements OnInit {
   saveCurrentStartup(): void{
     console.log("Current Test String array: ")
     console.log(this.testStringArray);
-    this.apiService.sendStartupToAPI(this.currentStartup).subscribe(response=>{
+    this.startupService.post(this.currentStartup).subscribe(response=>{
       console.log("Startup saved!");
       console.log(response);
       this.refreshStartupList();
@@ -50,8 +52,7 @@ export class DataEditorComponent implements OnInit {
   }
 
   refreshStartupList(): void{
-    this.apiService.getAllStartups().subscribe(startups=>{
-      console.log(startups)
+    this.startupService.get().subscribe(startups=>{
       this.startups = startups;
       this.startups.forEach(Startup => {
         Startup.isVisibleInFilter = true;

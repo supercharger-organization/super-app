@@ -12,7 +12,6 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 
 // Combined all of the model services into just a debug and production api service
-import { DebugApiService } from './services/debug-api-service/debug-api.service';
 import { ProdApiService } from './services/prod-api-service/prod-api.service';
 import { SearchService } from './services/search-service/search.service';
 
@@ -62,6 +61,9 @@ import { ListDialogComponent } from './components/dialogs/list-dialog/list-dialo
 import { S3BucketService } from './services/s3-bucket-service/s3-bucket.service';
 
 import { ToastrModule } from 'ngx-toastr';
+import { BoardService } from './services/board-service/board.service';
+import { ListService } from './services/list-service/list.service';
+import { StartupService } from './services/startup-service/startup.service';
 
 
 var config = {
@@ -136,11 +138,14 @@ var config = {
   ],
   providers: [
     AuthService,
-    DebugApiService,
     ProdApiService,
     IpService,
     SearchService,
-    S3BucketService
+    S3BucketService,
+    BoardService,
+    ListService,
+    StartupService,
+    
   ],
   bootstrap: [AppComponent]
 })
