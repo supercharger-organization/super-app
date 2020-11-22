@@ -37,7 +37,6 @@ export class ListsComponent implements OnInit {
     this.apiService.getAllBoards().subscribe(board=>{
       this.board = board[0]
       console.log(this.board)
-
     })
 
   }

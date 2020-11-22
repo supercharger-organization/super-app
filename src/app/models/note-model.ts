@@ -1,13 +1,13 @@
 export class Note {
     id: number;
-    note: string;
-    title: string;
+    note:string;
+    title:string;
     cardId: number;
     startupId: number;
     teamId: number;
     authorAccountId: number;
 
-    constructor(id: number, note: string, title: string, cardId: number, startupId: number,  teamId: number, authorAccountId: number)
+    constructor(id: number, note:string, title:string, cardId: number, startupId: number,  teamId: number, authorAccountId: number)
     {
         this.id = id;
 

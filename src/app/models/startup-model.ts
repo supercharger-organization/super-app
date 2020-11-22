@@ -1,29 +1,31 @@
 import { Note } from './note-model';
 
 export class Startup {
-    _id: number;
-    name: string;
-    description: string;
-    location: string;
-    websiteURL: string;
-    employeeCount: string;
-    funding: string;
-    founder: string;
-    founders: string[];
-    initialDiligence:string;
-    founderBackground: string;
-    notableInvestors: string;
-    notablCustomers:string;
-    notableCustomers: string[];
-    industryTags: string[];
-    customNoteIds: Number[];
-    customNotes:Note[];
+    _id:string = "";
+    name:string = "";
+    description:string = "";
+    location:string = "";
+    websiteURL:string = "";
+    employeeCount:string = "";
+    funding:string = "";
+    founder:string = "";
+    initialDiligence:string = "";
+    founderBackground:string = "";
+    notableInvestors:string = "";
+    notablCustomers:string = "";
+    monthlyRevenue:string = "";
+    monthlyBurnRate:string = "";
+
+    isFavorite: Boolean;
     sapAppIntegration: Boolean;
     oracleIntegration: Boolean;
-    monthlyRevenue:string;
-    monthlyBurnRate:number;
-    techStackTags:string[];
-    isFavorite: Boolean;
+
+    techStackTags:string[] = [];
+    notableCustomers:string[] = [];
+    industryTags:string[] = [];
+    customNoteIds:string[] = [];
+    customNotes:Note[] = [];
+    founders:string[] = [];
 
     isVisibleInFilter: Boolean = true;
 
@@ -32,8 +34,8 @@ export class Startup {
     selected: boolean = false
     industryScore:string;
 
-    constructor(_id: number,name: string,description: string,location: string,websiteURL: string,employeeCount: string,funding: string,founder: string,founderBackground: string,notableInvestors: string,industryTags: string[],customNoteIds: Number[])
-        {
+    constructor(_id:string,name:string,description:string,location:string,websiteURL:string,employeeCount:string,funding:string,founder:string,founderBackground:string,notableInvestors:string,industryTags:string[],customNoteIds:string[])
+    {
         this._id = _id;
         this.name = name;
         this.description = description;
@@ -70,14 +72,14 @@ export class Startup {
         return (rangeStart <= Startup.getEmployeeCountAsNum(x) && Startup.getEmployeeCountAsNum(x) <= rangeEnd);
     }
 
-    static isAtLocation( x: Startup, locationString: string)
+    static isAtLocation( x: Startup, locationString:string)
     {
         var formattedLocationName = x.location.toLowerCase();
         var formattedSearchLocationString = locationString.toLowerCase();
         return (formattedLocationName.includes(formattedSearchLocationString));
     }
 
-    static nameContainsSearchVal(x: Startup, searchString: string){
+    static nameContainsSearchVal(x: Startup, searchString:string){
         var formattedName = x.name.toLowerCase();
         var formattedSearchString = searchString.toLowerCase();
         return (formattedName.includes(formattedSearchString));

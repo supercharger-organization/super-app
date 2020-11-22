@@ -1,0 +1,38 @@
+.main-startup-form{
+    font-size: large;
+}
+
+.startup-list-box{
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    height: 800px;
+    width: 100px;
+    overflow-y: scroll;
+}
+.startup-list-item{
+    height: 7%;
+    font-size: 150%;
+    font-weight: bold;
+    border-color: black;
+    border-width: 0.5px;
+    border-bottom-style: solid;
+    text-align: center;
+    padding-top: 10px;
+}
+.startup-list-item:hover{
+    font-size: 180%;
+    background-color: lightgrey;
+}
+
+.button-bar-button{
+    width: 30%;
+    padding: 1%;
+    margin: 1%;
+}
+
+.button-bar{
+    width: 100%;
+    padding-bottom: 2%;
+}

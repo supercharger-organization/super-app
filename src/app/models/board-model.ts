@@ -3,7 +3,7 @@ import { Startup } from './startup-model';
 
 export class Board {
     id: number;
-    title: string;
+    title:string;
     teamId: number;
     authorId: number;
     startupIds: [number];
@@ -12,7 +12,7 @@ export class Board {
     lists: [List];
     startups: [Startup];
 
-    constructor(id:number, title: string, teamId: number, authorId: number, startupIds:[number], listIds: [number], userIDs: [number]){
+    constructor(id:number, title:string, teamId: number, authorId: number, startupIds:[number], listIds: [number], userIDs: [number]){
         this.id = id;
         this.title = title;
         this.teamId = teamId;

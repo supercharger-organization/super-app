@@ -45,6 +45,14 @@ import { MdePopoverModule } from '@material-extended/mde';
 import { XunkCalendarModule } from 'xunk-calendar';
 import {MatCardModule} from '@angular/material/card';
 import { IpService } from './services/ip-service/ip.service';
+import { CompareStartupsButtonComponent, CompareDialog } from './components/compare-startups-button/compare-startups-button.component';
+import { ListButtonComponent, ListDialog } from './components/list-button/list-button.component';
+import { DataEditorComponent } from './pages/data-editor/data-editor.component';
+import { AbstractInputComponent } from './abstracts/input.component';
+import { AbstractNgModelComponent } from './abstracts/ng-model.component';
+import { InputTextComponent } from './components/form-text-field/input-text.component';
+import { InputTextWithLabelComponent } from './components/form-text-field/input-text-with-label.component';
+import { InputTextAreaWithLabelComponent } from './components/form-text-field/input-text-area-with-label.component';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AuthService } from './services/auth/auth.service';
@@ -79,6 +87,17 @@ var config = {
     ArchiveComponent,
     StartupDetailComponent,
     ListDetailComponent,
+    StartupAdditionForm
+    CompareStartupsButtonComponent,
+    CompareDialog,
+    ListButtonComponent,
+    ListDialog,
+    DataEditorComponent,
+    AbstractInputComponent,
+    AbstractNgModelComponent,
+    InputTextComponent,
+    InputTextWithLabelComponent,
+    InputTextAreaWithLabelComponent
     ListDialogComponent,
     LogInComponent,
     RegisterComponent,

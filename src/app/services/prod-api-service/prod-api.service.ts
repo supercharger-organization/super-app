@@ -123,4 +123,19 @@ export class ProdApiService {
       map(res => res)
     );
   }
+
+  // New route to upload startups and lists to the api
+  sendStartupToAPI(startup)
+  {
+    var TargetRoute = "startup/post";
+    var headers = new HttpHeaders();
+    var messageBody = {
+      "startup": startup
+    }
+    headers.append('Content-type', 'application/json');
+    return this.http.post(this.baseUrl + TargetRoute, messageBody, {headers: headers}).pipe(
+      map(res => res)
+    );
+  }
+
 }
