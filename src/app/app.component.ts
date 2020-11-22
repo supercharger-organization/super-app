@@ -59,5 +59,9 @@ export class AppComponent implements OnInit {
     });
   }
 
+  navigateToDataEditor(){
+    this.router.navigate(['edit']);
+  }
+
 }
 
