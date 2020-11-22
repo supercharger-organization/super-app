@@ -25,9 +25,9 @@ export class AppComponent implements OnInit {
     public authService: AuthService){
 
     this.pages = [
-      {title:"Discover", icon: "language", url: "discover", notificationCount: 2},
+      {title:"Discover", icon: "language", url: "discover"},
+      //{title:"Discover", icon: "language", url: "discover", notificationCount: 2},
       {title:"Lists", icon: "list", url: "lists"},
-      {title:"Archive", icon: "folder", url: "archive", disabled: true}
     ]
 
     this.router.events.subscribe((event: Event) => {
