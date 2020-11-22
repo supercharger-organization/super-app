@@ -2,12 +2,12 @@
     <div class="col-12" style="padding-bottom: 20px;">
         <h1 class="font-weight-bold super-label-xl">Edit Startup Data:</h1>
     </div>
-    <ul class="col-2 startup-list-box">
+    <ul class="col-3 startup-list-box">
         <li *ngFor="let startup of startups" name="StartupListItem" class="startup-list-item" (click)="startupSelected(startup)">
             <a>{{ startup.name }}</a>
         </li>
     </ul>
-    <div class="col-10 main-startup-form">
+    <div class="col-9 main-startup-form">
             <div class="button-bar">
                 <button mat-raised-button color="primary" class="button-bar-button" (click)="saveCurrentStartup()">
                     Save Startup
@@ -29,5 +29,6 @@
             <app-input-text-with-label label="Founder Background" [(ngModel)]="currentStartup.founderBackground"></app-input-text-with-label>
             <app-input-text-with-label label="Initial Diligence" [(ngModel)]="currentStartup.initialDiligence"></app-input-text-with-label>
             <app-input-text-with-label label="Monthly Revenue" [(ngModel)]="currentStartup.monthlyRevenue"></app-input-text-with-label>
+            <multi-item-text-input label="industry Tags" [values]="currentStartup.industryTags"></multi-item-text-input>
     </div>
 </section>

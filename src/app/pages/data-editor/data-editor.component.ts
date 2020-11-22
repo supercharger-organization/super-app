@@ -12,6 +12,9 @@ import { SearchService } from 'src/app/services/search-service/search.service';
 export class DataEditorComponent implements OnInit {
   currentStartup: Startup = this.createBlankStartup();
   startups: Startup[] = [];
+
+  testStringArray: string[]= [];
+
   constructor(private apiService: ProdApiService, private searchService: SearchService) { 
   }
 
@@ -24,6 +27,8 @@ export class DataEditorComponent implements OnInit {
   }
 
   saveCurrentStartup(): void{
+    console.log("Current Test String array: ")
+    console.log(this.testStringArray);
     this.apiService.sendStartupToAPI(this.currentStartup).subscribe(response=>{
       console.log("Startup saved!");
       console.log(response);
@@ -32,11 +37,12 @@ export class DataEditorComponent implements OnInit {
   }
 
   createNewStartup(): void{
-
+    this.currentStartup = this.createBlankStartup();
   }
 
   deleteCurrentStartup(): void{
-
+    this.currentStartup = this.createBlankStartup();
+    this.refreshStartupList();
   }
 
   startupSelected(startup: Startup): void{
