@@ -63,7 +63,7 @@ export class ListDetailComponent implements OnInit {
       /** tbd **/
       if (startup.isVisibleInFilter)
       {
-        var startupCard = new Card(startup.name, startup.description, startup.industryTags, startup._id)
+        var startupCard = new Card(startup.name, startup.description, startup.industryTags, startup.industryScore, startup._id, startup.imgURL)
 
       // Textbook (Lol JK, Given the time frame understandable):
       switch(startup.name.trim()) { 

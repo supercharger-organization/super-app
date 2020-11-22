@@ -32,6 +32,7 @@ export class Startup {
     /** tbd */
     imgURL: string = null
     selected: boolean = false
+    industryScore:string;
 
     constructor(_id:string,name:string,description:string,location:string,websiteURL:string,employeeCount:string,funding:string,founder:string,founderBackground:string,notableInvestors:string,industryTags:string[],customNoteIds:string[])
     {

@@ -1,5 +1,5 @@
 
-<mat-drawer-container class="h-100">
+<mat-drawer-container class="h-100" *ngIf="user">
     
     <!-- sidebar content -->
     <mat-drawer mode="side" class="d-flex flex-direction-column" opened>
@@ -7,7 +7,7 @@
 
         <mat-list class="mt-5 flex-grow-1">
             <mat-list-item style="margin-bottom: 8%;" *ngFor="let page of pages" class="text-muted super-border-radius" [disabled]="page.disabled" [routerLink]="page.url" routerLinkActive="router-link-active" >
-              
+                
                 <mat-icon mat-list-icon>
                     {{page.icon}}
                 </mat-icon>
@@ -39,8 +39,17 @@
                 </div>
                 <div class="ml-1">
                     <!-- TODO: come from user profile -->
-                    <strong>Welcome,<br> {{user.name}}</strong>
+                    <strong>Welcome,<br> {{user.displayName}}</strong>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Logout -->
+        <div style="margin-top: 10%;" class="d-flex w-100 justify-content-center">
+            <div class="d-flex align-items-center">
+                <button mat-flat-button color="accent" (click)="authService.SignOut()">
+                    Log Out
+                </button>
             </div>
         </div>
 
@@ -55,8 +64,17 @@
         
             <div class="row col-6 text-right">
                 <div class="col text-right">
-                    <app-invite-button ></app-invite-button>
-                    <app-session-button class="ml-3"></app-session-button>
+                    <button mat-flat-button class="super-button white" (click)="openInviteDialog()">
+                        <span matPrefix> <i class="fa fa-user-plus text-muted"></i> &nbsp;</span>
+                        Invite Startup
+                    </button>
+                    
+                    <button mat-flat-button class="super-button blue" (click)="openSessionDialog()">
+                        <i class="fa fa-video" aria-hidden="true"></i>
+                        &nbsp;
+                        Virtual Session
+                    </button>
+
                 </div>
             </div>
         </div>
@@ -66,4 +84,7 @@
 
     </mat-drawer-content>
 
-  </mat-drawer-container>
+</mat-drawer-container>    
+<div *ngIf="!user">
+    <router-outlet></router-outlet>
+</div>

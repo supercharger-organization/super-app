@@ -24,13 +24,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
-import { InviteButtonComponent } from './components/invite-button/invite-button.component';
-import { InviteDialog } from './components/invite-button/invite-button.component';
-import { SessionButtonComponent, SessionDialog } from './components/session-button/session-button.component';
 import {MatListModule} from '@angular/material/list';
 import {MatSliderModule} from '@angular/material/slider';
 import { UpgradeButtonComponent } from './components/upgrade-button/upgrade-button.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LogInComponent } from './pages/auth/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
+import { ForgotPasswordComponent } from './pages/auth/forgotPassword/forgotPassword.component';
 import { DiscoverComponent } from './pages/discover/discover.component';
 import { ListsComponent } from './pages/lists/lists.component';
 import { ArchiveComponent } from './pages/archive/archive.component';
@@ -53,22 +53,41 @@ import { AbstractNgModelComponent } from './abstracts/ng-model.component';
 import { InputTextComponent } from './components/form-text-field/input-text.component';
 import { InputTextWithLabelComponent } from './components/form-text-field/input-text-with-label.component';
 import { InputTextAreaWithLabelComponent } from './components/form-text-field/input-text-area-with-label.component';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AuthService } from './services/auth/auth.service';
+import { CompareStartupsDialogComponent } from './components/dialogs/compare-startups-dialog/compare-startups-dialog.component';
+import { InviteDialogComponent } from './components/dialogs/invite-dialog/invite-dialog.component';
+import { SessionDialogComponent } from './components/dialogs/session-dialog/session-dialog.component';
+import { ListDialogComponent } from './components/dialogs/list-dialog/list-dialog.component';
+import { S3BucketService } from './services/s3-bucket-service/s3-bucket.service';
+
+import { ToastrModule } from 'ngx-toastr';
+
+
+var config = {
+  apiKey: "AIzaSyCbRakyCmZUXNvVetabwjMGvDveI7Hm5Ms",
+  authDomain: "supercharger-3e6d7.firebaseapp.com",
+  databaseURL: "https://supercharger-3e6d7.firebaseio.com",
+  projectId: "supercharger-3e6d7",
+  storageBucket: "supercharger-3e6d7.appspot.com",
+  messagingSenderId: "182064045012",
+  appId: "1:182064045012:web:c678989c8dc3684805d441",
+  measurementId: "G-1P7PQYV1VR"
+};
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
     NavBarComponent,
-    InviteButtonComponent,
-    SessionButtonComponent,
     UpgradeButtonComponent,
     DiscoverComponent,
     ListsComponent,
     ArchiveComponent,
     StartupDetailComponent,
-    InviteDialog,
-    SessionDialog,
     ListDetailComponent,
+    StartupAdditionForm
     CompareStartupsButtonComponent,
     CompareDialog,
     ListButtonComponent,
@@ -79,6 +98,13 @@ import { InputTextAreaWithLabelComponent } from './components/form-text-field/in
     InputTextComponent,
     InputTextWithLabelComponent,
     InputTextAreaWithLabelComponent
+    ListDialogComponent,
+    LogInComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
+    CompareStartupsDialogComponent,
+    InviteDialogComponent,
+    SessionDialogComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -106,13 +132,19 @@ import { InputTextAreaWithLabelComponent } from './components/form-text-field/in
     MatCardModule,
     XunkCalendarModule,
     HttpClientModule,
-    MatSliderModule
+    MatSliderModule,
+    AngularFireModule.initializeApp(config),
+    AngularFireAuthModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
+    AuthService,
     DebugApiService,
     ProdApiService,
     IpService,
-    SearchService
+    SearchService,
+    S3BucketService
   ],
   bootstrap: [AppComponent]
 })

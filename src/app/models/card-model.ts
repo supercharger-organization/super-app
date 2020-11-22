@@ -20,9 +20,11 @@ export class Card {
     constructor(name:string, description:string, industryTags:string[], startupId:string){
         this.name = name;
         this.startupId = startupId;
+        this.imgURL = imgURL;
+        this.industryScore = industryScore;
 
         /** random **/
-        this.industryScore = Math.floor(Math.random() * 25) + 70  
+        //this.industryScore = Math.floor(Math.random() * 25) + 70  
 
         /** to be deleted... **/
         var newTags = []
