@@ -37,8 +37,7 @@
                 <div *ngIf="user.photoURL">
                     <img class="super-startup-img-sm" [src]="user.photoURL" alt="Card image cap">
                 </div>
-                <div class="ml-1" (click)="navigateToDataEditor()">
-                    <!-- TODO: come from user profile -->
+                <div class="ml-1">
                     <strong>Welcome<br> {{user.displayName ? user.displayName : "!"}}</strong>
                 </div>
             </div>
