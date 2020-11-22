@@ -28,7 +28,7 @@
     <div>
 
         <mat-list>
-            <mat-list-item *ngFor="let startup of startups" [routerLink]="['/startup-edit/' + startup._id]" >
+            <mat-list-item *ngFor="let startup of startups" [routerLink]="['/admin/startup-edit/' + startup._id]" >
               <mat-icon matListIcon>folder</mat-icon>
               <h3 matLine> {{startup.name}} </h3>
               <p matLine>
@@ -39,7 +39,7 @@
                 <mat-icon matListIcon>edit</mat-icon>
               </div> -->
             </mat-list-item>
-            <mat-list-item [routerLink]="['/startup-edit']" >
+            <mat-list-item [routerLink]="['/admin/startup-edit']" >
                 <mat-icon matListIcon>draft</mat-icon>
                 <h3 matLine> New + </h3>
                 <!-- <div style="float:right !important;">

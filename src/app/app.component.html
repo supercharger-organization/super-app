@@ -1,5 +1,5 @@
 
-<mat-drawer-container class="h-100" *ngIf="showNavigation">
+<mat-drawer-container class="h-100" *ngIf="user">
     
     <!-- sidebar content -->
     <mat-drawer mode="side" class="d-flex flex-direction-column" opened>
@@ -32,7 +32,7 @@
 
         
         <!-- greeting -->
-        <div style="margin-top: 40%;" class="d-flex w-100 justify-content-center">
+        <div style="margin-top: 40%;" class="d-flex w-100 justify-content-center" *ngIf="user">
             <div class="d-flex align-items-center" (click)="navigateToAdminPage()">
                 <div *ngIf="user.photoURL">
                     <img class="super-startup-img-sm" [src]="user.photoURL" alt="Card image cap">
@@ -85,6 +85,7 @@
 
 </mat-drawer-container>  
 
-<div *ngIf="!showNavigation">
+<!-- login -->
+<div *ngIf="!user">
     <router-outlet></router-outlet>
 </div>

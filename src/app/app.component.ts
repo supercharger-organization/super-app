@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   pages = []
   user = null
-  showNavigation: boolean = false
+  url: string;
 
   constructor(
     public router: Router, 
@@ -32,14 +32,7 @@ export class AppComponent implements OnInit {
 
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
-
-        //TEMPORARY
-        if (event.url.includes("admin") || event.url.includes("startup-edit") || event.url.includes("login")){
-          this.showNavigation = false;
-        }
-        else {
-          this.showNavigation = true;
-        }
+        this.url = event.url;
       }
 
       if (event instanceof NavigationEnd) {
@@ -54,9 +47,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     this.user = JSON.parse(localStorage.getItem("user"));
-    if (this.user) {
-      //this.router.navigate(['discover']);
-    }
   }
 
   openSessionDialog(){

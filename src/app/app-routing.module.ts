@@ -13,11 +13,11 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { StartupEditComponent } from './pages/startup-edit/startup-edit.component';
 
 const routes: Routes = [
-    {path:"", component:LogInComponent},
+    {path:"", component:DiscoverComponent, canActivate: [AuthGuard]},
+    {path:"discover", component:DiscoverComponent, canActivate: [AuthGuard]},
     {path:"login", component:LogInComponent},
     {path:"register", component:RegisterComponent},
     {path:"forgot-password", component: ForgotPasswordComponent },
-    {path:"discover", component:DiscoverComponent, canActivate: [AuthGuard]},
     {path:"lists", component:ListsComponent, canActivate: [AuthGuard]},
     {path:"archive", component:ArchiveComponent, canActivate: [AuthGuard]},
     {path:"startup/:id", component:StartupDetailComponent, canActivate: [AuthGuard]},
@@ -25,9 +25,11 @@ const routes: Routes = [
 
     //TODO: admin pages should have own module and routing
     {path:"admin", component:AdminComponent, canActivate: [AuthGuard]},
-    {path:"startup-edit/:id", component:StartupEditComponent, canActivate: [AuthGuard]},
-    {path:"startup-edit", component:StartupEditComponent, canActivate: [AuthGuard]}
+    {path:"admin/startup-edit/:id", component:StartupEditComponent, canActivate: [AuthGuard]},
+    {path:"admin/startup-edit", component:StartupEditComponent, canActivate: [AuthGuard]},
 
+    // other
+    { path: '**', redirectTo: '' },
 ]
 @NgModule({
     imports: [RouterModule.forRoot(routes),
