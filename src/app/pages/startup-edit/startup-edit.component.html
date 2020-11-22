@@ -1,0 +1,61 @@
+
+
+<div class="container mt-3" *ngIf="startup">
+
+    <div class="row">
+        <div class="col-3">
+            <button mat-flat-button [routerLink]="['/admin']">
+                <span class="material-icons">west</span>                    
+                    Back
+            </button>
+        </div>
+        <div class="col-6 text-center">
+            <h1>{{startup.name ? startup.name : "New Startup"}}</h1>
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+    
+    <div class="form mt-3">
+        <div class="row">
+
+            <app-input-text-with-label class="col-6 col-md-4" label="Startup Name" [(ngModel)]="startup.name"></app-input-text-with-label>
+            <app-input-text-with-label class="col-6 col-md-4" label="Location" [(ngModel)]="startup.location"></app-input-text-with-label>
+            <app-input-text-with-label class="col-4 col-md-4" label="Website URL" [(ngModel)]="startup.websiteURL"></app-input-text-with-label>
+            <app-input-text-with-label class="col-8 col-md-12" label="Description" [(ngModel)]="startup.description"></app-input-text-with-label>
+            <app-input-text-with-label class="col-6 col-md-4" label="Employee Count" [(ngModel)]="startup.employeeCount"></app-input-text-with-label>
+            <app-input-text-with-label class="col-6 col-md-4" label="Funding" [(ngModel)]="startup.funding"></app-input-text-with-label>
+            <app-input-text-with-label class="col-6 col-md-4" label="Industry Score" [(ngModel)]="startup.industryScore"></app-input-text-with-label>
+            <app-input-text-with-label class="col-6 col-md-4" label="Founder Background" [(ngModel)]="startup.founderBackground"></app-input-text-with-label>
+            <app-input-text-with-label class="col-6 col-md-4" label="Initial Diligence" [(ngModel)]="startup.initialDiligence"></app-input-text-with-label>
+
+            <hr class="col-12 mt-0">
+
+            <multi-item-text-input class="col-12 col-md-6" label="Employees" [values]="startup.employeeNames"></multi-item-text-input>
+            <multi-item-text-input class="col-12 col-md-6" label="Founders" [values]="startup.founders"></multi-item-text-input>
+            <multi-item-text-input class="col-12 col-md-6" label="Notable Investors" [values]="startup.notableInvestors"></multi-item-text-input>
+            <multi-item-text-input class="col-12 col-md-6" label="Notable Customers" [values]="startup.notableCustomers"></multi-item-text-input>
+            <multi-item-text-input class="col-12 col-md-6" label="Industry Tags" [values]="startup.industryTags"></multi-item-text-input>
+
+            <hr class="col-12 mt-0">
+
+            <app-input-file-with-label class="col-6 col-md-6" label="One Pager Img" [startUpID]="startup._id" [currentImgURL]="startup.pagerImgUrl" (update)="startup.pagerImgUrl=$event" ></app-input-file-with-label>
+            <app-input-file-with-label class="col-6 col-md-6" label="Startup Img" [startUpID]="startup._id" [currentImgURL]="startup.startupImgUrl" (update)="startup.startupImgUrl=$event" ></app-input-file-with-label>
+            <app-input-file-with-label class="col-6 col-md-6" label="History Img" [startUpID]="startup._id" [currentImgURL]="startup.historyImgUrl" (update)="startup.historyImgUrl=$event" ></app-input-file-with-label>
+        
+            <div class="col-6 text-right">
+    
+                <button mat-flat-button (click)="saveCurrentStartup()">
+                    <span class="material-icons">save</span>                    
+                        Save
+                </button>
+        
+            </div>
+
+            <hr class="col-12 mt-0">
+
+        </div>
+
+    </div>
+
+</div>

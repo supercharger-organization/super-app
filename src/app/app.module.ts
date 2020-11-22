@@ -44,7 +44,6 @@ import { MdePopoverModule } from '@material-extended/mde';
 import { XunkCalendarModule } from 'xunk-calendar';
 import {MatCardModule} from '@angular/material/card';
 import { IpService } from './services/ip-service/ip.service';
-import { DataEditorComponent } from './pages/data-editor/data-editor.component';
 import { AbstractInputComponent } from './abstracts/input.component';
 import { AbstractNgModelComponent } from './abstracts/ng-model.component';
 import { InputTextComponent } from './components/form-text-field/input-text.component';
@@ -65,6 +64,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BoardService } from './services/board-service/board.service';
 import { ListService } from './services/list-service/list.service';
 import { StartupService } from './services/startup-service/startup.service';
+import { AdminComponent } from './pages/admin/admin.component';
+import { StartupEditComponent } from './pages/startup-edit/startup-edit.component';
 
 
 var config = {
@@ -90,7 +91,7 @@ var config = {
     StartupDetailComponent,
     ListDetailComponent,
     CompareStartupsDialogComponent,
-    DataEditorComponent,
+    AdminComponent,
     AbstractInputComponent,
     AbstractNgModelComponent,
     InputTextComponent,
@@ -105,6 +106,7 @@ var config = {
     CompareStartupsDialogComponent,
     InviteDialogComponent,
     SessionDialogComponent,
+    StartupEditComponent,
   ],
   imports: [
     AppRoutingModule,

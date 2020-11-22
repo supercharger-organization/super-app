@@ -1,0 +1,52 @@
+<style>
+    h3:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+</style>
+
+<div class="container mt-3">
+
+    <h1>Admin Content Manager</h1>
+
+    <!-- Search -->
+    <!-- <div class="row">
+
+        <mat-form-field class="col">
+          <mat-label>Search</mat-label>
+          <span matPrefix> <i class="fa fa-search text-muted"></i> &nbsp;</span>
+          <input matInput class="super-search" type="text" [(ngModel)]="searchQuery" name="txtSearchBar" (keyup)="search(searchQuery)">
+          
+          <button mat-button *ngIf="searchQuery" matSuffix mat-icon-button aria-label="Clear" (click)="searchQuery=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>  
+    
+    </div> -->
+
+    <!-- Startups -->
+    <div>
+
+        <mat-list>
+            <mat-list-item *ngFor="let startup of startups" [routerLink]="['/startup-edit/' + startup._id]" >
+              <mat-icon matListIcon>folder</mat-icon>
+              <h3 matLine> {{startup.name}} </h3>
+              <p matLine>
+                <span> {{startup.description}} </span>
+                <span class="demo-2"> -- {{startup.websiteURL}} </span>
+              </p>
+              <!-- <div style="float:right !important;">
+                <mat-icon matListIcon>edit</mat-icon>
+              </div> -->
+            </mat-list-item>
+            <mat-list-item [routerLink]="['/startup-edit']" >
+                <mat-icon matListIcon>draft</mat-icon>
+                <h3 matLine> New + </h3>
+                <!-- <div style="float:right !important;">
+                  <mat-icon matListIcon>edit</mat-icon>
+                </div> -->
+              </mat-list-item>
+          </mat-list>
+    </div>
+
+</div>

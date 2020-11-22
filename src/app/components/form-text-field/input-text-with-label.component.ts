@@ -6,7 +6,7 @@ import { AbstractInputComponent } from '../../abstracts/input.component';
 @Component({
   selector: 'app-input-text-with-label',
   template: `
-  <mat-form-field style="width: 50%; padding-right: 2%;" appearance="outline">
+  <mat-form-field class='w-100' appearance="outline">
     <mat-label>{{ label }}</mat-label>
     <input matInput [id]="cid"
     [type]="type"

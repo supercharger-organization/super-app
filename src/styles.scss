@@ -59,6 +59,61 @@ h1, h2, h3, h4, h5 {
     border-radius: 13px !important;
 }
 
+.super-text-area-box{
+    width: 400px !important;
+    border: 2px solid rgb(236, 240, 243) !important;
+    font-size: medium !important;
+    border-radius: 4px;
+    /*padding: 7px;
+    padding-top: 30px !important;*/
+}
+
+.super-form-progress-bar{
+    background-color: #009AFF !important;
+    height: 3px !important;
+    width: 55% !important;
+}
+
+.super-form-nav-button-bar{
+    width: 100%;
+    padding-top: 30px;
+}
+
+.super-dialogue{
+    align-items: center !important;
+    align-content: center;
+    overflow: hidden;
+    padding:20px !important;
+}
+
+.super-dialogue-align{
+    align-content: center!important;
+    text-align: center!important;
+}
+.super-dialogue-button{
+    font-size: 120% !important;
+    font-style: bold;
+}
+
+.super-dialogue-content-title{
+    font-weight: bolder !important;
+    font-size: large !important;
+    font-family: poppins !important;
+    text-align: center !important;
+}
+
+.super-dialogue-next-button{
+    font-weight: bold !important;
+    font-size: large !important;
+    font-family: poppins !important;
+    color: rgb(16, 132, 253) !important;
+    background-color: white !important;
+    border-color: rgb(16, 132, 253) !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    margin: 20px !important;
+}
+
 .super-button {
     align-items: center !important;
     background: #EFF3F6 !important;
@@ -84,64 +139,17 @@ h1, h2, h3, h4, h5 {
     line-height: 30px !important;
 }
 
-.super-text-area-box{
-    width: 400px !important;
-    border: 2px solid rgb(236, 240, 243) !important;
-    font-size: medium !important;
-    border-radius: 4px;
-    /*padding: 7px;
-    padding-top: 30px !important;*/
-}
-
-.super-form-progress-bar{
-    background-color: #009AFF !important;
-    height: 3px !important;
-    width: 55% !important;
-}
-
-.super-form-nav-button-bar{
-    width: 100%;
-    padding-top: 30px;
-}
-
-.super-dialogue-content-title{
+.super-button.sm{
+    padding: 5px !important;
+    border-radius: 7.5px !important;
+    min-height: 33px;
+    min-width: 90px !important;
     font-weight: bolder !important;
-    font-size: large !important;
-    font-family: poppins !important;
-    text-align: center !important;
-}
-
-.super-dialogue-next-button{
-    font-weight: bold !important;
-    font-size: large !important;
-    font-family: poppins !important;
-    color: rgb(16, 132, 253) !important;
-    background-color: white !important;
-    border-color: rgb(16, 132, 253) !important;
-    border-width: 1px !important;
-    border-style: solid !important;
-    margin: 20px !important;
-}
-
-.super-dialogue{
-    align-items: center !important;
-    align-content: center;
-    overflow: hidden;
-    padding:20px !important;
 }
 
 .super-button .material-icons{
     font-size: 150% !important;
     margin: 20px !important;
-}
-
-.super-dialogue-align{
-    align-content: center!important;
-    text-align: center!important;
-}
-.super-dialogue-button{
-    font-size: 120% !important;
-    font-style: bold;
 }
 
 .super-button.clear{
@@ -156,6 +164,36 @@ h1, h2, h3, h4, h5 {
 
 .super-button.blue{
     background: #009AFF !important;
+    color: white !important;
+}
+
+.super-button.success{
+    background: #5cb85c !important;
+    color: white !important;
+}
+
+.super-button.danger{
+    background: #d9534f !important;
+    color: white !important;
+}
+
+.super-button.primary{
+    background: #0275d8 !important;
+    color: white !important;
+}
+
+.super-button.info{
+    background: #5bc0de !important;
+    color: white !important;
+}
+
+.super-button.warning{
+    background: #f0ad4e !important;
+    color: white !important;
+}
+
+.super-button.inverse{
+    background: #292b2c !important;
     color: white !important;
 }
 
@@ -492,4 +530,8 @@ mat-dialog-container {
 
 .startup-selected {
     background-color: blue !important;
+}
+
+.cursor-pointer{
+    cursor: pointer;
 }

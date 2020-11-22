@@ -6,12 +6,23 @@ import { S3BucketService } from 'src/app/services/s3-bucket-service/s3-bucket.se
   selector: 'app-input-file-with-label',
   styleUrls: ['./field-styles.component.scss'],
   template: `
-  <div class="single-file-sel-input">
-    <h2 class="single-file-sel-input-lbl">{{ label }}</h2>
-    <h2 class="single-file-sel-input-lbl">Current Saved Image: {{ currentImgURL }}</h2>
-    <input class="single-file-sel-input-btn" id="cid" type="file" (change)="selectFile($event)">
-    <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button> 
-  </div>
+
+  <mat-form-field class='w-100' appearance="outline">
+    <mat-label>{{ label }}</mat-label>
+    <input matInput [value]='currentImgURL' readonly>
+
+      <div class="mt-3">
+        <input id="cid" type="file" (change)="selectFile($event)">
+      </div>
+
+      <div class="mt-3 w-100 text-right">
+        <button mat-flat-button [disabled]="!selectedFiles" (click)="upload()">
+          Upload
+        </button> 
+      </div>
+
+  </mat-form-field>
+  
   `,
   providers: [
     {

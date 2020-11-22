@@ -1,5 +1,5 @@
 
-<mat-drawer-container class="h-100" *ngIf="user && url != '/edit'">
+<mat-drawer-container class="h-100" *ngIf="showNavigation">
     
     <!-- sidebar content -->
     <mat-drawer mode="side" class="d-flex flex-direction-column" opened>
@@ -33,7 +33,7 @@
         
         <!-- greeting -->
         <div style="margin-top: 40%;" class="d-flex w-100 justify-content-center">
-            <div class="d-flex align-items-center" (click)="navigateToDataEditor()">
+            <div class="d-flex align-items-center" (click)="navigateToAdminPage()">
                 <div *ngIf="user.photoURL">
                     <img class="super-startup-img-sm" [src]="user.photoURL" alt="Card image cap">
                 </div>
@@ -85,10 +85,6 @@
 
 </mat-drawer-container>  
 
-<div *ngIf="!user">
-    <router-outlet></router-outlet>
-</div>
-
-<div *ngIf="url == '/edit'">
+<div *ngIf="!showNavigation">
     <router-outlet></router-outlet>
 </div>

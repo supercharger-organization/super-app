@@ -8,7 +8,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 @Component({
   selector: 'multi-item-text-input',
   template: `
-  <mat-form-field style="width: 50%; padding-right: 2%; overflow-y: scroll;" appearance="outline">
+  <mat-form-field class='w-100' style="overflow-y: scroll;" appearance="outline">
   <mat-label>{{ label }}</mat-label>
   <mat-chip-list #chipList>
     <mat-chip *ngFor="let val of values" [selectable]="selectable"
