@@ -51,6 +51,7 @@ import { InputTextComponent } from './components/form-text-field/input-text.comp
 import { InputTextWithLabelComponent } from './components/form-text-field/input-text-with-label.component';
 import { MultipleTextInputWithLabelComponent } from './components/form-text-field/multi-item-text-input.compent';
 import { InputTextAreaWithLabelComponent } from './components/form-text-field/input-text-area-with-label.component';
+import { InputFileWithLabelComponent } from './components/form-text-field/single-file-input.component';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AuthService } from './services/auth/auth.service';
@@ -94,6 +95,7 @@ var config = {
     AbstractNgModelComponent,
     InputTextComponent,
     InputTextWithLabelComponent,
+    InputFileWithLabelComponent,
     MultipleTextInputWithLabelComponent,
     InputTextAreaWithLabelComponent,
     ListDialogComponent,

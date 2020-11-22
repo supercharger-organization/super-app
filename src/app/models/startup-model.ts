@@ -2,11 +2,9 @@ import { Feature } from './feature-model';
 import { Patent } from './patent-model';
 
 export class Startup {
-    _id:string = ""; //
-    name:string = ""; //
+    _id:string = ""; //-
+    name:string = ""; //-
     yearFounded:string = ""; //
-    oracleIntegration:string = "";
-    sapAppIntegration:string = "";
     description:string = ""; //
     initialDiligence:string = ""; //
     location:string = ""; //
@@ -17,6 +15,7 @@ export class Startup {
     lastFunding:string = ""; //
     pricing:string = ""; //
     founder:string = "" // 
+
     founders:string[] = [] // 
     employeeNames:string[] =[] // 
     founderBackground:string = ""; // 
@@ -27,6 +26,7 @@ export class Startup {
     pagerImgUrl:string = ""; //
     startupImgUrl:string = ""; //
     historyImgUrl:string = ""; //
+
     patents: Patent[] = [] //
     features: Feature[] =[] //
 
@@ -42,6 +42,8 @@ export class Startup {
     founderName:string = "";
     monthlyRevenue:string = "";
     monthlyBurnRate:string = "";
+    oracleIntegration:string = "";
+    sapAppIntegration:string = "";
     cac:string = "";
 
     isVisibleInFilter: boolean = true;

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import S3 from 'aws-sdk/clients/s3';
 import { ToastrService } from 'ngx-toastr';
-import { error } from 'protractor';
 
 /// HOW TO USE ///
 /*
@@ -86,6 +85,11 @@ export class S3BucketService {
     let folderName = startupId + folder
 
     let contentType = file.type;
+
+    if (!startupId){
+      this.toastr.error("Could not upload " + file.name + "! Please save startup before uploading images");
+      return null;
+    }
 
     let params = {
         Bucket: S3_BUCKET.name,

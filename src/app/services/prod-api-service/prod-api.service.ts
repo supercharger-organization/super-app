@@ -20,7 +20,7 @@ import { environment } from 'src/environments/environment';
 export class ProdApiService {
   //bad
   baseUrl = environment.host + ":3000/"
-  
+
   constructor(private http: HttpClient) { }
 
   // Generic add new object functions:

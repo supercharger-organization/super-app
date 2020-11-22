@@ -4,7 +4,9 @@
 
 li { background: rgb(214, 214, 214); }
 li:nth-child(odd) { background: rgb(255, 255, 255); }
-
+.form{
+    display: inline;
+}
 .startup-list-box{
     border-color: black;
     border-style: solid;
