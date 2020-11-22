@@ -33,7 +33,7 @@
         
         <!-- greeting -->
         <div style="margin-top: 40%;" class="d-flex w-100 justify-content-center">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center" (click)="navigateToDataEditor()">
                 <div *ngIf="user.photoURL">
                     <img class="super-startup-img-sm" [src]="user.photoURL" alt="Card image cap">
                 </div>

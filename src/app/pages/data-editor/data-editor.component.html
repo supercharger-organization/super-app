@@ -19,16 +19,27 @@
                     Delete Startup
                 </button>
             </div>
-            <app-input-text-with-label label="Startup Name" [(ngModel)]="currentStartup.name"></app-input-text-with-label>
-            <app-input-text-with-label label="Company Description" [(ngModel)]="currentStartup.description"></app-input-text-with-label>
-            <app-input-text-with-label label="Location" [(ngModel)]="currentStartup.location"></app-input-text-with-label>
-            <app-input-text-with-label label="Website URL" [(ngModel)]="currentStartup.websiteURL"></app-input-text-with-label>
-            <app-input-text-with-label label="Employee Count" [(ngModel)]="currentStartup.employeeCount"></app-input-text-with-label>
-            <app-input-text-with-label label="Funding" [(ngModel)]="currentStartup.funding"></app-input-text-with-label>
-            <app-input-text-with-label label="Founder" [(ngModel)]="currentStartup.founder"></app-input-text-with-label>
-            <app-input-text-with-label label="Founder Background" [(ngModel)]="currentStartup.founderBackground"></app-input-text-with-label>
-            <app-input-text-with-label label="Initial Diligence" [(ngModel)]="currentStartup.initialDiligence"></app-input-text-with-label>
-            <app-input-text-with-label label="Monthly Revenue" [(ngModel)]="currentStartup.monthlyRevenue"></app-input-text-with-label>
-            <multi-item-text-input label="industry Tags" [values]="currentStartup.industryTags"></multi-item-text-input>
+            <div class="form">
+                <app-input-text-with-label label="Startup Name" [(ngModel)]="currentStartup.name"></app-input-text-with-label>
+                <app-input-text-with-label label="Company Description" [(ngModel)]="currentStartup.description"></app-input-text-with-label>
+                <app-input-text-with-label label="Location" [(ngModel)]="currentStartup.location"></app-input-text-with-label>
+                <app-input-text-with-label label="Website URL" [(ngModel)]="currentStartup.websiteURL"></app-input-text-with-label>
+                <app-input-text-with-label label="Employee Count" [(ngModel)]="currentStartup.employeeCount"></app-input-text-with-label>
+                <app-input-text-with-label label="Funding" [(ngModel)]="currentStartup.funding"></app-input-text-with-label>
+                <app-input-text-with-label label="Industry Score" [(ngModel)]="currentStartup.industryScore"></app-input-text-with-label>
+                <app-input-text-with-label label="Founder Background" [(ngModel)]="currentStartup.founderBackground"></app-input-text-with-label>
+                <app-input-text-with-label label="Initial Diligence" [(ngModel)]="currentStartup.initialDiligence"></app-input-text-with-label>
+                <br>
+                <multi-item-text-input label="Employees" [values]="currentStartup.employeeNames"></multi-item-text-input>
+                <multi-item-text-input label="Founders" [values]="currentStartup.founders"></multi-item-text-input>
+                <multi-item-text-input label="Notable Investors" [values]="currentStartup.notableInvestors"></multi-item-text-input>
+                <multi-item-text-input label="Notable Customers" [values]="currentStartup.notableCustomers"></multi-item-text-input>
+                <multi-item-text-input label="Industry Tags" [values]="currentStartup.industryTags"></multi-item-text-input>
+
+                <app-input-file-with-label label="1 Pager Image"></app-input-file-with-label>
+                <app-input-file-with-label label="Startup Image"></app-input-file-with-label>
+                <app-input-file-with-label label="History Image"></app-input-file-with-label>
+                
+            </div>
     </div>
 </section>

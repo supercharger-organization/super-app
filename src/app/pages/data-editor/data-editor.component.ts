@@ -41,8 +41,10 @@ export class DataEditorComponent implements OnInit {
   }
 
   deleteCurrentStartup(): void{
-    this.currentStartup = this.createBlankStartup();
-    this.refreshStartupList();
+    this.apiService.deleteStartupFromAPI(this.currentStartup._id).subscribe(response=>{
+      this.currentStartup = this.createBlankStartup();
+      this.refreshStartupList();
+    });
   }
 
   startupSelected(startup: Startup): void{
