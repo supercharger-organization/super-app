@@ -21,7 +21,7 @@ const routes: Routes = [
     {path:"archive", component:ArchiveComponent, canActivate: [AuthGuard]},
     {path:"startup/:id", component:StartupDetailComponent, canActivate: [AuthGuard]},
     {path:"list/:id", component:ListDetailComponent, canActivate: [AuthGuard]},
-    {path:"edit", component:DataEditorComponent}
+    {path:"edit", component:DataEditorComponent, canActivate: [AuthGuard]}
 ]
 @NgModule({
     imports: [RouterModule.forRoot(routes),
