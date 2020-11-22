@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Startup } from 'src/app/models/startup-model';
-import { DebugApiService } from 'src/app/services/debug-api-service/debug-api.service';
 import { CardFilter } from 'src/app/models/cardfilter-model';
 import { Card } from 'src/app/models/card-model';
-import { ProdApiService } from 'src/app/services/prod-api-service/prod-api.service';
 import { Board } from 'src/app/models/board-model';
 import { SearchService } from 'src/app/services/search-service/search.service';
-import { S3BucketService } from 'src/app/services/s3-bucket-service/s3-bucket.service';
-import { ToastrService } from 'ngx-toastr';
+import { StartupService } from 'src/app/services/startup-service/startup.service';
 
 @Component({
   selector: 'app-discover',
@@ -20,7 +17,9 @@ export class DiscoverComponent implements OnInit {
   filters: CardFilter[]
   board:Board = null
 
-  constructor(private apiService: ProdApiService, private searchService: SearchService) {
+  constructor(
+    private startupService: StartupService, 
+    private searchService: SearchService) {
 
     this.filters = [
       new CardFilter(1, "Funding"),
@@ -48,7 +47,7 @@ export class DiscoverComponent implements OnInit {
 
     })
 
-    this.apiService.getAllStartups().subscribe(startups=>{
+    this.startupService.get().subscribe(startups=>{
       console.log(startups)
       this.startups = startups;
       this.startups.forEach(Startup => {
