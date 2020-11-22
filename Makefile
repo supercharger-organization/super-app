@@ -1,8 +1,11 @@
-docker-run-detached:
-	docker run -d --restart unless-stoppped --name super-app -p 80:80 robertrossilli/super-app:1.0
+docker-build:
+	docker build --tag super-app:1.0 .
 
-docker-run:
-	docker run --restart unless-stoppped --name super-app -p 80:80 robertrossilli/super-app:1.0
+docker-run-prod:
+	docker run -d --restart unless-stoppped -p 80:80 --name super-app super-app:1.0
+
+docker-run-dev:
+	docker run --restart unless-stopped -p 4200:80 --name super-app super-app:1.0
 
 dev:
 	ng serve

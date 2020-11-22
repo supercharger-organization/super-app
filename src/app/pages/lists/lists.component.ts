@@ -34,7 +34,7 @@ export class ListsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.apiService.getBoardAndAllChildren("5eebf187aa75084db8bdaed8").subscribe(board=>{
+    this.apiService.getAllBoards().subscribe(board=>{
       this.board = board[0]
       console.log(this.board)
 
