@@ -54,6 +54,9 @@ import { SessionDialogComponent } from './components/dialogs/session-dialog/sess
 import { ListDialogComponent } from './components/dialogs/list-dialog/list-dialog.component';
 import { S3BucketService } from './services/s3-bucket-service/s3-bucket.service';
 
+import { ToastrModule } from 'ngx-toastr';
+
+
 var config = {
   apiKey: "AIzaSyCbRakyCmZUXNvVetabwjMGvDveI7Hm5Ms",
   authDomain: "supercharger-3e6d7.firebaseapp.com",
@@ -112,7 +115,9 @@ var config = {
     HttpClientModule,
     MatSliderModule,
     AngularFireModule.initializeApp(config),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     AuthService,
