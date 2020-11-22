@@ -17,21 +17,23 @@ export class AppComponent implements OnInit {
   pages = []
   user = null
 
-  constructor(public router: Router, private route: ActivatedRoute, public dialog: MatDialog, public authService: AuthService){
+  constructor(
+    public router: Router, 
+    private route: ActivatedRoute, 
+    public dialog: MatDialog, 
+    public authService: AuthService){
 
     this.pages = [
       {title:"Discover", icon: "language", url: "discover", notificationCount: 2},
       {title:"Lists", icon: "list", url: "lists"},
       {title:"Archive", icon: "folder", url: "archive", disabled: true}
     ]
-
   }
 
   ngOnInit(){
     this.user = JSON.parse(localStorage.getItem("user"));
     if (this.user) {
-      this.user.displayName = "Michael";
-      this.router.navigate(['discover']);
+      //this.router.navigate(['discover']);
     }
   }
 

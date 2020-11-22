@@ -34,12 +34,11 @@
         <!-- greeting -->
         <div style="margin-top: 40%;" class="d-flex w-100 justify-content-center">
             <div class="d-flex align-items-center">
-                <div>
-                    <img class="super-startup-img-sm" src="assets/imgs/chatheads/michael_chathead.png" alt="Card image cap">
+                <div *ngIf="user.photoURL">
+                    <img class="super-startup-img-sm" [src]="user.photoURL" alt="Card image cap">
                 </div>
-                <div class="ml-1" (click)="navigateToDataEditor()">
-                    <!-- TODO: come from user profile -->
-                    <strong>Welcome,<br> {{user.displayName}}</strong>
+                <div class="ml-1">
+                    <strong>Welcome<br> {{user.displayName ? user.displayName : "!"}}</strong>
                 </div>
             </div>
         </div>

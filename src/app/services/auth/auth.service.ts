@@ -56,6 +56,8 @@ export class AuthService {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
         //this.SetUserData(result.user);
+        this.toastr.success('Thanks for signing up. Welcome!')
+        window.location.href = "/login";
       }).catch((error) => {
         //window.alert(error.message)
         this.toastr.error(error.message)
@@ -89,7 +91,7 @@ export class AuthService {
     return this.afAuth.signInWithPopup(provider)
     .then((result) => {
        this.ngZone.run(() => {
-          this.router.navigate(['discover']);
+        window.location.href = "/discover";
         })
       // this.SetUserData(result.user);
     }).catch((error) => {
