@@ -1,15 +1,35 @@
 <section class="row align-items-center">
-    <div class="col-12" style="padding-bottom: 30px;">
-        <h1 class="font-weight-bold super-label-xl">Add New Startup:</h1>
+    <div class="col-12" style="padding-bottom: 20px;">
+        <h1 class="font-weight-bold super-label-xl">Edit Startup Data:</h1>
     </div>
-    <div class="col-12 main-startup-form">
-            <app-input-text-with-label label="Startup Name" [(ngModel)]="name"></app-input-text-with-label>
-            <app-input-text-area-with-label label="Company Description" [(ngModel)]="name"></app-input-text-area-with-label>
-            <app-input-text-with-label label="Name" [(ngModel)]="name"></app-input-text-with-label>
-            <app-input-text-with-label label="Name" [(ngModel)]="name"></app-input-text-with-label>
-            <app-input-text-with-label label="Name" [(ngModel)]="name"></app-input-text-with-label>
-            <app-input-text-with-label label="Name" [(ngModel)]="name"></app-input-text-with-label>
-            <app-input-text-with-label label="Name" [(ngModel)]="name"></app-input-text-with-label>
-            <app-input-text-with-label label="Name" [(ngModel)]="name"></app-input-text-with-label>
+    <div class="col-2 startup-list-box">
+        <ul>
+            <li *ngFor="let startup of startups" name="StartupListItem" class="startup-list-item" (click)="startupSelected(startup)">
+                <a>{{ startup.name }}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-10 main-startup-form">
+            <div class="button-bar">
+                <button mat-raised-button color="primary" class="button-bar-button" (click)="saveCurrentStartup()">
+                    Save Startup
+                </button>
+                <button mat-raised-button color="accent" class="button-bar-button" (click)="createNewStartup()">
+                    Create New Startup
+                </button>
+                <button mat-raised-button color="warn" class="button-bar-button" (click)="deleteCurrentStartup()">
+                    Delete Startup
+                </button>
+            </div>
+            <app-input-text-with-label label="Startup Name" [(ngModel)]="currentStartup.name"></app-input-text-with-label>
+            <app-input-text-with-label label="Company Description" [(ngModel)]="currentStartup.description"></app-input-text-with-label>
+            <app-input-text-with-label label="Location" [(ngModel)]="currentStartup.location"></app-input-text-with-label>
+            <app-input-text-with-label label="Website URL" [(ngModel)]="currentStartup.websiteURL"></app-input-text-with-label>
+            <app-input-text-with-label label="Employee Count" [(ngModel)]="currentStartup.employeeCount"></app-input-text-with-label>
+            <app-input-text-with-label label="Funding" [(ngModel)]="currentStartup.funding"></app-input-text-with-label>
+            <app-input-text-with-label label="Founder" [(ngModel)]="currentStartup.founder"></app-input-text-with-label>
+            <app-input-text-with-label label="Founder Background" [(ngModel)]="currentStartup.founderBackground"></app-input-text-with-label>
+            <app-input-text-with-label label="Initial Diligence" [(ngModel)]="currentStartup.initialDiligence"></app-input-text-with-label>
+            <app-input-text-with-label label="Monthly Revenue" [(ngModel)]="currentStartup.monthlyRevenue"></app-input-text-with-label>
     </div>
 </section>

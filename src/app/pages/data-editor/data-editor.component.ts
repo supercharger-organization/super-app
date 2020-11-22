@@ -10,12 +10,49 @@ import { SearchService } from 'src/app/services/search-service/search.service';
 })
 
 export class DataEditorComponent implements OnInit {
-  name: string = '';
+  currentStartup: Startup = this.createBlankStartup();
+  startups: Startup[] = [];
   constructor(private apiService: ProdApiService, private searchService: SearchService) { 
   }
 
   ngOnInit(): void {
+    this.refreshStartupList();
+  }
 
+  createBlankStartup(): Startup{
+    return new Startup("","","","","","","","","","",[],[]);
+  }
+
+  saveCurrentStartup(): void{
+    this.apiService.sendStartupToAPI(this.currentStartup).subscribe(response=>{
+      console.log("Startup saved!");
+      console.log(response);
+      this.refreshStartupList();
+    });
+  }
+
+  createNewStartup(): void{
+
+  }
+
+  deleteCurrentStartup(): void{
+
+  }
+
+  startupSelected(startup: Startup): void{
+    this.currentStartup = startup;
+  }
+
+  refreshStartupList(): void{
+    this.apiService.getAllStartups().subscribe(startups=>{
+      console.log(startups)
+      this.startups = startups;
+      this.startups.forEach(Startup => {
+        Startup.isVisibleInFilter = true;
+      });
+      // Asigns listener to search bar:
+      // Loads the current startups as cards:
+    });
   }
 
 }

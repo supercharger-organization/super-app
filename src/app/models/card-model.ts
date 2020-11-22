@@ -1,23 +1,23 @@
 export class Card {
     position: number;
-    boardId: number;
-    columnId: number;
-    startupId: number;
-    note_id: number;
+    boardId:string;
+    columnId:string;
+    startupId:string;
+    note_id:string;
 
     // Phase this shit out it came with the original UI
-    name: String; //_deprecated
-    tags: String[]; //_deprecated
-    description:String;
-    industryTags:String[];
+    name:string; //_deprecated
+    tags:string[]; //_deprecated
+    description:string;
+    industryTags:string[];
 
     isVisible: Boolean;
 
     //tbd
-    imgURL: String = null;
+    imgURL:string = null;
     industryScore:number
 
-    constructor(name:String, description:String, industryTags: String[], startupId: number){
+    constructor(name:string, description:string, industryTags:string[], startupId:string){
         this.name = name;
         this.startupId = startupId;
 
@@ -51,7 +51,7 @@ export class Card {
 
     // Temp Solution until ui is resolved
     // This is soon to be the constructor
-    GenerateCard(position: number, boardId: number, columnId: number, startupId: number, note_id: number)
+    GenerateCard(position: number, boardId:string, columnId:string, startupId:string, note_id:string)
     {
         this.position = position;
         this.boardId = boardId;
