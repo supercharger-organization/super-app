@@ -41,6 +41,7 @@
             <mat-chip-list aria-label="tags">
                 <mat-chip *ngFor="let tag of startup.industryTags" class="super-chip">{{tag}}</mat-chip>
             </mat-chip-list>
+            
         </div>
 
         
@@ -60,50 +61,7 @@
             <p class="mt-2">{{startup.initialDiligence}}</p>
         </div>
 
-        <!-- customers (tbd) -->
-        <!-- <div class="mt-4" *ngIf="startup.notableCustomers && startup.notableCustomers.length == 0">
-            <h1 class="font-weight-bold">Customers</h1>
-            {{startup.notableCustomers}}
-        </div> -->
-
-        <div class="mt-4" *ngIf="startup.name == 'Automation Hero'">
-            <h1 class="font-weight-bold">Customers</h1>
-            <div class="d-flex mt-2 align-items-center" >
-                <div class="p-1 h-100 super-investor-card d-flex align-items-center">
-                    <img class="super-customer-img" src="assets/imgs/startup/customers/1.png">
-                </div>
-                <div class="p-1 h-100 super-investor-card d-flex align-items-center" >
-                    <img class="super-customer-img"  src="assets/imgs/startup/customers/2.png">
-                </div>
-                <div class="p-1 h-100 super-investor-card d-flex align-items-center" >
-                    <img class="super-customer-img"  src="assets/imgs/startup/customers/3.png">
-                </div>
-                <div class="p-1 h-100 super-investor-card d-flex align-items-center" >
-                    <img class="super-customer-img"  src="assets/imgs/startup/customers/4.png">
-                </div>
-            </div>
-        </div>
-
-
-        <div class="mt-4" *ngIf="startup.name == 'Cabin'">
-            <h1 class="font-weight-bold">Customers</h1>
-            <div class="d-flex mt-2 align-items-center" >
-                <div class="p-1 h-100 super-investor-card d-flex align-items-center">
-                    <img class="super-customer-img" src="assets/imgs/startup/customers/5.png">
-                </div>
-                <div class="p-1 h-100 super-investor-card d-flex align-items-center" >
-                    <img class="super-customer-img"  src="assets/imgs/startup/customers/6.png">
-                </div>
-                <div class="p-1 h-100 super-investor-card d-flex align-items-center" >
-                    <img class="super-customer-img"  src="assets/imgs/startup/customers/7.png">
-                </div>
-                <div class="p-1 h-100 super-investor-card d-flex align-items-center" >
-                    <img class="super-customer-img"  src="assets/imgs/startup/customers/8.png">
-                </div>
-            </div>
-        </div>
-
-        <!-- customers -->
+        <!-- TODO: customers logos -->
         <div class="mt-4" *ngIf="startup.notableCustomers.length > 0">
             <h1 class="font-weight-bold">Customers</h1>
             <div class="d-flex mt-2">
@@ -139,7 +97,7 @@
 
                 <div class="row">
                     <div class="col">
-                        <img class="super-startup-img-md" [src]="startup.imgURL" alt="Card image cap">
+                        <img class="super-startup-img-md" [src]="startup.startupImgUrl" alt="Card image cap">
                     </div>
                     <div class="col text-right">
                         <button mat-button class="ml-1 super-button new">NEW</button>

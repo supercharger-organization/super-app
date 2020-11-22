@@ -43,8 +43,6 @@ export class StartupEditComponent implements OnInit {
 
   saveCurrentStartup(): void{
     this.startupService.post(this.startup).subscribe(response=>{
-      console.log("Startup saved!");
-      console.log(response);
       this.getStartup(this.startup._id)
     });
   }

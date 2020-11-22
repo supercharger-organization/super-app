@@ -13,16 +13,15 @@ export class Card {
 
     isVisible: Boolean;
     // Temp to fix bugs !!!!!!!!!
-    imgURL: string;
+    startupImgUrl: string = null;
 
     //tbd
-    startupImgUrl:string = null;
     industryScore:string
 
-    constructor(name:string, description:string, industryTags:string[], industryScore:string, startupId:string, imgURL:string){
+    constructor(name:string, description:string, industryTags:string[], industryScore:string, startupId:string, startupImgUrl:string){
         this.name = name;
         this.startupId = startupId;
-        this.startupImgUrl = imgURL;
+        this.startupImgUrl = startupImgUrl;
         this.industryScore = industryScore;
 
         /** random **/

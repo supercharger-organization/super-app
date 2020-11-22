@@ -79,8 +79,7 @@ export class DiscoverComponent implements OnInit {
     this.startups.forEach(startup => {
       /** tbd **/
       if (startup.isVisibleInFilter){
-        var startupCard = new Card(startup.name, startup.description, startup.industryTags, startup.industryScore, startup._id, startup.imgURL)
-        startupCard.imgURL = "assets/imgs/startup/" + startupCard.imgURL;
+        var startupCard = new Card(startup.name, startup.description, startup.industryTags, startup.industryScore, startup._id, startup.startupImgUrl)
         this.cards.push(startupCard);
       }
 
