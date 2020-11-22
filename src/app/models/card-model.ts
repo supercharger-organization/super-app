@@ -15,9 +15,9 @@ export class Card {
 
     //tbd
     imgURL:string = null;
-    industryScore:number
+    industryScore:string
 
-    constructor(name:string, description:string, industryTags:string[], startupId:string){
+    constructor(name:string, description:string, industryTags:string[], industryScore:string, startupId:string, imgURL:string){
         this.name = name;
         this.startupId = startupId;
         this.imgURL = imgURL;

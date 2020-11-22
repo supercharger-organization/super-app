@@ -22,7 +22,7 @@ const routes: Routes = [
     {path:"startup/:id", component:StartupDetailComponent, canActivate: [AuthGuard]},
     {path:"list/:id", component:ListDetailComponent, canActivate: [AuthGuard]},
     {path:"edit", component:DataEditorComponent}
-
+]
 @NgModule({
     imports: [RouterModule.forRoot(routes),
     ],
