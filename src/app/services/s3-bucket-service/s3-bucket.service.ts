@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import S3 from 'aws-sdk/clients/s3';
 import { ToastrService } from 'ngx-toastr';
+import { error } from 'protractor';
 
 /// HOW TO USE ///
 /*

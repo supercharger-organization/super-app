@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './models/user-model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Event, NavigationEnd, NavigationError, NavigationStart } from '@angular/router';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { InviteDialogComponent } from './components/dialogs/invite-dialog/invite-dialog.component';
@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
 
   pages = []
   user = null
+  url:string;
 
   constructor(
     public router: Router, 
@@ -28,6 +29,20 @@ export class AppComponent implements OnInit {
       {title:"Lists", icon: "list", url: "lists"},
       {title:"Archive", icon: "folder", url: "archive", disabled: true}
     ]
+
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+        this.url = event.url;
+      }
+
+      if (event instanceof NavigationEnd) {
+        //navigation end
+      }
+
+      if (event instanceof NavigationError) {
+        //navigation error
+      }
+    });
   }
 
   ngOnInit(){

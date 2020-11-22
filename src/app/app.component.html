@@ -1,5 +1,5 @@
 
-<mat-drawer-container class="h-100" *ngIf="user">
+<mat-drawer-container class="h-100" *ngIf="user && url != '/edit'">
     
     <!-- sidebar content -->
     <mat-drawer mode="side" class="d-flex flex-direction-column" opened>
@@ -83,7 +83,12 @@
 
     </mat-drawer-content>
 
-</mat-drawer-container>    
+</mat-drawer-container>  
+
 <div *ngIf="!user">
+    <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="url == '/edit'">
     <router-outlet></router-outlet>
 </div>
