@@ -7,6 +7,7 @@ import { ProdApiService } from 'src/app/services/prod-api-service/prod-api.servi
 import { Board } from 'src/app/models/board-model';
 import { SearchService } from 'src/app/services/search-service/search.service';
 import { S3BucketService } from 'src/app/services/s3-bucket-service/s3-bucket.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-discover',
@@ -19,9 +20,7 @@ export class DiscoverComponent implements OnInit {
   filters: CardFilter[]
   board:Board = null
 
-  //selectedFiles: FileList;
-
-  constructor(private apiService: ProdApiService, private searchService: SearchService, private uploadService: S3BucketService) {
+  constructor(private apiService: ProdApiService, private searchService: SearchService) {
 
     this.filters = [
       new CardFilter(1, "Funding"),

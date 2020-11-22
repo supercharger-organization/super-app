@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import S3 from 'aws-sdk/clients/s3';
+import { ToastrService } from 'ngx-toastr';
 
 /// HOW TO USE ///
 /*
@@ -48,7 +49,7 @@ export class S3BucketService {
     }
   );
 
-  constructor(){}
+  constructor(private toastr: ToastrService){}
 
   uploadStartupImg(startupId: string, file: File): Promise<any>{
     let folder = STARTUP_FOLDER.STARTUP;
@@ -94,11 +95,11 @@ export class S3BucketService {
     };
 
     return this.bucket.upload(params).promise().then(data =>{
-      console.log('Successfully uploaded file.', data);
+      this.toastr.success("Successfully uploaded " + file.name)
       return data
     })
     .catch(e=>{
-      console.log('There was an error uploading your file: ', e);
+      this.toastr.error("Could not upload " + file.name);
       return e
     })
 
