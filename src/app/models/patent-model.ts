@@ -6,5 +6,4 @@ export class Patent{
     type: string
     filled: string
     date: string
-
 }

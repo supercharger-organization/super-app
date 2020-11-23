@@ -33,6 +33,7 @@ export class Startup {
 
     pitchDeckImgUrls: string[] = [] //
     customerImgUrls: string[] = [] //
+    
     customNotes: string[] = [] //
 
     tags:string = ""
@@ -49,6 +50,11 @@ export class Startup {
     isVisibleInFilter: boolean = true;
     isFavorite: boolean = false;
     selected: boolean = false;
+
+    // Filter Vals:
+    employeeNum:number = 0;
+    fundingNum:number = 0;
+    locationNum:number = 0;
 
     // Temp to fix bugs !!!!!!!!!
     imgURL: string;

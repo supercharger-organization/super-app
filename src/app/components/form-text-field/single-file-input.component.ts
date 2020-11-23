@@ -19,10 +19,11 @@ import { S3BucketService } from 'src/app/services/s3-bucket-service/s3-bucket.se
         <button mat-flat-button [disabled]="!selectedFiles" (click)="upload()">
           Upload
         </button> 
+        <button mat-flat-button (click)="clearFile()">
+          Clear File
+        </button> 
       </div>
-
   </mat-form-field>
-  
   `,
   providers: [
     {
@@ -40,22 +41,30 @@ export class InputFileWithLabelComponent implements OnInit {
     startUpID: string = '';
     @Input()
     currentImgURL: string = '';
+    @Input()
+    uploadFolderLocation: string = '';
 
     @Output('update')
     outImgURL: EventEmitter<string> = new EventEmitter<string>();
-
+    
     selectedFiles: any;
 
     constructor(private uploadService: S3BucketService){
-        
     }
+    
     ngOnInit(): void {
         
     } 
 
+    //Sets parent array to empty array. Stil must save on parents end
+    clearFile(){
+      this.currentImgURL = "";
+      this.outImgURL.emit(this.currentImgURL);
+    }
+
     upload() {
         const file = this.selectedFiles.item(0);
-        this.uploadService.uploadStartupImg(this.startUpID, file).then(res=>{
+        this.uploadService.uploadFile(this.startUpID, this.uploadFolderLocation ,file).then(res=>{
           console.log(res);
           console.log("Location!: " + res.Location);
           this.currentImgURL = res.Location;

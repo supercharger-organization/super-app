@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Startup } from 'src/app/models/startup-model';
+import { Feature } from 'src/app/models/feature-model';
+import { Patent } from 'src/app/models/patent-model';
 import { StartupService } from 'src/app/services/startup-service/startup.service';
 
 @Component({
@@ -12,7 +14,7 @@ export class StartupEditComponent implements OnInit {
   //currentStartup: Startup = this.createBlankStartup();
   startup: Startup;
 
-  testStringArray: string[]= [];
+  testStringArray: string[]= ['URL 1!',"URL 2!", "URL 3!"];
 
   constructor(
     private startupService: StartupService,
@@ -41,10 +43,32 @@ export class StartupEditComponent implements OnInit {
     return new Startup("","","","","","","","","","",[],[]);
   }
 
+  addNewFeature(): void{
+    var newFeature = new Feature();
+    newFeature.title = "New Feature";
+    this.startup.features.push(newFeature);
+  }
+
+  addNewPatent(): void{
+    var newPatent = new Patent();
+    newPatent.title = "New Patent";
+    this.startup.patents.push(newPatent);
+  }
+
   saveCurrentStartup(): void{
     this.startupService.post(this.startup).subscribe(response=>{
       this.getStartup(this.startup._id)
     });
+  }
+
+  deleteCurrentFeature(feature): void{
+    var index = this.startup.features.indexOf(feature);
+    this.startup.features.splice(index, 1);    
+  }
+
+  deleteCurrentPatent(patent): void{
+    var index = this.startup.patents.indexOf(patent);
+    this.startup.patents.splice(index, 1);    
   }
 
 }

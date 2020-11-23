@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProdApiService } from './services/prod-api-service/prod-api.service';
 import { SearchService } from './services/search-service/search.service';
 
+import {MatTabsModule} from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
@@ -51,6 +52,7 @@ import { InputTextWithLabelComponent } from './components/form-text-field/input-
 import { MultipleTextInputWithLabelComponent } from './components/form-text-field/multi-item-text-input.compent';
 import { InputTextAreaWithLabelComponent } from './components/form-text-field/input-text-area-with-label.component';
 import { InputFileWithLabelComponent } from './components/form-text-field/single-file-input.component';
+import { InputMultiFileWithLabelComponent } from './components/form-text-field/multi-file-input.component';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AuthService } from './services/auth/auth.service';
@@ -97,6 +99,7 @@ var config = {
     InputTextComponent,
     InputTextWithLabelComponent,
     InputFileWithLabelComponent,
+    InputMultiFileWithLabelComponent,
     MultipleTextInputWithLabelComponent,
     InputTextAreaWithLabelComponent,
     ListDialogComponent,
@@ -138,6 +141,7 @@ var config = {
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
     BrowserAnimationsModule,
+    MatTabsModule,
     ToastrModule.forRoot()
   ],
   providers: [

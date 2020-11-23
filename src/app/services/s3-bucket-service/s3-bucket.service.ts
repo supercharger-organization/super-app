@@ -27,6 +27,7 @@ const S3_BUCKET ={
   name: "supercharger-prod",
 } 
 
+// NOTE should be passed in the input field because input fields are sub classed. 
 enum STARTUP_FOLDER {
   STARTUP = "/startup/",
   PITCHDECK = "/pitch-deck/",
@@ -80,7 +81,7 @@ export class S3BucketService {
     })
   }
 
-  uploadFile(startupId: string, folder: STARTUP_FOLDER, file: File): Promise<any> {
+  uploadFile(startupId: string, folder: string, file: File): Promise<any> {
 
     let folderName = startupId + folder
 

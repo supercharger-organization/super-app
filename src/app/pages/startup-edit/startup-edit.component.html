@@ -18,7 +18,6 @@
     
     <div class="form mt-3">
         <div class="row">
-
             <app-input-text-with-label class="col-6 col-md-4" label="Startup Name" [(ngModel)]="startup.name"></app-input-text-with-label>
             <app-input-text-with-label class="col-6 col-md-4" label="Location" [(ngModel)]="startup.location"></app-input-text-with-label>
             <app-input-text-with-label class="col-4 col-md-4" label="Website URL" [(ngModel)]="startup.websiteURL"></app-input-text-with-label>
@@ -28,6 +27,15 @@
             <app-input-text-with-label class="col-6 col-md-4" label="Industry Score" [(ngModel)]="startup.industryScore"></app-input-text-with-label>
             <app-input-text-with-label class="col-6 col-md-4" label="Founder Background" [(ngModel)]="startup.founderBackground"></app-input-text-with-label>
             <app-input-text-with-label class="col-6 col-md-4" label="Initial Diligence" [(ngModel)]="startup.initialDiligence"></app-input-text-with-label>
+            <hr class="col-12 mt-0">
+            <div class="col-12 row">
+                <div class="col-12 text-center">
+                    <h1>Values to filter by (Must be only numbers)</h1>
+                </div>
+            </div>
+            <app-input-text-with-label class="col-6 col-md-4" label="Employee Count Value" [(ngModel)]="startup.employeeNum"></app-input-text-with-label>
+            <app-input-text-with-label class="col-6 col-md-4" label="Funding Amount Value" [(ngModel)]="startup.fundingNum"></app-input-text-with-label>
+            <app-input-text-with-label class="col-6 col-md-4" label="Location Value" [(ngModel)]="startup.locationNum"></app-input-text-with-label>
 
             <hr class="col-12 mt-0">
 
@@ -39,23 +47,99 @@
 
             <hr class="col-12 mt-0">
 
-            <app-input-file-with-label class="col-6 col-md-6" label="One Pager Img" [startUpID]="startup._id" [currentImgURL]="startup.pagerImgUrl" (update)="startup.pagerImgUrl=$event" ></app-input-file-with-label>
-            <app-input-file-with-label class="col-6 col-md-6" label="Startup Img" [startUpID]="startup._id" [currentImgURL]="startup.startupImgUrl" (update)="startup.startupImgUrl=$event" ></app-input-file-with-label>
-            <app-input-file-with-label class="col-6 col-md-6" label="History Img" [startUpID]="startup._id" [currentImgURL]="startup.historyImgUrl" (update)="startup.historyImgUrl=$event" ></app-input-file-with-label>
-        
+            <div class="col-12 row">
+                <div class="col-6 text-center">
+                    <h1>Features</h1>
+                </div>
+                <div class="col-6 text-center">
+                    <div (click)="addNewFeature()" class="col-12 ">
+                        <mat-icon matListIcon>add</mat-icon>
+                        <h4 matLine> Add New Feature </h4>
+                    </div>
+                </div>
+            </div>
+
+            <mat-tab-group class="col-12 mt-3 tabGroup">
+                <mat-tab  *ngFor="let feature of startup.features" label="{{feature.title}}"> 
+                <br>
+                    <div class="col-12 row">
+                        <app-input-text-with-label class="col-6" label="Title" [(ngModel)]="feature.title"></app-input-text-with-label>
+                        <app-input-text-with-label class="col-6" label="Description" [(ngModel)]="feature.description"></app-input-text-with-label>
+                        <br>
+                        <div class="col-6 text-right">
+                            <button mat-flat-button (click)="deleteCurrentFeature(feature)">
+                                <span class="material-icons">delete</span>                    
+                                    Delete Feature
+                            </button>
+                        </div>
+                    </div>
+                        <br>
+                </mat-tab>
+                <br>
+            </mat-tab-group>
+            <br>
+            <br>
+
+            <hr class="col-12 mt-0">
+
+            <div class="col-12 row">
+                <div class="col-6 text-center">
+                    <h1>Patents</h1>
+                </div>
+                <div class="col-6 text-center">
+                    <div (click)="addNewPatent()" class="col-12 ">
+                        <mat-icon matListIcon>add</mat-icon>
+                        <h4 matLine> Add New Patent </h4>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <mat-tab-group class="col-12 tabGroup">
+                <mat-tab  *ngFor="let patent of startup.patents" label="{{patent.title}}"> 
+                <br>
+                    <div class="col-12 row">
+                        <app-input-text-with-label class="col-6" label="Title" [(ngModel)]="patent.title"></app-input-text-with-label>
+                        <app-input-text-with-label class="col-6" label="Abstract" [(ngModel)]="patent.abstract"></app-input-text-with-label>
+                        <app-input-text-with-label class="col-6" label="Patent Number" [(ngModel)]="patent.number"></app-input-text-with-label>
+                        <app-input-text-with-label class="col-6" label="Type" [(ngModel)]="patent.type"></app-input-text-with-label>
+                        <app-input-text-with-label class="col-6" label="Filled" [(ngModel)]="patent.filled"></app-input-text-with-label>
+                        <app-input-text-with-label class="col-6" label="Date Filled" [(ngModel)]="patent.date"></app-input-text-with-label>
+                        <br>
+                        <div class="col-6 text-right">
+                            <button mat-flat-button (click)="deleteCurrentPatent(patent)">
+                                <span class="material-icons">delete</span>                    
+                                    Delete Patent
+                            </button>
+                        </div>
+                    </div>
+                        <br>
+                </mat-tab>
+                <br>
+            </mat-tab-group>
+            <br>
+            <br>
+
+
+
+            <hr class="col-12 mt-0">
+            <div class="col-12 text-center">
+                <h2>Images</h2>
+            </div>
+            <app-input-file-with-label class="col-6 col-md-6" label="One Pager Img" targetFolder="/pager/" [startUpID]="startup._id" [currentImgURL]="startup.pagerImgUrl" (update)="startup.pagerImgUrl=$event" ></app-input-file-with-label>
+            <app-input-file-with-label class="col-6 col-md-6" label="Startup Img" targetFolder="/startup/" [startUpID]="startup._id" [currentImgURL]="startup.startupImgUrl" (update)="startup.startupImgUrl=$event" ></app-input-file-with-label>
+            <app-input-file-with-label class="col-6 col-md-6" label="History Img" targetFolder="/history/" [startUpID]="startup._id" [currentImgURL]="startup.historyImgUrl" (update)="startup.historyImgUrl=$event" ></app-input-file-with-label>
+            <app-input-multi-file-with-label class="col-6 col-md-6" label="Pitch Deck Imgs" targetFolder="/pitch-deck/" [startUpID]="startup._id" [currentImgURLs]="startup.pitchDeckImgUrls"></app-input-multi-file-with-label>
+            <app-input-multi-file-with-label class="col-6 col-md-6" label="Customer Imgs" targetFolder="/customer/" [startUpID]="startup._id" [currentImgURLs]="startup.customerImgUrls"></app-input-multi-file-with-label>
+            
+            </div>
+
+            <hr class="col-12 mt-0">
             <div class="col-6 text-right">
-    
                 <button mat-flat-button (click)="saveCurrentStartup()">
                     <span class="material-icons">save</span>                    
                         Save
                 </button>
-        
             </div>
-
-            <hr class="col-12 mt-0">
-
-        </div>
-
     </div>
 
 </div>

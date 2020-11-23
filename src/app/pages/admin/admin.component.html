@@ -26,18 +26,21 @@
 
     <!-- Startups -->
     <div>
-
         <mat-list>
-            <mat-list-item *ngFor="let startup of startups" [routerLink]="['/admin/startup-edit/' + startup._id]" >
-              <mat-icon matListIcon>folder</mat-icon>
-              <h3 matLine> {{startup.name}} </h3>
-              <p matLine>
+            <mat-list-item *ngFor="let startup of startups" >
+              <mat-icon matListIcon   [routerLink]="['/admin/startup-edit/' + startup._id]">folder</mat-icon>
+              <h3 matLine [routerLink]="['/admin/startup-edit/' + startup._id]"> {{startup.name}} </h3>
+              <p matLine [routerLink]="['/admin/startup-edit/' + startup._id]">
                 <span> {{startup.description}} </span>
                 <span class="demo-2"> -- {{startup.websiteURL}} </span>
               </p>
               <!-- <div style="float:right !important;">
                 <mat-icon matListIcon>edit</mat-icon>
               </div> -->
+              <button mat-flat-button (click)="deleteStartup(startup._id)">
+                <span class="material-icons">delete</span>                    
+                    Delete
+              </button>
             </mat-list-item>
             <mat-list-item [routerLink]="['/admin/startup-edit']" >
                 <mat-icon matListIcon>add</mat-icon>
