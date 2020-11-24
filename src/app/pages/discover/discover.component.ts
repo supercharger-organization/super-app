@@ -17,16 +17,12 @@ export class DiscoverComponent implements OnInit {
   filters: CardFilter[]
   board:Board = null
 
+  fundingSortActive: boolean = false;
+  employeeCountSortActive: boolean = false;
+
   constructor(
     private startupService: StartupService, 
     private searchService: SearchService) {
-
-    this.filters = [
-      new CardFilter(1, "Funding"),
-      new CardFilter(1, "Location"),
-      new CardFilter(1, "Employees"),
-      new CardFilter(1, "Interest Areas")
-    ]
    }
 
   ngOnInit(): void {
@@ -86,20 +82,26 @@ export class DiscoverComponent implements OnInit {
     });
   }
 
-  filterByFunding(min, max)
-  {
-    this.startups.forEach(startup => {
-      startup.isVisibleInFilter = Startup.isInFundingRange(min, max, startup);
-    });
-    this.loadCardsWithCurrentStartups();
+  sortByFunding(){
+    if (this.fundingSortActive == false){
+      this.fundingSortActive = true
+    }
+    else {
+      this.fundingSortActive = false
+    }
+
+    //TODO: sort by funding
   }
 
-  filterByLocation(Location)
-  {
-    this.startups.forEach(startup => {
-      startup.isVisibleInFilter = Startup.isAtLocation(startup, Location);
-    });
-    this.loadCardsWithCurrentStartups();
+  sortByEmployeeCount(){
+    if (this.employeeCountSortActive == false){
+      this.employeeCountSortActive = true
+    }
+    else {
+      this.employeeCountSortActive = false
+    }
+
+    //TODO: sort by employee count
   }
 
   filterByEmployeeCount(min, max)

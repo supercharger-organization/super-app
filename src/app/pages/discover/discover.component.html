@@ -7,96 +7,20 @@
     <div class="col-8 text-right">
   
 
-      <button mat-flat-button class="super-button align-items-center ml-3" [mdePopoverTriggerFor]="locationPopover"
-      mdePopoverTriggerOn="click" #popoverTrigger="mdePopoverTrigger">
+      <button mat-flat-button class="super-button align-items-center ml-3">
         Location
-        <i class="fa super-chevron fa-chevron-down" aria-hidden="true" [ngClass]="{'fa-chevron-up': filters[1].active}"></i>
+        <i class="fa super-chevron fa-chevron-down" aria-hidden="true"></i>
       </button>
-      <mde-popover #locationPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
-        <div class="super-popover-content">
-          <mat-list class="super-list scale-to-fit">
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByLocation('')"> All </span>
-            </mat-list-item>
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByLocation('USA')"> Oakland </span>
-            </mat-list-item>
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByLocation('USA')"> Sunnyvale </span>
-            </mat-list-item>
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByLocation('USA')"> Redwood </span>
-            </mat-list-item>
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByLocation('USA')"> San Francisco </span>
-            </mat-list-item>
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByLocation('USA')"> Chicago </span>
-            </mat-list-item>
-          </mat-list>
-        </div>
-      </mde-popover>
-      
-      <button mat-flat-button class="super-button align-items-center ml-3" [mdePopoverTriggerFor]="appPopover"
-      mdePopoverTriggerOn="click" #popoverTrigger="mdePopoverTrigger">
-        Funding
-        <i class="fa super-chevron fa-chevron-down" aria-hidden="true" [ngClass]="{'fa-chevron-up': filters[0].active}"></i>
-      </button>
-      <!--Drop Down Box-->
-      <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
-        <div class="super-popover-content">
-          <mat-list class="super-list scale-to-fit">
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByFunding(0, 5000000000)"> All </span>
-            </mat-list-item>
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByFunding(0, 500000)"> Less Then $500,000</span>
-            </mat-list-item>
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByFunding(500000, 1000000)"> $500,000 -> $1M</span>
-            </mat-list-item>
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByFunding(1000000, 5000000)"> $1M -> $5M</span>
-            </mat-list-item>
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByFunding(5000000, 50000000)"> $5M -> $50M</span>
-            </mat-list-item>
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByFunding(5000000, 50000000)"> Greater than $50M</span>
-            </mat-list-item>
-          </mat-list>
-        </div>
-      </mde-popover>
 
-      <button mat-flat-button class="super-button align-items-center ml-3" [mdePopoverTriggerFor]="employeePopover"
-      mdePopoverTriggerOn="click" #popoverTrigger="mdePopoverTrigger">
-        Employees
-        <i class="fa super-chevron fa-chevron-down" aria-hidden="true" [ngClass]="{'fa-chevron-up': filters[0].active}"></i>
+      <button mat-flat-button class="super-button align-items-center ml-3" (click)="sortByFunding()">
+        Funding
+        <i class="fa super-chevron fa-chevron-down" aria-hidden="true" [ngClass]="{'fa-chevron-up': fundingSortActive}"></i>
       </button>
-      <mde-popover #employeePopover="mdePopover" [mdePopoverOverlapTrigger]="false">
-        <div class="super-popover-content">
-          <mat-list class="super-list scale-to-fit">
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByEmployeeCount(0, 500000)"> All </span>
-            </mat-list-item>
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByEmployeeCount(0, 10)"> Less Then 10</span>
-            </mat-list-item>
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByEmployeeCount(10, 50)"> 10 -> 50 </span>
-            </mat-list-item>
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByEmployeeCount(50, 100)"> 50 -> 100 </span>
-            </mat-list-item>
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByEmployeeCount(100, 500)"> 100 -> 500 </span>
-            </mat-list-item>
-            <mat-list-item class="align-items-center pointer">
-              <span class="align-items-center" (click)="filterByEmployeeCount(500, 5000000)"> Greater Then 500</span>
-            </mat-list-item>
-          </mat-list>
-        </div>
-      </mde-popover>
+
+      <button mat-flat-button class="super-button align-items-center ml-3" (click)="sortByEmployeeCount()">
+        Employees
+        <i class="fa super-chevron fa-chevron-down" aria-hidden="true" [ngClass]="{'fa-chevron-up': employeeCountSortActive}"></i>
+      </button>
 
     </div>
   </div>
