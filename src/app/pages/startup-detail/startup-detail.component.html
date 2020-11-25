@@ -8,7 +8,7 @@
     <div class="col text-right">
 
         <button mat-button class="align-items-center ml-2 super-button clear">
-            <span class="material-icons"> playlist_add </span>
+            <span class="material-icons m-0"> playlist_add </span>
             Add to existing list
         </button>
         <button mat-button class="align-items-center ml-2 super-button clear">
@@ -23,11 +23,7 @@
     </div>
 </section>
 
-<div *ngIf="!startup">
-    startup could not be found
-</div>
-
-<div class="row mt-3" *ngIf="startup">
+<div class="row mt-1" *ngIf="startup">
     
     <!-- main -->
     <div class="col">
@@ -45,12 +41,28 @@
         </div>
 
         
-        <!-- banner -->
-        <!-- <img class="super-startup-banner mt-5" src="assets/imgs/default-startup-banner.png" alt="Card image cap"> -->
-        <img class="super-startup-banner mt-5" [src]="deckURL + '/' + deckIndex + '.png'" alt="Card image cap" (click)="nextImg()">
+        <!-- Pitch Deck -->
+        <img class="super-startup-banner mt-4" [src]="pitchDeckImgUrl" alt="Card image cap" (click)="nextImg()">
+        
+        <!-- file downloads -->
+        <div class="mt-4 d-flex">
+            <!-- TODO: download all pitch deck imgs-->
+            <a [href]="pitchDeckImgUrl" download>
+                <button mat-button class="align-items-center ml-1 super-button">
+                    <span class="material-icons m-0"> download </span>
+                    pitch deck
+                </button>
+            </a>
+            <a [href]="startup.pagerImgUrl" download>
+                <button mat-button class="align-items-center ml-1 super-button">
+                    <span class="material-icons m-0"> download </span>
+                    one-pager
+                </button>
+            </a>
+        </div>
 
         <!-- founder info -->
-        <div class="mt-5" *ngIf="startup.founderBackground">
+        <div class="mt-4" *ngIf="startup.founderBackground">
             <h1 class="font-weight-bold">Founder Background</h1>
             <p class="mt-2">{{startup.founderBackground}}</p>
         </div>
@@ -72,7 +84,7 @@
         </div>
 
         <!-- Pricing -->
-        <div class="mt-5" *ngIf="startup.pricing">
+        <div class="mt-4" *ngIf="startup.pricing">
             <h1 class="font-weight-bold">Unit Pricing</h1>
             <p class="mt-2">{{startup.pricing}}</p>
         </div>
@@ -102,12 +114,51 @@
         </div>
 
         <!-- Patents -->
-        <div class=" mt-4">
-            <h1 class="font-weight-bold">Patents</h1>
-            <div class="mt-2">
-                <!--TODO: features-->
+        <div class="row mt-4">
+            <div class="col-12">
+                <h1 class="font-weight-bold">Patents</h1>
+            </div>
+            <!-- TODO: create class for "patent card" -->
+            <div class="col-12 pr-0 mb-1 mt-2" *ngFor="let patent of startup.patents">
+                <div class="card super-card p-2">
+                    <strong class="font-weight-bold">Title</strong>
+                    <div class="mt-1 mb-0">
+                        <p>{{patent.title}}</p>
+                    </div>
+                    <strong class="font-weight-bold">Abstract</strong>
+                    <div class="mt-1 mb-0">
+                        <p>{{patent.abstract}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <strong class="font-weight-bold">Number</strong>
+                            <div class="mt-1 mb-0">
+                                <p>{{patent.number}}</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <strong class="font-weight-bold">Type</strong>
+                            <div class="mt-1 mb-0">
+                                <p>{{patent.type}}</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <strong class="font-weight-bold">Date Filed</strong>
+                            <div class="mt-1 mb-0">
+                                <p>{{patent.filled}}</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <strong class="font-weight-bold">Date Published</strong>
+                            <div class="mt-1 mb-0">
+                                <p>{{patent.date}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
 
 
         <!-- Patents... card with startup data:

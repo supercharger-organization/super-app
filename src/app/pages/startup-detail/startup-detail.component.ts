@@ -16,13 +16,13 @@ export class StartupDetailComponent implements OnInit {
   shouldShowCommentForm = false;
   newNote: Note = null;
 
-  deckIndex:number = 1
-  deckURL: string
+  pitchDeckIndex:number = null;
+  pitchDeckImgUrl:string = null;
 
   constructor(
     private startupService: StartupService, 
     private route: ActivatedRoute) {
-
+      this.pitchDeckIndex = 0;
    }
 
   ngOnInit(): void {
@@ -31,6 +31,7 @@ export class StartupDetailComponent implements OnInit {
 
       this.startupService.getById(startupId).subscribe(res=>{
         this.startup = res[0];
+        this.pitchDeckImgUrl = this.startup.pitchDeckImgUrls[this.pitchDeckIndex];
       })
 
     })
@@ -50,16 +51,11 @@ export class StartupDetailComponent implements OnInit {
     this.newNote = null;
   }
 
-  /*
-  postComment(){
-    //TODO
-    this.startup.customNotes.push(new Note(null, this.newNote.note, null, null, null, null, null))
-
-    this.newNote = null;
-  }*/
-
   nextImg(){
-    this.deckIndex = this.deckIndex + 1
-    //if is at end
+    this.pitchDeckIndex = this.pitchDeckIndex + 1;
+    if (this.pitchDeckIndex >= this.startup.pitchDeckImgUrls.length){
+      this.pitchDeckIndex = 0;
+    }
+    this.pitchDeckImgUrl = this.startup.pitchDeckImgUrls[this.pitchDeckIndex];
   }
 }
