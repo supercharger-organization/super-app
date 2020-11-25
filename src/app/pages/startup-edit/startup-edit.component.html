@@ -20,14 +20,19 @@
         <div class="row">
             <app-input-text-with-label class="col-6 col-md-4" label="Startup Name" [(ngModel)]="startup.name"></app-input-text-with-label>
             <app-input-text-with-label class="col-6 col-md-4" label="Location" [(ngModel)]="startup.location"></app-input-text-with-label>
-            <app-input-text-with-label class="col-4 col-md-4" label="Website URL" [(ngModel)]="startup.websiteURL"></app-input-text-with-label>
-            <app-input-text-with-label class="col-8 col-md-12" label="Description" [(ngModel)]="startup.description"></app-input-text-with-label>
-            <app-input-text-with-label class="col-6 col-md-4" label="Employee Count" [(ngModel)]="startup.employeeCount"></app-input-text-with-label>
-            <app-input-text-with-label class="col-6 col-md-4" label="Funding" [(ngModel)]="startup.funding"></app-input-text-with-label>
+            <app-input-text-with-label class="col-6 col-md-4" label="Website URL" [(ngModel)]="startup.websiteURL"></app-input-text-with-label>
+
+            <app-input-text-with-label class="col-6 col-md-4" label="Year Founded" [(ngModel)]="startup.yearFounded"></app-input-text-with-label>
+
+            <app-input-text-with-label class="col-6 col-md-4" label="Number of Employees" [(ngModel)]="startup.employeeCount"></app-input-text-with-label>
+            <app-input-text-with-label class="col-6 col-md-4" label="Total Funding" [(ngModel)]="startup.funding"></app-input-text-with-label>
+            <app-input-text-with-label class="col-6 col-md-4" label="Most Recent Funding Date" [(ngModel)]="startup.lastFunding"></app-input-text-with-label>
             <app-input-text-with-label class="col-6 col-md-4" label="Industry Score" [(ngModel)]="startup.industryScore"></app-input-text-with-label>
-            <app-input-text-with-label class="col-6 col-md-4" label="Founder Background" [(ngModel)]="startup.founderBackground"></app-input-text-with-label>
-            <app-input-text-with-label class="col-6 col-md-4" label="Initial Diligence" [(ngModel)]="startup.initialDiligence"></app-input-text-with-label>
-            
+           
+            <app-input-text-with-label class="col-12 col-md-12" label="Unit Pricing" [(ngModel)]="startup.pricing"></app-input-text-with-label>
+            <app-input-text-with-label class="col-12 col-md-12" label="Founder Background" [(ngModel)]="startup.founderBackground"></app-input-text-with-label>
+            <app-input-text-with-label class="col-12 col-md-12" label="Company Description" [(ngModel)]="startup.description"></app-input-text-with-label>
+            <app-input-text-with-label class="col-12 col-md-12" label="Initial Diligence" [(ngModel)]="startup.initialDiligence"></app-input-text-with-label>
 
             <div class="col-12 row mt-3">
                 <div class="col-12 text-center">
@@ -36,25 +41,11 @@
                 </div>
             </div>
             
-            <multi-item-text-input class="col-12 col-md-6" label="Employees" [values]="startup.employeeNames"></multi-item-text-input>
             <multi-item-text-input class="col-12 col-md-6" label="Founders" [values]="startup.founders"></multi-item-text-input>
             <multi-item-text-input class="col-12 col-md-6" label="Notable Investors" [values]="startup.notableInvestors"></multi-item-text-input>
-            <multi-item-text-input class="col-12 col-md-6" label="Notable Customers" [values]="startup.notableCustomers"></multi-item-text-input>
             <multi-item-text-input class="col-12 col-md-6" label="Industry Tags" [values]="startup.industryTags"></multi-item-text-input>
 
-
-            <div class="col-12 row mt-3">
-                <div class="col-12 text-center">
-                    <h1>Values to filter by</h1>
-                    <p>(Numbers only)</p>
-                </div>
-            </div>
-            
-            <app-input-text-with-label class="col-6 col-md-4" label="Employee Count Value" [(ngModel)]="startup.employeeNum"></app-input-text-with-label>
-            <app-input-text-with-label class="col-6 col-md-4" label="Funding Amount Value" [(ngModel)]="startup.fundingNum"></app-input-text-with-label>
-            <app-input-text-with-label class="col-6 col-md-4" label="Location Value" [(ngModel)]="startup.locationNum"></app-input-text-with-label>
-
-            <div class="col-12 row mt-3">
+            <div class="col-12 row align-items-center mt-3">
                 <div class="col-6 text-center">
                     <h1>Features</h1>
                 </div>
@@ -86,7 +77,7 @@
             </mat-tab-group>
 
 
-            <div class="col-12 row mt-3">
+            <div class="col-12 row align-items-center mt-3">
                 <div class="col-6 text-center">
                     <h1>Patents</h1>
                 </div>
@@ -98,7 +89,7 @@
                 </div>
             </div>
 
-            <mat-tab-group class="col-12 tabGroup" *ngIf="startup.patents.length > 0">
+            <mat-tab-group class="col-12 mt-3 tabGroup" *ngIf="startup.patents.length > 0">
                 <mat-tab  *ngFor="let patent of startup.patents" label="{{patent.title}}"> 
                 <br>
                     <div class="col-12 row">
@@ -106,8 +97,8 @@
                         <app-input-text-with-label class="col-6" label="Abstract" [(ngModel)]="patent.abstract"></app-input-text-with-label>
                         <app-input-text-with-label class="col-6" label="Patent Number" [(ngModel)]="patent.number"></app-input-text-with-label>
                         <app-input-text-with-label class="col-6" label="Type" [(ngModel)]="patent.type"></app-input-text-with-label>
-                        <app-input-text-with-label class="col-6" label="Filled" [(ngModel)]="patent.filled"></app-input-text-with-label>
-                        <app-input-text-with-label class="col-6" label="Date Filled" [(ngModel)]="patent.date"></app-input-text-with-label>
+                        <app-input-text-with-label class="col-6" label="Filed" [(ngModel)]="patent.filled"></app-input-text-with-label>
+                        <app-input-text-with-label class="col-6" label="Publication Date" [(ngModel)]="patent.date"></app-input-text-with-label>
                         <br>
                         <div class="col-6 text-right">
                             <button mat-flat-button (click)="deleteCurrentPatent(patent)">
