@@ -46,7 +46,7 @@
         <!-- Logout -->
         <div style="margin-top: 10%;" class="d-flex w-100 justify-content-center">
             <div class="d-flex align-items-center">
-                <button mat-flat-button color="accent" (click)="authService.SignOut()">
+                <button mat-flat-button class="super-button sm danger" (click)="authService.SignOut()">
                     Log Out
                 </button>
             </div>
@@ -56,27 +56,6 @@
     
     <!-- main content -->
     <mat-drawer-content style="padding-left: 6rem; padding-right: 6rem; padding-top: 3rem; padding-bottom: 3rem;">
-
-        <!-- search bar and buttons -->
-        <div class="row mb-5">
-            <app-search-bar class="col" style="widows: 280px !important;"></app-search-bar>
-        
-            <div class="row col-6 text-right">
-                <div class="col text-right">
-                    <button mat-flat-button class="mr-2 super-button white" (click)="openInviteDialog()">
-                        <span matPrefix> <i class="fa fa-user-plus text-muted"></i> &nbsp;</span>
-                        Invite Startup
-                    </button>
-                    
-                    <button mat-flat-button class="super-button blue" (click)="openSessionDialog()">
-                        <i class="fa fa-video" aria-hidden="true"></i>
-                        &nbsp;
-                        Virtual Session
-                    </button>
-
-                </div>
-            </div>
-        </div>
 
         <!-- pages -->
         <router-outlet ></router-outlet>

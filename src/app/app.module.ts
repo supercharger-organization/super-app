@@ -68,6 +68,7 @@ import { ListService } from './services/list-service/list.service';
 import { StartupService } from './services/startup-service/startup.service';
 import { AdminComponent } from './pages/admin/admin.component';
 import { StartupEditComponent } from './pages/startup-edit/startup-edit.component';
+import { AddToListDialogComponent } from './components/dialogs/add-to-list-dialog/add-to-list-dialog.component';
 
 
 var config = {
@@ -110,6 +111,7 @@ var config = {
     InviteDialogComponent,
     SessionDialogComponent,
     StartupEditComponent,
+    AddToListDialogComponent,
   ],
   imports: [
     AppRoutingModule,

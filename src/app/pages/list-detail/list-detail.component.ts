@@ -7,6 +7,9 @@ import { List } from 'src/app/models/list-model';
 import { Startup } from 'src/app/models/startup-model';
 import { ActivatedRoute } from '@angular/router';
 import { ListService } from 'src/app/services/list-service/list.service';
+import { AddToListDialogComponent } from 'src/app/components/dialogs/add-to-list-dialog/add-to-list-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { stringList } from 'aws-sdk/clients/datapipeline';
 
 @Component({
   selector: 'app-list-detail',
@@ -24,7 +27,9 @@ export class ListDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private listService: ListService) {
+    private listService: ListService,
+    public dialog: MatDialog
+    ) {
     this.filters = [
       new CardFilter(1, "Funding"),
       new CardFilter(1, "Location"),
@@ -38,6 +43,7 @@ export class ListDetailComponent implements OnInit {
       var listId = params["id"];
 
       this.listService.getById(listId).subscribe(list=>{
+        console.log(list)
           this.list = list[0];
           this.startups = this.list.startups;
           this.startups.forEach(Startup => {
@@ -102,6 +108,27 @@ export class ListDetailComponent implements OnInit {
     this.loadCardsWithCurrentStartups();
   }
 
+  openListDialogue(startupId: string){
+    const dialogRef = this.dialog.open(AddToListDialogComponent, 
+      {
+        width: '600px',
+        data : {
+          startupId : startupId
+        }
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  deleteStartupFromList(startupId: string){
+
+    //TODO: clean up
+    this.listService.delStartupFromList(startupId, this.list._id).subscribe(_=>{
+      this.ngOnInit();
+    })
+  }
 
   activateFilter(filter){
     if (filter.active){
@@ -115,10 +142,6 @@ export class ListDetailComponent implements OnInit {
 
   addUserToList(list: List){
     alert("coming soon")
-  }
-
-  openListDialogue(){
-    alert("list dialogue")
   }
 
 }

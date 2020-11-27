@@ -22,7 +22,6 @@ export class StartupDetailComponent implements OnInit {
   constructor(
     private startupService: StartupService, 
     private route: ActivatedRoute) {
-      this.pitchDeckIndex = 0;
    }
 
   ngOnInit(): void {

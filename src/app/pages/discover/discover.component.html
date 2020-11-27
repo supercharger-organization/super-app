@@ -1,12 +1,36 @@
 
+
+
 <div class="row align-items-center">
   
     <div class="col">
       <h1 class="font-weight-bold super-label-xl">My Dashboard</h1>
     </div>
-    <div class="col-8 text-right">
-  
 
+    <div class="row col-8 text-right">
+      <div class="col text-right">
+          <button mat-flat-button class="mr-2 super-button white" (click)="openInviteDialog()">
+              <span matPrefix> <i class="fa fa-user-plus text-muted"></i> &nbsp;</span>
+              Invite Startup
+          </button>
+          
+          <button mat-flat-button class="super-button blue" (click)="openSessionDialog()">
+              <i class="fa fa-video" aria-hidden="true"></i>
+              &nbsp;
+              Virtual Session
+          </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- search bar and buttons -->
+  <div class="mt-5 row">
+    <div class="col-6">
+      <app-search-bar class="w-100"></app-search-bar>
+    </div>
+    
+    <div class="col-6 text-right">
       <button mat-flat-button class="super-button align-items-center ml-3">
         Location
         <i class="fa super-chevron fa-chevron-down" aria-hidden="true"></i>
@@ -23,13 +47,14 @@
       </button>
 
     </div>
+
   </div>
   
   <div class="mt-5 row" style="min-width: 843px;">
   
     <!-- Card -->
     <div class="col-sm-6 col-lg-4 col-xl-4 mb-4" *ngFor="let card of cards" name="StartupCard">
-      <div class="card super-card z-depth-1" >
+      <div class="card super-card z-depth-1 h-100" >
         <div class="card-header pb-0 border-0 bg-transparent d-flex align-items-center">
           <div class="flex-grow-1 text-right">
             <button mat-button class="super-button new"> NEW </button>
@@ -47,17 +72,18 @@
               <div class="super-popover-content">
                 <mat-list class="super-list scale-to-fit">
                   <mat-list-item class="align-items-center mt-0 pointer">
-                    <span class="material-icons">
+                    <!-- TODO: clean up classes a bit -->
+                    <span class="material-icons super-text-dark">
                       playlist_add
                       </span>
-                    <span class="align-items-center" (click)="openListDialogue()">add to existing list </span>
+                    <span class="align-items-center super-text-dark" (click)="openListDialogue(card.startupId)">add/remove from list </span>
                   </mat-list-item>
-                  <mat-list-item class="pointer">
+                  <!-- <mat-list-item class="pointer">
                     <span class="material-icons">
                       library_add
                       </span>
                     <span class="align-items-center" (click)="openListDialogue()">add to new list </span>                  
-                  </mat-list-item>
+                  </mat-list-item> -->
                 </mat-list>
               </div>
             </mde-popover>

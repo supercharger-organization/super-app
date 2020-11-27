@@ -5,6 +5,10 @@ import { Card } from 'src/app/models/card-model';
 import { Board } from 'src/app/models/board-model';
 import { SearchService } from 'src/app/services/search-service/search.service';
 import { StartupService } from 'src/app/services/startup-service/startup.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SessionDialogComponent } from 'src/app/components/dialogs/session-dialog/session-dialog.component';
+import { InviteDialogComponent } from 'src/app/components/dialogs/invite-dialog/invite-dialog.component';
+import { AddToListDialogComponent } from 'src/app/components/dialogs/add-to-list-dialog/add-to-list-dialog.component';
 
 @Component({
   selector: 'app-discover',
@@ -22,8 +26,9 @@ export class DiscoverComponent implements OnInit {
 
   constructor(
     private startupService: StartupService, 
-    private searchService: SearchService) {
-   }
+    private searchService: SearchService,
+    public dialog: MatDialog
+    ) {}
 
   ngOnInit(): void {
 
@@ -53,11 +58,6 @@ export class DiscoverComponent implements OnInit {
       // Loads the current startups as cards:
       this.loadCardsWithCurrentStartups();
     });
-
-    //this.apiService.getTestBoardAndChildren().subscribe(board=>{
-      //console.log("Example Board Retrieval Method:");
-      //console.log(board);
-    //})
   }
 
   removeCardsFromUI(){
@@ -78,7 +78,6 @@ export class DiscoverComponent implements OnInit {
         var startupCard = new Card(startup.name, startup.description, startup.industryTags, startup.industryScore, startup._id, startup.startupImgUrl)
         this.cards.push(startupCard);
       }
-
     });
   }
 
@@ -104,30 +103,6 @@ export class DiscoverComponent implements OnInit {
     //TODO: sort by employee count
   }
 
-  filterByEmployeeCount(min, max)
-  {
-    this.startups.forEach(startup => {
-      startup.isVisibleInFilter = Startup.isInEmployeeRange(min, max, startup);
-    });
-    this.loadCardsWithCurrentStartups();
-  }
-
-  
-  filterByTag(tag)
-  {
-    this.startups.forEach(startup => {
-      //console.log(min);
-      //console.log(max);
-      startup.isVisibleInFilter = Startup.tagIsPresent(startup, tag);
-    });
-    this.loadCardsWithCurrentStartups();
-  }
-
-  //Test function to act as middle man for handling search functionality
-  handleSearch(){
-    console.log("Handeling!!!");
-  }
-
   // This is used for the search bar
   filterByName(currentSearchString)
   {
@@ -139,8 +114,40 @@ export class DiscoverComponent implements OnInit {
     this.loadCardsWithCurrentStartups();
   }
 
-  openListDialogue(){
-    alert("list dialogue")
+  openListDialogue(startupId: string){
+    const dialogRef = this.dialog.open(AddToListDialogComponent, 
+      {
+        width: '600px',
+        data : {
+          startupId : startupId
+        }
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openSessionDialog(){
+    const dialogRef = this.dialog.open(SessionDialogComponent, 
+      {
+        width: '525px'
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openInviteDialog(){
+    const dialogRef = this.dialog.open(InviteDialogComponent, 
+      {
+        width: '600px'
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

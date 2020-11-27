@@ -2,7 +2,7 @@ import { Card } from './card-model';
 import { Startup } from './startup-model';
 
 export class List {
-    id: number;
+    _id: string;
     title:string;
     position: number;
     boardId: number;
@@ -23,19 +23,14 @@ export class List {
 
     bsStartups: any[]
 
-    constructor(id: number, name: string, cards: Card[]){
-        this.id = id;
+    //TODO: should this go here???
+    selected: boolean = false;
+    modified: boolean = false;
+
+    constructor(_id: string, name: string, cards: Card[]){
+        this._id = _id;
         this.name = name;
         this.cards = cards;
     }
 
-    // Temp Solution until ui is resolved
-    // This is soon to be the constructor
-    GenerateCard(id:number, title:string, position: number, boardId: number, startupIds:[number]){
-        this.id = id;
-        this.title = title;
-        this.position = position;
-        this.boardId = boardId;
-        this.startupIds = startupIds;
-    }
 }

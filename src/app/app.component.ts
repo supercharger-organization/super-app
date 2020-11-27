@@ -49,28 +49,6 @@ export class AppComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem("user"));
   }
 
-  openSessionDialog(){
-    const dialogRef = this.dialog.open(SessionDialogComponent, 
-      {
-        width: '525px'
-      });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
-  openInviteDialog(){
-    const dialogRef = this.dialog.open(InviteDialogComponent, 
-      {
-        width: '600px'
-      });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
   navigateToAdminPage(){
     this.router.navigate(['admin']);
   }

@@ -8,6 +8,7 @@ import { CompareStartupsDialogComponent } from 'src/app/components/dialogs/compa
 import { MatDialog } from '@angular/material/dialog';
 import { ListDialogComponent } from 'src/app/components/dialogs/list-dialog/list-dialog.component';
 import { BoardService } from 'src/app/services/board-service/board.service';
+import { ListService } from 'src/app/services/list-service/list.service';
 
 @Component({
   selector: 'app-lists',
@@ -20,10 +21,10 @@ export class ListsComponent implements OnInit {
   toggleDetail:Boolean = false
   cards: Card[] = []
   filters: CardFilter[] = []
-  board: Board = null
+  lists: List[] = [];
 
   constructor(
-    private boardService: BoardService, 
+    private listService: ListService, 
     public dialog: MatDialog ) {
 
     this.filters = [
@@ -35,9 +36,9 @@ export class ListsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.boardService.get().subscribe(board=>{
-      this.board = board[0]
-      console.log(this.board)
+    this.listService.get().subscribe(res=>{
+      console.log(res);
+      this.lists = res;
     })
 
   }

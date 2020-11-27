@@ -19,13 +19,16 @@
   <div class="mt-5">
   
       <!-- lists -->
-      <div class="row" *ngIf="board">
+      <div class="row">
 
-        <div class="col-sm-6 col-lg-4 col-xl-4 mb-4" *ngFor="let list of board.lists">
+        <div class="col-sm-6 col-lg-4 col-xl-4 mb-4" *ngFor="let list of lists">
           <div class="card super-list z-depth-1" >
       
             <div class="card-header border-0 align-items-center text-center super-list-header position-relative p-0">
-              <img class="super-list-head-img" [src]="list.imgURL" alt="Card image cap">
+
+              <img *ngIf="list.startupImgUrl" class="super-list-head-img" [src]="list.startupImgUrl" alt="Card image cap">
+              <div *ngIf="!list.startupImgUrl" class="super-list-head-img default"></div>
+
               <div class="super-list-head-labels" [ngClass]="{'text-white': list.imgDark}">
                 <h1 class="m-0 font-weight-bold pointer" [routerLink]="['/list/' + list._id]" routerLinkActive="router-link-active">{{list.title}}</h1>
                 <h5 >{{list.description}}</h5>
@@ -35,22 +38,28 @@
             <div class="card-body w-100">
 
               <mat-list class="super-list w-100" role="list">
+                
+                <mat-list-item class="w-100" *ngIf="list.startups.length == 0">
+  
+                  <div class="w-100 d-flex justify-content-center">
+            
+                    <p class="text-muted pb-0 mb-0">(List is empty)</p>
+            
+                  </div>
+                  
+                </mat-list-item>
 
                 <mat-list-item class="w-100" *ngFor="let startup of list.startups">
   
                   <div class="w-100 row align-items-center">
             
-                    <div class="col-3 align-items-center">
-                      <img class="super-startup-img-sm" [src]="startup.imgURL" alt="Card image cap">
+                    <div class="col-2 align-items-center">
+                      <img class="super-startup-img-sm" [src]="startup.startupImgUrl" alt="Card image cap">
                     </div>
                     
                     <div class="col align-items-center">
                       <h3 class="font-weight-bold pointer pb-0 mb-0" [routerLink]="['/startup/' + startup._id]" routerLinkActive="router-link-active">{{startup.name}}</h3>
                       <p class="ellipsis w-100">{{startup.description}}</p>
-                    </div>
-  
-                    <div class="col-1 align-items-center">
-                      <mat-icon class="super-icon-star text-muted" (click)="toggleFavorite(startup)">{{startup.isFavorite ? "star" : "star_outline" }}</mat-icon>
                     </div>
             
                   </div>

@@ -1,0 +1,63 @@
+
+
+<div class="super-dialogue position-relative"> 
+
+    <div class="position-absolute" style="top: 0px; right: 0px;">
+        <span class="material-icons pointer" (click)="onCancelClick()">
+            close
+        </span>
+    </div>
+
+    <!-- Second Phase of Dialogue-->
+    <div mat-dialog-content class="super-dialogue-align" layout="row" layout-align="center center">
+        <div >
+            <h1>Add to Lists</h1>
+            <!-- <div class="d-flex w-100 justify-content-center">
+                <mat-progress-bar mode="determinate" value="66" class="super-form-progress-bar" ></mat-progress-bar>
+            </div>
+            <div class="my-4 d-flex align-items-center justify-content-center">
+                <h5 class="super-dialogue-content-title">Step 2. Choose Startups</h5>
+            </div> -->
+        </div>
+        <div mat-dialog-content class="super-border m-0 mt-3 p-4">
+            <!-- Gets list of all startups -->
+            <mat-list class="overflow-scroll" role="list" style="max-height:200px;">
+                <mat-list-item *ngFor="let list of lists" class="super-startup-dialogue-list-cell mb-2 pointer">
+                    <div class="row align-items-center w-100" (click)="list.selected ? list.selected = false : list.selected = true">
+                        <div class="col">
+                            <strong class="font-weight-bold pointer" >{{list.title}}</strong>
+                        </div>
+                        <div class="col">
+                            <strong class="text-muted pointer" >{{list.startups ? list.startups.length + " item(s)" : "Empty" }}</strong>
+                        </div>
+                        <div class="col-2 text-right">
+                            <mat-icon class="super-icon-star text-muted"></mat-icon>{{list.selected ? "check_box" : "check_box_outline_blank" }}</mat-icon>
+                        </div>
+                    </div>
+                </mat-list-item>
+            </mat-list>
+        </div>
+        <div class="row align-items-center mt-3">
+            <!-- <div class="col">
+                <button mat-button (click)="onBackClick()" class="super-dialogue-button super-button white">Back</button>
+            </div> -->
+            <div class="col">
+                <button mat-flat-button (click)="onFinishClick()" class="super-dialogue-next-button super-button blue">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Phase of Dialogue-->
+    <!-- <div *ngIf="step == 5" mat-dialog-content class="super-dialogue-align" layout="row" layout-align="center center">
+        <img class="super-img-md" src="assets/imgs/congrats.png">
+        <div class="mt-3"  >
+            <h1 >Added!</h1>
+        </div>
+        <div class="mt-3">
+            <button mat-button (click)="onExitClick()" class="super-button blue confirm"  layout="row" layout-align="center center">Browse Startups</button>
+        </div>
+
+    </div> -->
+
+</div>
+  

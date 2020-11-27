@@ -118,11 +118,12 @@
                     <p>(Make sure to "upload" each image)</p>
                 </div>
             </div>
-                <app-input-file-with-label class="col-6 col-md-6" label="One Pager Img" targetFolder="/pager/" [startUpID]="startup._id" [currentImgURL]="startup.pagerImgUrl" (update)="startup.pagerImgUrl=$event" ></app-input-file-with-label>
-                <app-input-file-with-label class="col-6 col-md-6" label="Startup Img" targetFolder="/startup/" [startUpID]="startup._id" [currentImgURL]="startup.startupImgUrl" (update)="startup.startupImgUrl=$event" ></app-input-file-with-label>
-                <app-input-file-with-label class="col-6 col-md-6" label="History Img" targetFolder="/history/" [startUpID]="startup._id" [currentImgURL]="startup.historyImgUrl" (update)="startup.historyImgUrl=$event" ></app-input-file-with-label>
-                <app-input-multi-file-with-label class="col-6 col-md-6" label="Pitch Deck Imgs" targetFolder="/pitch-deck/" [startUpID]="startup._id" [currentImgURLs]="startup.pitchDeckImgUrls"></app-input-multi-file-with-label>
-                <app-input-multi-file-with-label class="col-6 col-md-6" label="Customer Imgs" targetFolder="/customer/" [startUpID]="startup._id" [currentImgURLs]="startup.customerImgUrls"></app-input-multi-file-with-label>
+            <app-input-file-with-label class="col-6 col-md-6" label="Startup Logo" targetFolder="/startup/" [startUpID]="startup._id" [currentImgURL]="startup.startupImgUrl" (update)="startup.startupImgUrl=$event" ></app-input-file-with-label>
+            <app-input-file-with-label class="col-6 col-md-6" label="Detail Img" targetFolder="/detail/" [startUpID]="startup._id" [currentImgURL]="startup.videoUrl" (update)="startup.videoUrl=$event" ></app-input-file-with-label>
+            <app-input-file-with-label class="col-6 col-md-6" label="One Pager Img" targetFolder="/pager/" [startUpID]="startup._id" [currentImgURL]="startup.pagerImgUrl" (update)="startup.pagerImgUrl=$event" ></app-input-file-with-label>
+            <app-input-file-with-label class="col-6 col-md-6" label="History Img" targetFolder="/history/" [startUpID]="startup._id" [currentImgURL]="startup.historyImgUrl" (update)="startup.historyImgUrl=$event" ></app-input-file-with-label>
+            <app-input-multi-file-with-label class="col-6 col-md-6" label="Pitch Deck Imgs" targetFolder="/pitch-deck/" [startUpID]="startup._id" [currentImgURLs]="startup.pitchDeckImgUrls"></app-input-multi-file-with-label>
+            <app-input-multi-file-with-label class="col-6 col-md-6" label="Customer Imgs" targetFolder="/customer/" [startUpID]="startup._id" [currentImgURLs]="startup.customerImgUrls"></app-input-multi-file-with-label>
         </div>
 
         <div class="col-12 text-right">
