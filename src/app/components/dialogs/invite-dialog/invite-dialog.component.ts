@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatDialogRef, MAT_DIALOG_DATA,  } from '@angular/material/dialog';
 import {COMMA, ENTER, SPACE} from '@angular/cdk/keycodes';
+import { MailerService } from 'src/app/services/mailer-service/mailer.service';
 export interface DialogData {
   Emails: [string];
 }
@@ -22,7 +23,8 @@ export class InviteDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<InviteDialogComponent>,
     @Inject(MAT_DIALOG_DATA) 
-    public data: DialogData) {
+    public data: DialogData,
+    public mailer: MailerService) {
       this.isStageOne = true;
       this.isStageTwo = false;
       this.isStageThree = false;
@@ -39,10 +41,16 @@ export class InviteDialogComponent implements OnInit {
     }
 
     onNextClick(): void {
-      console.log(this.emails)
-      this.isStageOne = false;
-      this.isStageTwo = true;
-      this.isStageThree = false;
+      //TODO: clean up
+      var user = JSON.parse(localStorage.getItem("user"));
+      console.log(user)
+      var emailsString = this.emails.toString();
+      var body = "email: " + user.email + " invited: " + emailsString;
+      this.mailer.post(body).subscribe(res=>{
+        this.isStageOne = false;
+        this.isStageTwo = true;
+        this.isStageThree = false;
+      })
     }
 
     onFinishClick(): void {

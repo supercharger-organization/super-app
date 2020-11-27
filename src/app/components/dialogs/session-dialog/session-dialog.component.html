@@ -1,4 +1,9 @@
 
+<style>
+    .mat-dialog-content{
+        max-height: none !important;
+    }
+</style>
 <div class="super-dialogue position-relative">
     
     <div class="position-absolute" style="top: 0px; right: 0px;">
@@ -8,7 +13,7 @@
     </div>
     
     <!-- First Phase of Dialogue-->
-    <div *ngIf="isStageOne" mat-dialog-content class="super-dialogue-align super-dialogue-box" layout="row"  layout-align="center center">
+    <div *ngIf="isStageOne" mat-dialog-content class="super-dialogue-align" layout="row"  layout-align="center center">
         <div >
             <h1>Virtual Session</h1>
             <div class="d-flex w-100 justify-content-center">
@@ -47,7 +52,7 @@
                 <mat-list-item *ngFor="let startup of this.startups" class="super-startup-dialogue-list-cell mb-2 pointer" (click)="selectStartup(startup)">
                     <div class="row align-items-center w-100">
                         <div class="col-2">
-                            <img class="super-startup-img-sm" [src]="startup.imgURL" alt="Card image cap">
+                            <img class="super-startup-img-sm" [src]="startup.startupImgUrl" alt="Card image cap">
                         </div>
                         <div class="col">
                             <strong class="font-weight-bold pointer" >{{startup.name}}</strong>
@@ -64,7 +69,7 @@
                 <button mat-button (click)="onBackClick()" class="super-dialogue-button super-button white">Back</button>
             </div> -->
             <div class="col">
-                <button mat-flat-button (click)="onFinishClick()" class="super-dialogue-next-button super-button blue">Start</button>
+                <button mat-flat-button (click)="onFinishClick()" class="super-dialogue-next-button super-button blue">Send</button>
             </div>
         </div>
     </div>

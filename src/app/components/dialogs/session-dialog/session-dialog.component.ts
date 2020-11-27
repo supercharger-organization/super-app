@@ -6,6 +6,8 @@ import { Startup } from 'src/app/models/startup-model';
 import { ActivatedRoute } from '@angular/router';
 import { ProdApiService } from 'src/app/services/prod-api-service/prod-api.service';
 import { BoardService } from 'src/app/services/board-service/board.service';
+import { MailerService } from 'src/app/services/mailer-service/mailer.service';
+import { StartupService } from 'src/app/services/startup-service/startup.service';
 
 export interface DialogData {
   Date: string;
@@ -27,7 +29,9 @@ export class SessionDialogComponent implements OnInit {
   
   constructor(
     public dialogRef: MatDialogRef<SessionDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    public mailer: MailerService,
+    public startupService: StartupService) {
 
     this.selDate = XunkCalendarModule.getToday();
     this.isStageOne = true;
@@ -36,7 +40,9 @@ export class SessionDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {  
-  
+    this.startupService.get().subscribe(res=>{
+      this.startups = res;
+    })
   }
 
   onCancelClick(): void {
@@ -60,10 +66,24 @@ export class SessionDialogComponent implements OnInit {
     this.isStageThree = false;
   }
   onFinishClick(): void {
-    console.log("Advancing to Stage 3! Sending Emails");
-    this.isStageOne = false;
-    this.isStageTwo = false;
-    this.isStageThree = true;
+
+    //TODO: this all has to be redone
+
+    var selectedStartups: Startup[] = [];
+    this.startups.forEach(startup=>{
+      if (startup.selected){
+        selectedStartups.push(startup);
+      }
+    })
+    var selectedStartupNames = selectedStartups.map(res=>res.name)
+    var selDate = this.selDate;
+    var user = JSON.parse(localStorage.getItem("user"));
+    var body = user.email + " wants to schedule a virtual session w/ " + selectedStartupNames + " on " + selDate.date + "/" + selDate.month + "/" + selDate.year;
+    this.mailer.post(body).subscribe(res=>{
+      this.isStageOne = false;
+      this.isStageTwo = true;
+      this.isStageThree = false;
+    })
   }
 
   onListItemSelect(itemID): void { 

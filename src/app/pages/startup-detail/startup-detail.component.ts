@@ -6,6 +6,7 @@ import { Note } from 'src/app/models/note-model';
 import { StartupService } from 'src/app/services/startup-service/startup.service';
 import { AddToListDialogComponent } from 'src/app/components/dialogs/add-to-list-dialog/add-to-list-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MailerService } from 'src/app/services/mailer-service/mailer.service';
 
 @Component({
   selector: 'app-startup-detail',
@@ -23,7 +24,8 @@ export class StartupDetailComponent implements OnInit {
   constructor(
     private startupService: StartupService, 
     private route: ActivatedRoute,
-    private dialog: MatDialog) {
+    private dialog: MatDialog,
+    private mailer: MailerService) {
    }
 
   ngOnInit(): void {
@@ -40,7 +42,10 @@ export class StartupDetailComponent implements OnInit {
   }
 
   requestUpdate(){
-    alert("request update")
+    var user = JSON.parse(localStorage.getItem("user"));
+    var body = user.email + " requested an intro w/ " + this.startup.name;
+    this.mailer.post(body).subscribe(res=>{
+    });
   }
 
   createNewNote(){
