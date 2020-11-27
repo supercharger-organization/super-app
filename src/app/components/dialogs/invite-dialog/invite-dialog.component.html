@@ -12,31 +12,37 @@
     <!-- First Phase of Dialogue-->
     <div *ngIf="isStageOne" mat-dialog-content class="super-dialogue-align" layout="row"  layout-align="center center">
         <div>
-            <h1 class="super-dialogue-title">Invite Startup</h1>
+            <h2 class="font-weight-bold poppins">Invite Startups</h2>
         </div>
         <div class="mt-3 d-flex w-100 justify-content-center">
             <mat-progress-bar mode="determinate" value="50" class="super-form-progress-bar" ></mat-progress-bar>
         </div>
         <div class="my-4 d-flex align-items-center justify-content-center">
-            <h5 class="font-weight-bolder super-dialogue-content-title">Step 1. Copy and paste Startup Emails</h5>
+            <p>Seperate emails by a comma, space, or return</p>
         </div>
 
-        <div class="card super-card" style="height: 125px;">
-            <div class="d-flex align-items-center justify-content-center">
-                <mat-chip *ngFor="let email of emails" class="super-chip blue m-2">
-                    {{email}}
+        <div class="row align-items-center justify-content-center">
 
-                    <div class="ml-2">
-                        <i class="fa fa-times-circle pointer" aria-hidden="true" (click)="deleteEmail(email)"></i>
-                    </div>
+            <mat-form-field class='w-100' style="overflow-y: scroll;" appearance="outline">
+                <mat-chip-list #chipList>
+                    <mat-chip *ngFor="let email of emails" [selectable]="true"
+                            [removable]="true" (removed)="remove(email)">
+                    {{ email }}
+                    <mat-icon matChipRemove >cancel</mat-icon>
+                    </mat-chip>
+                    <input placeholder=""
+                            [matChipInputFor]="chipList"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                            [matChipInputAddOnBlur]="true"
+                            (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+                </mat-form-field>
+            
 
-                </mat-chip>
-                <input class="border-0 col-4" matNativeControl placeholder="email@domain.com" [(ngModel)]="newEmail" (keyup.enter)="createNewEmail(newEmail)" />
             </div>
-        </div>
 
         <div layout="row" layout-align="center center" class="mt-3 super-form-nav-button-bar" >
-            <button mat-button (click)="onNextClick()" class="super-dialogue-next-button super-button" >Next</button>
+            <button mat-button [disabled]="emails.length == 0" (click)="onNextClick()" class="super-dialogue-next-button super-button" [ngClass]="{ 'disabled' : emails.length == 0 }">Send Invites</button>
         </div>
     </div>
 
@@ -51,15 +57,11 @@
             </div>
             <div class="mt-4">
                 <button mat-flat-button class="super-button blue confirm" (click)="onExitClick()" >
-                    Browse Startups
+                    Okay
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Third Phase of Dialogue (Not yet in use, plan to add ability to add a custom )-->
-    <div *ngIf="isStageThree" mat-dialog-content class="super-dialogue-align">
-        
-    </div>
 </div>
   

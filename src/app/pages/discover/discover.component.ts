@@ -41,7 +41,6 @@ export class DiscoverComponent implements OnInit {
         else {
           startup.isVisibleInFilter = false
         }
-
         this.loadCardsWithCurrentStartups();
 
       });
@@ -49,13 +48,29 @@ export class DiscoverComponent implements OnInit {
     })
 
     this.startupService.get().subscribe(startups=>{
-      console.log(startups)
       this.startups = startups;
       this.startups.forEach(Startup => {
         Startup.isVisibleInFilter = true;
       });
-      // Asigns listener to search bar:
-      // Loads the current startups as cards:
+
+      //BAD: due to time constraints and rapid prototyping
+      //validate and convert employee count to number...
+      this.startups.map(startup => {
+        //remove all characters besides numbers
+        let removedNonIntegers = startup.employeeCount.replace(/[^0-9]/g, '');
+        startup.employeeNum = +removedNonIntegers;
+      })
+
+      //BAD: due to time constraints and rapid prototyping
+      //validate and convert funding to number...
+      this.startups.map(startup => {
+        //remove all characters besides numbers
+        let removedNonIntegers = startup.funding.replace(/[^0-9]/g, '');
+        startup.fundingNum = +removedNonIntegers;
+        console.log(startup.fundingNum)
+      })
+
+
       this.loadCardsWithCurrentStartups();
     });
   }
@@ -81,26 +96,85 @@ export class DiscoverComponent implements OnInit {
     });
   }
 
-  sortByFunding(){
+    //GARBAGE: 
+    sortByFunding(){
     if (this.fundingSortActive == false){
       this.fundingSortActive = true
+
+      var sortedStartups = []
+      var sortedFundingNums: number[] = this.startups.map(res=>res.fundingNum).sort((n1,n2) => n1 - n2);
+      for (let i = 0; i < sortedFundingNums.length; i++) {
+        const num = sortedFundingNums[i];
+        for (let j = 0; j < this.startups.length; j++) {
+          const startup = this.startups[j];
+          if (num == startup.fundingNum){
+            sortedStartups.push(startup);
+            sortedStartups.splice(j, 1)
+            break;
+          }
+        }
+      }
+      this.startups = sortedStartups;
     }
     else {
       this.fundingSortActive = false
+      var sortedStartups = []
+      var sortedFundingNums: number[] = this.startups.map(res=>res.fundingNum).sort((n1,n2) => n2 - n1);
+      for (let i = 0; i < sortedFundingNums.length; i++) {
+        const num = sortedFundingNums[i];
+        for (let j = 0; j < this.startups.length; j++) {
+          const startup = this.startups[j];
+          if (num == startup.fundingNum){
+            sortedStartups.push(startup);
+            sortedStartups.splice(j, 1)
+            break;
+          }
+        }
+      }
+      this.startups = sortedStartups;
     }
 
-    //TODO: sort by funding
   }
 
+  //GARBAGE:
   sortByEmployeeCount(){
     if (this.employeeCountSortActive == false){
       this.employeeCountSortActive = true
+
+      var sortedStartups = []
+      var sortedEmployeeNums: number[] = this.startups.map(res=>res.employeeNum).sort((n1,n2) => n1 - n2);
+      for (let i = 0; i < sortedEmployeeNums.length; i++) {
+        const num = sortedEmployeeNums[i];
+        for (let j = 0; j < this.startups.length; j++) {
+          const startup = this.startups[j];
+          if (num == startup.employeeNum){
+            sortedStartups.push(startup);
+            sortedStartups.splice(j, 1)
+            break;
+          }
+        }
+      }
+      this.startups = sortedStartups;
     }
     else {
       this.employeeCountSortActive = false
+
+      var sortedStartups = []
+      var sortedEmployeeNums: number[] = this.startups.map(res=>res.employeeNum).sort((n1,n2) => n2 - n1);
+      for (let i = 0; i < sortedEmployeeNums.length; i++) {
+        const num = sortedEmployeeNums[i];
+        for (let j = 0; j < this.startups.length; j++) {
+          const startup = this.startups[j];
+          if (num == startup.employeeNum){
+            sortedStartups.push(startup);
+            sortedStartups.splice(j, 1)
+            break;
+          }
+        }
+      }
+      this.startups = sortedStartups;
     }
 
-    //TODO: sort by employee count
   }
 
   // This is used for the search bar

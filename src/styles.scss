@@ -13,6 +13,10 @@ body {
     font-family: poppins !important;
 }
 
+.poppins{
+    font-family: poppins !important;
+}
+
 .bottom {
     position: absolute !important;
     bottom: 0 !important;
@@ -195,6 +199,11 @@ h1, h2, h3, h4, h5 {
 .super-button.inverse{
     background: #292b2c !important;
     color: white !important;
+}
+
+.super-button.disabled{
+    background: #EFF3F6 !important;
+    color: lightgray !important;
 }
 
 .super-button.blue.confirm{
@@ -549,4 +558,8 @@ mat-dialog-container {
 
 .super-text-dark{
     color: rgba(0,0,0,.87) !important;
+}
+
+.no-wrap{
+    white-space: nowrap;
 }

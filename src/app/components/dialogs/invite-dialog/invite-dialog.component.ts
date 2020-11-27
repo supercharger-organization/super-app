@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { MatDialogRef, MAT_DIALOG_DATA,  } from '@angular/material/dialog';
-
+import {COMMA, ENTER, SPACE} from '@angular/cdk/keycodes';
 export interface DialogData {
   Emails: [string];
 }
@@ -16,6 +17,7 @@ export class InviteDialogComponent implements OnInit {
   isStageThree: boolean;
   emails: string[] = []
   newEmail:string = ""
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
 
   constructor(
     public dialogRef: MatDialogRef<InviteDialogComponent>,
@@ -37,14 +39,13 @@ export class InviteDialogComponent implements OnInit {
     }
 
     onNextClick(): void {
-      console.log("Advancing to Stage 2!");
+      console.log(this.emails)
       this.isStageOne = false;
       this.isStageTwo = true;
       this.isStageThree = false;
     }
 
     onFinishClick(): void {
-      console.log("Advancing to Stage 3! Sending Emails");
       this.isStageOne = false;
       this.isStageTwo = false;
       this.isStageThree = true;
@@ -57,6 +58,29 @@ export class InviteDialogComponent implements OnInit {
 
     deleteEmail(email:string){
       this.emails.splice(this.emails.indexOf(email), 1)
+    }
+
+    add(event: MatChipInputEvent): void {
+      const input = event.input;
+      const value = event.value;
+  
+      // Add our fruit
+      if ((value || '').trim()) {
+        this.emails.push(value.trim());
+      }
+  
+      // Reset the input value
+      if (input) {
+        input.value = '';
+      }
+    }
+  
+    remove(val: string): void {
+      const index = this.emails.indexOf(val);
+  
+      if (index >= 0) {
+        this.emails.splice(index, 1);
+      }
     }
 
 }

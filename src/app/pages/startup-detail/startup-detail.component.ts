@@ -4,6 +4,8 @@ import { ProdApiService } from 'src/app/services/prod-api-service/prod-api.servi
 import { Router, ActivatedRoute } from '@angular/router';
 import { Note } from 'src/app/models/note-model';
 import { StartupService } from 'src/app/services/startup-service/startup.service';
+import { AddToListDialogComponent } from 'src/app/components/dialogs/add-to-list-dialog/add-to-list-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-startup-detail',
@@ -21,7 +23,8 @@ export class StartupDetailComponent implements OnInit {
 
   constructor(
     private startupService: StartupService, 
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private dialog: MatDialog) {
    }
 
   ngOnInit(): void {
@@ -57,4 +60,19 @@ export class StartupDetailComponent implements OnInit {
     }
     this.pitchDeckImgUrl = this.startup.pitchDeckImgUrls[this.pitchDeckIndex];
   }
+
+  openListDialogue(startupId: string){
+    const dialogRef = this.dialog.open(AddToListDialogComponent, 
+      {
+        width: '600px',
+        data : {
+          startupId : startupId
+        }
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
 }
