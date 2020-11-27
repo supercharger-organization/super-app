@@ -250,8 +250,8 @@ h1, h2, h3, h4, h5 {
 }
 
 .super-startup-img-md{
-    max-height: 70px;
-    max-width: 70px;
+    max-height: 75px;
+    max-width: 75px;
 }
 
 .super-chathead-img{
@@ -314,7 +314,6 @@ mat-drawer{
 }
 
 .super-list.card{
-    font-size: 90%;
     border: solid 1.25px rgb(188, 204, 215) !important;
     height:100%;   
 }
@@ -336,7 +335,6 @@ mat-drawer{
 }
 
 .super-list mat-list-item{
-    font-size: 90% !important;
     margin-top: 11.7px;
     height: fit-content !important;
 }
@@ -346,7 +344,7 @@ mat-list-item strong {
 }
 
 .super-list mat-list-item span{
-    color: #B8B9BA ;    
+    color: rgb(108, 117, 125) !important;
 }
 
 .super-list mat-list-item a{
@@ -397,10 +395,6 @@ mat-list-item strong {
 
 .super-dialogue-box{
     height: 900px;
-}
-
-.super-card.startup-detail{
-    font-size: 99%;
 }
 
 .super-card-list{
@@ -504,7 +498,7 @@ mat-chip {
 }
 
 p {
-    color: #A7ABB4 !important;
+    color: rgb(108, 117, 125) !important;
 }
 
 mat-dialog-container { 

@@ -18,7 +18,6 @@ export class StartupDetailComponent implements OnInit {
   shouldShowCommentForm = false;
   newNote: Note = null;
 
-  pitchDeckIndex:number = null;
   pitchDeckImgUrl:string = null;
 
   constructor(
@@ -33,7 +32,7 @@ export class StartupDetailComponent implements OnInit {
 
       this.startupService.getById(startupId).subscribe(res=>{
         this.startup = res[0];
-        this.pitchDeckImgUrl = this.startup.pitchDeckImgUrls[this.pitchDeckIndex];
+        this.pitchDeckImgUrl = this.startup.pitchDeckImgUrls[0];
       })
 
     })
@@ -51,14 +50,6 @@ export class StartupDetailComponent implements OnInit {
 
   deleteNewNote(){
     this.newNote = null;
-  }
-
-  nextImg(){
-    this.pitchDeckIndex = this.pitchDeckIndex + 1;
-    if (this.pitchDeckIndex >= this.startup.pitchDeckImgUrls.length){
-      this.pitchDeckIndex = 0;
-    }
-    this.pitchDeckImgUrl = this.startup.pitchDeckImgUrls[this.pitchDeckIndex];
   }
 
   openListDialogue(startupId: string){

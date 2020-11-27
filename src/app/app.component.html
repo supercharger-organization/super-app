@@ -12,13 +12,17 @@
                     {{page.icon}}
                 </mat-icon>
 
-                <div class="ml-5 pointer align-items-center d-flex">{{page.title}} <div class="ml-3 super-badge" *ngIf="page.notificationCount > 0"><span>{{page.notificationCount}}</span></div> </div>
+                <div class="ml-5 pointer align-items-center d-flex">{{page.title}} 
+                    <div class="ml-3 super-badge" *ngIf="page.notificationCount > 0">
+                        <span>{{page.notificationCount}}</span>
+                    </div> 
+                </div>
 
             </mat-list-item>
         </mat-list>
 
         <!-- ad -->
-        <div style="margin-top: 40%;" class="w-100 justify-content-center text-center">
+        <div class="w-100 justify-content-center text-center mt-4">
             <div class="d-flex justify-content-center">
                 <div class="d-flex align-items-center justify-content-center" style="background: rgb(228, 244, 255); width: 75px; height: 75px; border-radius: 100%;">
                     <img class="super-img-xs" style="background: rgb(228, 244, 255); " src="assets/imgs/work.png" alt="Card image cap">
@@ -27,12 +31,12 @@
             <br/>
             <small class="text-muted">Early access to analytics <br/> dashboard. <a href="#">Get 30% Off</a></small>
             <br/><br/>
-            <app-upgrade-button></app-upgrade-button>
+            <!-- <app-upgrade-button></app-upgrade-button> -->
         </div>
 
         
         <!-- greeting -->
-        <div style="margin-top: 40%;" class="d-flex w-100 justify-content-center" *ngIf="user">
+        <div class="d-flex w-100 justify-content-center mt-4" *ngIf="user">
             <div class="d-flex align-items-center" (click)="navigateToAdminPage()">
                 <div *ngIf="user.photoURL">
                     <img class="super-startup-img-sm" [src]="user.photoURL" alt="Card image cap">
@@ -55,7 +59,7 @@
     </mat-drawer>
     
     <!-- main content -->
-    <mat-drawer-content style="padding-left: 6rem; padding-right: 6rem; padding-top: 3rem; padding-bottom: 3rem;">
+    <mat-drawer-content class="p-5">
 
         <!-- pages -->
         <router-outlet ></router-outlet>

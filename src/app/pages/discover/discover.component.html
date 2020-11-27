@@ -25,32 +25,43 @@
   </div>
 
   <!-- search bar and buttons -->
-  <div class="mt-5 row">
+  <div class="mt-4 row">
     <div class="col-6">
       <app-search-bar class="w-100"></app-search-bar>
     </div>
     
     <div class="col-6 text-right">
-      <button mat-flat-button class="super-button align-items-center ml-3">
-        Location
+      <button mat-flat-button class="super-button align-items-center ml-3" 
+        [mdePopoverTriggerFor]="appPopover"
+        mdePopoverTriggerOn="click" #popoverTrigger="mdePopoverTrigger">
+        Sort By
         <i class="fa super-chevron fa-chevron-down" aria-hidden="true"></i>
       </button>
 
-      <button mat-flat-button class="super-button align-items-center ml-3" (click)="sortByFunding()">
-        Funding
-        <i class="fa super-chevron fa-chevron-down" aria-hidden="true" [ngClass]="{'fa-chevron-up': fundingSortActive}"></i>
-      </button>
-
-      <button mat-flat-button class="super-button align-items-center ml-3" (click)="sortByEmployeeCount()">
-        Employees
-        <i class="fa super-chevron fa-chevron-down" aria-hidden="true" [ngClass]="{'fa-chevron-up': employeeCountSortActive}"></i>
-      </button>
+      <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+        <div class="super-popover-content">
+          <mat-list class="super-list scale-to-fit">
+            <mat-list-item class="align-items-center mt-0 p-2 pointer">
+              <!-- TODO: clean up classes a bit -->
+              <span class="align-items-center super-text-dark"> Industry Score</span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center mt-0 p-2 pointer">
+              <!-- TODO: clean up classes a bit -->
+              <span class="align-items-center super-text-dark"> Employee Count </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center mt-0 p-2 pointer">
+              <!-- TODO: clean up classes a bit -->
+              <span class="align-items-center super-text-dark"> Location </span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </mde-popover>
 
     </div>
 
   </div>
   
-  <div class="mt-5 row" style="min-width: 843px;">
+  <div class="mt-4 row" style="min-width: 843px;">
   
     <!-- Card -->
     <div class="col-sm-6 col-lg-4 col-xl-4 mb-4" *ngFor="let card of cards" name="StartupCard">
@@ -112,7 +123,14 @@
           <!-- tags -->
           <div class="mt-5">
             <mat-chip-list  aria-label="tags">
-              <mat-chip *ngFor="let tag of card.industryTags" class="super-chip">{{tag}}</mat-chip>
+              <div *ngFor="let tag of card.industryTags; let i = index">
+                <mat-chip *ngIf="i < 3" class="super-chip">{{tag}}</mat-chip>
+                  <a *ngIf="i == 3" class="text-muted" [routerLink]="['/startup/' + card.startupId]" >
+                    <span class="material-icons">
+                      more_horiz
+                    </span>
+                  </a>
+              </div>
             </mat-chip-list>
           </div>
 
