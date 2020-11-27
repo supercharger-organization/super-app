@@ -42,15 +42,19 @@ export class ListsComponent implements OnInit {
       lists.forEach(res=>{
         if (res.title == "Wind Blade New Materials"){
           res.imgURL = "https://supercharger-prod.s3.us-east-2.amazonaws.com/WindImage.jpeg"
+          res.comparisonIMG = "https://supercharger-prod.s3.us-east-2.amazonaws.com/Wind+Comparison+Chart.pdf"
         }
         else if (res.title == "Longer Life Batteries"){
           res.imgURL = "https://supercharger-prod.s3.us-east-2.amazonaws.com/battery.jpg"
+          res.comparisonIMG = "https://supercharger-prod.s3.us-east-2.amazonaws.com/Battery+Comparison+Chart.pdf"
         }
         else if (res.title == "Ground Resistance Testers"){
           res.imgURL = "https://supercharger-prod.s3.us-east-2.amazonaws.com/Ground.jpeg"
+          res.comparisonIMG = "https://supercharger-prod.s3.us-east-2.amazonaws.com/Earth+Tester+Comparision.pdf"
         }
         else if (res.title == "Construction Technology"){
           res.imgURL = "https://supercharger-prod.s3.us-east-2.amazonaws.com/Construction.jpeg"
+          res.comparisonIMG = "https://supercharger-prod.s3.us-east-2.amazonaws.com/Construction+Comparison+Chart.pdf"
         }
       })
       this.lists = lists;

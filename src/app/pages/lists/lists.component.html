@@ -102,11 +102,13 @@
             </div> -->
 
             <!-- compare btn -->
-            <div class="mt-3 d-flex justify-content-center pb-5">
+            <div class="mt-3 d-flex justify-content-center pb-5" >
 
-              <button mat-flat-button class="super-button blue" style="min-width: 266px !important;" (click)="openCompareStartupsDialog(list.commonName + '/list.png')">
-                Compare Startups
-              </button>
+              <a target="_blank" [href]="list.comparisonIMG" download>
+                <button mat-button class="align-items-center super-button blue">
+                  Compare Startups
+                </button>
+              </a>
             </div>
 
           </div>
