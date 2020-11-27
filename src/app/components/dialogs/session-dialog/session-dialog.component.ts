@@ -81,8 +81,8 @@ export class SessionDialogComponent implements OnInit {
     var body = user.email + " wants to schedule a virtual session w/ " + selectedStartupNames + " on " + selDate.date + "/" + selDate.month + "/" + selDate.year;
     this.mailer.post(body).subscribe(res=>{
       this.isStageOne = false;
-      this.isStageTwo = true;
-      this.isStageThree = false;
+      this.isStageTwo = false;
+      this.isStageThree = true;
     })
   }
 

@@ -36,11 +36,25 @@ export class ListsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.listService.get().subscribe(res=>{
-      console.log(res);
-      this.lists = res;
+    this.listService.get().subscribe(lists=>{
+      //TODO: remove
+      console.log(lists)
+      lists.forEach(res=>{
+        if (res.title == "Wind Blade New Materials"){
+          res.imgURL = "https://supercharger-prod.s3.us-east-2.amazonaws.com/WindImage.jpeg"
+        }
+        else if (res.title == "Longer Life Batteries"){
+          res.imgURL = "https://supercharger-prod.s3.us-east-2.amazonaws.com/battery.jpg"
+        }
+        else if (res.title == "Ground Resistance Testers"){
+          res.imgURL = "https://supercharger-prod.s3.us-east-2.amazonaws.com/Ground.jpeg"
+        }
+        else if (res.title == "Construction Technology"){
+          res.imgURL = "https://supercharger-prod.s3.us-east-2.amazonaws.com/Construction.jpeg"
+        }
+      })
+      this.lists = lists;
     })
-
   }
 
   openCompareStartupsDialog(chartUrl){
