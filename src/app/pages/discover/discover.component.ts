@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Startup } from 'src/app/models/startup-model';
-import { CardFilter } from 'src/app/models/cardfilter-model';
 import { Card } from 'src/app/models/card-model';
 import { Board } from 'src/app/models/board-model';
 import { SearchService } from 'src/app/services/search-service/search.service';
@@ -9,6 +8,24 @@ import { MatDialog } from '@angular/material/dialog';
 import { SessionDialogComponent } from 'src/app/components/dialogs/session-dialog/session-dialog.component';
 import { InviteDialogComponent } from 'src/app/components/dialogs/invite-dialog/invite-dialog.component';
 import { AddToListDialogComponent } from 'src/app/components/dialogs/add-to-list-dialog/add-to-list-dialog.component';
+
+export enum SortIcon{
+  inactive = "sort",
+  ascending = "north",
+  descending = "south"
+}
+export class CardFilter {
+  icon: SortIcon = SortIcon.inactive;
+
+  constructor(
+    public active: boolean,
+  ){}
+
+  setIcon(icon: SortIcon){
+    this.icon = icon;
+  }
+
+}
 
 @Component({
   selector: 'app-discover',
@@ -21,8 +38,9 @@ export class DiscoverComponent implements OnInit {
   filters: CardFilter[]
   board:Board = null
 
-  fundingSortActive: boolean = false;
-  employeeCountSortActive: boolean = false;
+  industryScoreSort = new CardFilter(false);
+  employeeCountSort = new CardFilter(false);
+  fundingSort = new CardFilter(false);
 
   constructor(
     private startupService: StartupService, 
@@ -70,6 +88,15 @@ export class DiscoverComponent implements OnInit {
         console.log(startup.fundingNum)
       })
 
+      //BAD: due to time constraints and rapid prototyping
+      //validate and convert funding to number...
+      this.startups.map(startup => {
+        //remove all characters besides numbers
+        let removedNonIntegers = startup.industryScore.replace(/[^0-9]/g, '');
+        startup.industryScoreNum = +removedNonIntegers;
+        console.log(startup.fundingNum)
+      })
+
 
       this.loadCardsWithCurrentStartups();
     });
@@ -96,86 +123,95 @@ export class DiscoverComponent implements OnInit {
     });
   }
 
-    //GARBAGE: 
-    sortByFunding(){
-    if (this.fundingSortActive == false){
-      this.fundingSortActive = true
-
-      var sortedStartups = []
-      var sortedFundingNums: number[] = this.startups.map(res=>res.fundingNum).sort((n1,n2) => n1 - n2);
-      for (let i = 0; i < sortedFundingNums.length; i++) {
-        const num = sortedFundingNums[i];
-        for (let j = 0; j < this.startups.length; j++) {
-          const startup = this.startups[j];
-          if (num == startup.fundingNum){
-            sortedStartups.push(startup);
-            sortedStartups.splice(j, 1)
-            break;
-          }
-        }
-      }
-      this.startups = sortedStartups;
+  //GARBAGE: 
+  sortByFunding(){
+    this.industryScoreSort.setIcon(SortIcon.inactive)
+    this.employeeCountSort.setIcon(SortIcon.inactive)
+    if (this.fundingSort.icon == SortIcon.inactive) {
+      this.fundingSort.setIcon(SortIcon.descending);
+      this.startups = this.startups.sort((a, b) => b.fundingNum - a.fundingNum);
+      this.loadCardsWithCurrentStartups();
+    }
+    else if (this.fundingSort.icon == SortIcon.descending){
+      //ascending
+      this.fundingSort.setIcon(SortIcon.ascending);
+      this.startups = this.startups.sort((a, b) => a.fundingNum - b.fundingNum);
+      this.loadCardsWithCurrentStartups();
     }
     else {
-      this.fundingSortActive = false
-      var sortedStartups = []
-      var sortedFundingNums: number[] = this.startups.map(res=>res.fundingNum).sort((n1,n2) => n2 - n1);
-      for (let i = 0; i < sortedFundingNums.length; i++) {
-        const num = sortedFundingNums[i];
-        for (let j = 0; j < this.startups.length; j++) {
-          const startup = this.startups[j];
-          if (num == startup.fundingNum){
-            sortedStartups.push(startup);
-            sortedStartups.splice(j, 1)
-            break;
-          }
-        }
-      }
-      this.startups = sortedStartups;
+      this.fundingSort.setIcon(SortIcon.inactive);
+      this.startups = this.startups.sort((a, b) => b.fundingNum - a.fundingNum);
+      this.loadCardsWithCurrentStartups();
     }
-
   }
 
-  //GARBAGE:
+  //GARBAGE: 
+  sortByIndustryScore(){
+    this.fundingSort.setIcon(SortIcon.inactive)
+    this.employeeCountSort.setIcon(SortIcon.inactive)
+    if (this.industryScoreSort.icon == SortIcon.inactive) {
+      this.industryScoreSort.setIcon(SortIcon.descending);
+      this.startups = this.startups.sort((a, b) => b.industryScoreNum - a.industryScoreNum);
+      this.loadCardsWithCurrentStartups();
+    }
+    else if (this.industryScoreSort.icon == SortIcon.descending){
+      //ascending
+      this.industryScoreSort.setIcon(SortIcon.ascending);
+      this.startups = this.startups.sort((a, b) => a.industryScoreNum - b.industryScoreNum);
+      this.loadCardsWithCurrentStartups();
+    }
+    else {
+      this.industryScoreSort.setIcon(SortIcon.inactive);
+      this.startups = this.startups.sort((a, b) => b.industryScoreNum - a.industryScoreNum);
+      this.loadCardsWithCurrentStartups();
+    }
+  }
+
+  //GARBAGE: 
   sortByEmployeeCount(){
-    if (this.employeeCountSortActive == false){
-      this.employeeCountSortActive = true
-
-      var sortedStartups = []
-      var sortedEmployeeNums: number[] = this.startups.map(res=>res.employeeNum).sort((n1,n2) => n1 - n2);
-      for (let i = 0; i < sortedEmployeeNums.length; i++) {
-        const num = sortedEmployeeNums[i];
-        for (let j = 0; j < this.startups.length; j++) {
-          const startup = this.startups[j];
-          if (num == startup.employeeNum){
-            sortedStartups.push(startup);
-            sortedStartups.splice(j, 1)
-            break;
-          }
-        }
-      }
-      this.startups = sortedStartups;
+    this.fundingSort.setIcon(SortIcon.inactive)
+    this.industryScoreSort.setIcon(SortIcon.inactive)
+    if (this.employeeCountSort.icon == SortIcon.inactive) {
+      this.employeeCountSort.setIcon(SortIcon.descending);
+      this.startups = this.startups.sort((a, b) => b.employeeNum - a.employeeNum);
+      this.loadCardsWithCurrentStartups();
+    }
+    else if (this.employeeCountSort.icon == SortIcon.descending){
+      //ascending
+      this.employeeCountSort.setIcon(SortIcon.ascending);
+      this.startups = this.startups.sort((a, b) => a.employeeNum - b.employeeNum);
+      this.loadCardsWithCurrentStartups();
     }
     else {
-      this.employeeCountSortActive = false
-
-      var sortedStartups = []
-      var sortedEmployeeNums: number[] = this.startups.map(res=>res.employeeNum).sort((n1,n2) => n2 - n1);
-      for (let i = 0; i < sortedEmployeeNums.length; i++) {
-        const num = sortedEmployeeNums[i];
-        for (let j = 0; j < this.startups.length; j++) {
-          const startup = this.startups[j];
-          if (num == startup.employeeNum){
-            sortedStartups.push(startup);
-            sortedStartups.splice(j, 1)
-            break;
-          }
-        }
-      }
-      this.startups = sortedStartups;
+      this.employeeCountSort.setIcon(SortIcon.inactive);
+      this.startups = this.startups.sort((a, b) => b.employeeNum - a.employeeNum);
+      this.loadCardsWithCurrentStartups();
     }
-
   }
+
+  // //GARBAGE: 
+  // sortByEmployeeCount(sortDirection: any){
+  //   if (sortDirection == 1){
+  //     this.startups = this.startups.sort((a, b) => a.employeeNum - b.employeeNum);
+  //     this.loadCardsWithCurrentStartups();
+  //   }
+  //   else {
+  //     this.startups = this.startups.sort((a, b) => b.employeeNum - a.employeeNum);
+  //     this.loadCardsWithCurrentStartups();
+  //   }
+  // }
+    
+  // //GARBAGE: 
+  // sortByIndustryScore(sortDirection: any){
+  //   if (sortDirection == 1){
+  //     this.startups = this.startups.sort((a, b) => a.industryScoreNum - b.industryScoreNum);
+  //     this.loadCardsWithCurrentStartups();
+  //   }
+  //   else {
+  //     this.startups = this.startups.sort((a, b) => b.industryScoreNum - a.industryScoreNum);
+  //     this.loadCardsWithCurrentStartups();
+  //   }
+  // }
 
   // This is used for the search bar
   filterByName(currentSearchString)

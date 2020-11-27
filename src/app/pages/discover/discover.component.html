@@ -31,31 +31,44 @@
     </div>
     
     <div class="col-6 text-right">
-      <button mat-flat-button class="super-button align-items-center ml-3" 
+      <button mat-button class="align-items-center ml-2 super-button clear" (click)="sortByIndustryScore()">
+        Industry Score
+        <span class="material-icons m-0"> {{industryScoreSort.icon}} </span>
+      </button>
+      <button mat-button class="align-items-center ml-2 super-button clear" (click)="sortByEmployeeCount()">
+        Employee Count
+        <span class="material-icons m-0"> {{employeeCountSort.icon}} </span>
+      </button>
+      <button mat-button class="align-items-center ml-2 super-button clear" (click)="sortByFunding()">
+        Funding
+        <span class="material-icons m-0"> {{fundingSort.icon}} </span>
+      </button>
+
+      <!-- <button mat-flat-button class="super-button align-items-center ml-3" 
         [mdePopoverTriggerFor]="appPopover"
         mdePopoverTriggerOn="click" #popoverTrigger="mdePopoverTrigger">
         Sort By
         <i class="fa super-chevron fa-chevron-down" aria-hidden="true"></i>
-      </button>
+      </button> -->
 
-      <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+      <!-- <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
         <div class="super-popover-content">
           <mat-list class="super-list scale-to-fit">
             <mat-list-item class="align-items-center mt-0 p-2 pointer">
-              <!-- TODO: clean up classes a bit -->
-              <span class="align-items-center super-text-dark"> Industry Score</span>
+              <span class="align-items-center super-text-dark" (click)="sortByIndustryScore()"> Industry Score</span>
             </mat-list-item>
             <mat-list-item class="align-items-center mt-0 p-2 pointer">
-              <!-- TODO: clean up classes a bit -->
-              <span class="align-items-center super-text-dark"> Employee Count </span>
+              <span class="align-items-center super-text-dark" (click)="sortByEmployeeCount('ascending')"> Employee Count </span>
             </mat-list-item>
             <mat-list-item class="align-items-center mt-0 p-2 pointer">
-              <!-- TODO: clean up classes a bit -->
-              <span class="align-items-center super-text-dark"> Location </span>
+              <span class="align-items-center super-text-dark" (click)="sortByFunding('ascending')"> Funding </span>
+            </mat-list-item>
+            <mat-list-item class="align-items-center mt-0 p-2 pointer">
+              <span class="align-items-center super-text-dark" (click)="sortByFunding('ascending')"> None </span>
             </mat-list-item>
           </mat-list>
         </div>
-      </mde-popover>
+      </mde-popover> -->
 
     </div>
 
@@ -87,7 +100,7 @@
                     <span class="material-icons super-text-dark">
                       playlist_add
                       </span>
-                    <span class="align-items-center super-text-dark" (click)="openListDialogue(card.startupId)">add/remove from list </span>
+                    <span class="align-items-center super-text-dark text-sm" (click)="openListDialogue(card.startupId)">add/remove from list </span>
                   </mat-list-item>
                   <!-- <mat-list-item class="pointer">
                     <span class="material-icons">
@@ -125,11 +138,11 @@
             <mat-chip-list  aria-label="tags">
               <div *ngFor="let tag of card.industryTags; let i = index">
                 <mat-chip *ngIf="i < 3" class="super-chip">{{tag}}</mat-chip>
-                  <a *ngIf="i == 3" class="text-muted" [routerLink]="['/startup/' + card.startupId]" >
+                  <!-- <a *ngIf="i == 3" class="text-muted" [routerLink]="['/startup/' + card.startupId]" >
                     <span class="material-icons">
                       more_horiz
                     </span>
-                  </a>
+                  </a> -->
               </div>
             </mat-chip-list>
           </div>

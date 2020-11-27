@@ -3,7 +3,9 @@
     
     <!-- sidebar content -->
     <mat-drawer mode="side" class="d-flex flex-direction-column" opened>
-        <h1 class="mt-5 text-center font-weight-bold">SUPER <br/> CHARGER</h1>
+        <div class="mt-4 d-flex align-items-center justify-content-center">
+            <img style="width: 66%;" src="./assets/imgs/enel.png" />
+        </div>
 
         <mat-list class="mt-5 flex-grow-1">
             <mat-list-item style="margin-bottom: 8%;" *ngFor="let page of pages" class="text-muted super-border-radius" [disabled]="page.disabled" [routerLink]="page.url" routerLinkActive="router-link-active" >
@@ -22,21 +24,21 @@
         </mat-list>
 
         <!-- ad -->
-        <div class="w-100 justify-content-center text-center mt-4">
+        <div class="w-100 justify-content-center text-center mt-5">
             <div class="d-flex justify-content-center">
                 <div class="d-flex align-items-center justify-content-center" style="background: rgb(228, 244, 255); width: 75px; height: 75px; border-radius: 100%;">
                     <img class="super-img-xs" style="background: rgb(228, 244, 255); " src="assets/imgs/work.png" alt="Card image cap">
                 </div>
             </div>
             <br/>
-            <small class="text-muted">Early access to analytics <br/> dashboard. <a href="#">Get 30% Off</a></small>
+            <small class="text-muted">Early access to analytics <br/> dashboard.</small>
             <br/><br/>
             <!-- <app-upgrade-button></app-upgrade-button> -->
         </div>
 
         
         <!-- greeting -->
-        <div class="d-flex w-100 justify-content-center mt-4" *ngIf="user">
+        <div class="d-flex w-100 justify-content-center mt-5" *ngIf="user">
             <div class="d-flex align-items-center" (click)="navigateToAdminPage()">
                 <div *ngIf="user.photoURL">
                     <img class="super-startup-img-sm" [src]="user.photoURL" alt="Card image cap">

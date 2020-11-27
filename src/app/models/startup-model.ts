@@ -54,7 +54,8 @@ export class Startup {
     // Filter Vals:
     employeeNum:number = 0;
     fundingNum:number = 0;
-    locationNum:number = 0;
+    industryScoreNum:number = 0;
+
 
     // Temp to fix bugs !!!!!!!!!
     imgURL: string;

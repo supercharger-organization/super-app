@@ -49,7 +49,7 @@ export class StartupService {
   }
 
   delete(id){
-    return this.http.post(this.baseUrl + this.route + id, {}).pipe(
+    return this.http.delete(this.baseUrl + this.route + id, {}).pipe(
       map(res => {
         this.pushNotification(res)
         return res
