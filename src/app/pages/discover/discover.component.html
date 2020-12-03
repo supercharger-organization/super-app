@@ -27,7 +27,7 @@
   <!-- search bar and buttons -->
   <div class="mt-4 row">
     <div class="col-6">
-      <app-search-bar class="w-100"></app-search-bar>
+      <app-search-bar></app-search-bar>
     </div>
     
     <div class="col-6 text-right">
@@ -78,7 +78,7 @@
   
     <!-- Card -->
     <div class="col-sm-6 col-lg-4 col-xl-4 mb-4" *ngFor="let card of cards" name="StartupCard">
-      <div class="super-card z-depth-1 h-100" >
+      <div class="super-startup-card z-depth-1 h-100" >
         <div class="pb-0 d-flex align-items-center">
           <div class="flex-grow-1 text-right">
             <button mat-button class="super-button new"> NEW </button>
@@ -122,9 +122,7 @@
         
           <h2 class="mt-4" [routerLink]="['/startup/' + card.startupId]" routerLinkActive="router-link-active" >{{card.name}}</h2>
 
-          <div class="mt-4">
-            <p class="text-muted">{{card.description}}</p>
-          </div>
+          <p class="mt-4">{{card.description}}</p>
 
           <!-- industry score -->
           <div class="mt-4">
@@ -132,9 +130,9 @@
           </div>
           <!-- tags -->
           <div class="mt-4">
-            <mat-chip-list  aria-label="tags">
+            <mat-chip-list aria-label="tags">
               <div *ngFor="let tag of card.industryTags; let i = index">
-                <mat-chip *ngIf="i < 3" class="super-chip">{{tag}}</mat-chip>
+                <mat-chip *ngIf="i < 2" class="super-chip">{{tag}}</mat-chip>
                   <!-- <a *ngIf="i == 3" class="text-muted" [routerLink]="['/startup/' + card.startupId]" >
                     <span class="material-icons">
                       more_horiz

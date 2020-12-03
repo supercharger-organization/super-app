@@ -42,7 +42,7 @@ export class Card {
         });
         this.industryTags = newTags;
 
-        var maxCharacterCount = 150;
+        var maxCharacterCount = 176;
         if (description.length > maxCharacterCount){
             var shortenedDescription = description.slice(0, maxCharacterCount) + "...";
             this.description = shortenedDescription;

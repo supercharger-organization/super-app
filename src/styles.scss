@@ -69,11 +69,6 @@ h1, h2, h3, h4, h5 {
     margin: 2px;
 }
 
-.super-searchbar{
-    // background-color: white;
-    // border-radius: 15px;
-}
-
 .super-form-progress-bar{
     background-color: #009AFF !important;
     height: 3px !important;
@@ -395,7 +390,7 @@ mat-list-item strong {
 }
 
 .super-container{
-    .super-card{
+    .super-row{
         margin-bottom: 2em;
     }
 }
@@ -420,6 +415,47 @@ mat-list-item strong {
     }
     p{
         color: $gray-tertiary;
+    }
+    .img-container{
+        max-width: 100%;
+        border-radius: 15px;
+        max-height: 453px;
+        overflow: hidden;        
+    }
+    mat-chip{
+        color: white !important;
+        background-color: $blue-tertiary !important;
+    }
+}
+
+.super-startup-card{
+    border-radius: 15px;
+    font-size: 92.5%;
+    padding: 30px !important;
+    border: none !important;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px $off-white-shadow;
+    background-color: white !important;
+
+    h1, h2, h3, h4, h5 {
+        font-weight: bold !important;
+        color: $gray-primary !important;
+        white-space: nowrap;
+        overflow: hidden;    
+        text-overflow: ellipsis;
+    }
+    h1:hover, h2:hover, h3:hover, h4:hover, h5:hover{
+        cursor: pointer;    
+        text-decoration: underline;
+    }
+    h1{
+        font-size: 250% !important;
+    }
+    h2{
+        font-size: 175% !important;
+    }
+    p{
+        color: $gray-tertiary;
+        height: 80px;
     }
     .img-container{
         max-width: 100%;
@@ -595,4 +631,33 @@ mat-dialog-container {
 
 .text-sm{
     font-size: 75% !important;
+}
+
+//TBD
+
+.mat-chip-list-wrapper{
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+}
+
+//override
+.mat-form-field-underline{
+    background-color: transparent !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    height: 0px !important;
+}
+::ng-deep .mat-input-underline {
+    display: none;
+}
+.mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+}
+
+.super-searchbar{
+    background-color: white;
+    border-radius: 15px;
+    align-items: center;
+    display: flex;
 }
