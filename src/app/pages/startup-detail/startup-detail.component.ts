@@ -7,6 +7,7 @@ import { StartupService } from 'src/app/services/startup-service/startup.service
 import { AddToListDialogComponent } from 'src/app/components/dialogs/add-to-list-dialog/add-to-list-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MailerService } from 'src/app/services/mailer-service/mailer.service';
+import { Patent } from 'src/app/models/patent-model';
 
 @Component({
   selector: 'app-startup-detail',
@@ -20,6 +21,7 @@ export class StartupDetailComponent implements OnInit {
   newNote: Note = null;
 
   pitchDeckImgUrl:string = null;
+  patentIndex: number = 0;
 
   constructor(
     private startupService: StartupService, 
@@ -55,6 +57,14 @@ export class StartupDetailComponent implements OnInit {
 
   deleteNewNote(){
     this.newNote = null;
+  }
+
+  nextPatent(){
+    this.patentIndex = this.patentIndex + 1;
+
+    if(this.patentIndex >= this.startup.patents.length){
+      this.patentIndex = 0;
+    }
   }
 
   openListDialogue(startupId: string){

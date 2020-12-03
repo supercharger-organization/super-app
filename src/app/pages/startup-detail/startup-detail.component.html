@@ -212,49 +212,60 @@
 
         <!-- Patents -->
         <div class="col-4" *ngIf="startup.patents && startup.patents.length > 0">
-            <div class="super-card h-100" >
-                <h1 class="font-weight-bold">Patents</h1>
-                <div class="row mt-3">
-                    <!-- TODO: create class for "patent card" -->
-                    <div class="col-12 pr-0" *ngFor="let patent of startup.patents">
-                        <div class="patent">
-                            <strong class="font-weight-bold">Title</strong>
-                            <div class="mt-1 mb-0">
-                                <p>{{patent.title}}</p>
+            <div *ngFor="let patent of startup.patents; let i = index">
+                <div class="super-card"  *ngIf="patentIndex == i">
+                    <h1 class="font-weight-bold">Patents</h1>
+                    <div class="row mt-3">
+                        <!-- TODO: create class for "patent card" -->
+                        <div class="col-12 pr-0" >
+                            <div class="patent">
+                                <strong class="font-weight-bold">Title</strong>
+                                <div class="mt-1 mb-0">
+                                    <p>{{patent.title}}</p>
+                                </div>
+                                <strong class="font-weight-bold">Abstract</strong>
+                                <div class="mt-1 mb-0">
+                                    <p>{{patent.abstract}}</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <strong class="font-weight-bold">Number</strong>
+                                        <div class="mt-1 mb-0">
+                                            <p>{{patent.number}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <strong class="font-weight-bold">Type</strong>
+                                        <div class="mt-1 mb-0">
+                                            <p>{{patent.type}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <strong class="font-weight-bold">Date Filed</strong>
+                                        <div class="mt-1 mb-0">
+                                            <p>{{patent.filled}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <strong class="font-weight-bold">Date Published</strong>
+                                        <div class="mt-1 mb-0">
+                                            <p>{{patent.date}}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <strong class="font-weight-bold">Abstract</strong>
-                            <div class="mt-1 mb-0">
-                                <p>{{patent.abstract}}</p>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <strong class="font-weight-bold">Number</strong>
-                                    <div class="mt-1 mb-0">
-                                        <p>{{patent.number}}</p>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <strong class="font-weight-bold">Type</strong>
-                                    <div class="mt-1 mb-0">
-                                        <p>{{patent.type}}</p>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <strong class="font-weight-bold">Date Filed</strong>
-                                    <div class="mt-1 mb-0">
-                                        <p>{{patent.filled}}</p>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <strong class="font-weight-bold">Date Published</strong>
-                                    <div class="mt-1 mb-0">
-                                        <p>{{patent.date}}</p>
-                                    </div>
+                            <div class="w-100 row align-items-center" >
+                                <div class="col text-right">
+                                    <button mat-icon-button class="text-super-blue" (click)="nextPatent()" [disabled]="startup.patents.length <= 1">
+                                        next
+                                        <mat-icon>navigate_next</mat-icon>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
