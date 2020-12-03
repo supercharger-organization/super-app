@@ -1,4 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+
+$off-white : rgb(248, 250, 253);
+$off-white-shadow : rgb(244, 248, 251);
+$blue-primary: rgb(64, 155, 247);
+$blue-secondary: rgb(236, 247, 254);
+$blue-tertiary:rgb(101, 185, 250);
+$gray-primary: rgb(68, 78, 95);
+$gray-secondary: rgb(157, 165, 181);
+$gray-tertiary: rgb(108, 117, 125);
 
 html, body { height: 100%; }
 
@@ -9,12 +17,22 @@ html, body { height: 100%; }
 
 body { 
     margin: 0; 
-    background-color: white !important;
+    background-color: $off-white !important;
     font-family: poppins !important;
 }
 
 .poppins{
     font-family: poppins !important;
+}
+
+mat-drawer-container{
+    background-color: $off-white !important;
+}
+
+mat-drawer{
+    background-color: $off-white !important;
+    width: 275px;
+    padding: 20px;
 }
 
 .bottom {
@@ -36,10 +54,6 @@ h1, h2, h3, h4, h5 {
     font-family: 'Material Icons' !important;
 }
 
-.mat-drawer-content {
-    background-color: white !important;
-}
-
 .router-link-active {
     color: black !important;
 }
@@ -53,22 +67,11 @@ h1, h2, h3, h4, h5 {
     padding: 10px;
     font-size: 105%;
     margin: 2px;
-    border-radius: 13px;
 }
 
-.super-list-dialogue{
-    max-height: 300px;
-    outline: 2px solid rgb(236, 240, 243) !important;
-    border-radius: 13px !important;
-}
-
-.super-text-area-box{
-    width: 400px !important;
-    border: 2px solid rgb(236, 240, 243) !important;
-    font-size: medium !important;
-    border-radius: 4px;
-    /*padding: 7px;
-    padding-top: 30px !important;*/
+.super-searchbar{
+    // background-color: white;
+    // border-radius: 15px;
 }
 
 .super-form-progress-bar{
@@ -118,15 +121,19 @@ h1, h2, h3, h4, h5 {
 }
 
 .super-button {
-    align-items: center !important;
-    background: #EFF3F6 !important;
+    align-items: center;
+    background: #EFF3F6;
     padding: 9px !important;
     border-radius: 15px !important;
     min-height: 63px;
     min-width: 172px !important;
     font-size: 90% !important;
-    font-weight: bolder !important;
-    font-family: poppins !important;
+    font-weight: bolder;
+    font-family: poppins;
+
+    .material-icons{
+        font-size: 135% !important;
+    }
 }
 
 .super-button.new {
@@ -148,17 +155,16 @@ h1, h2, h3, h4, h5 {
     border-radius: 7.5px !important;
     min-height: 33px;
     min-width: 90px !important;
-    font-weight: bolder !important;
-}
-
-.super-button .material-icons{
-    font-size: 135% !important;
-    //margin: 20px !important;
 }
 
 .super-button.clear{
     min-width: 0px !important;
     background: transparent !important;
+    color: $blue-primary !important;
+
+    .material-icons{
+        color: $gray-secondary !important;
+    }
 }
 
 .super-button.white{
@@ -212,10 +218,10 @@ h1, h2, h3, h4, h5 {
     color: white !important;
 }
 
-.super-list-header{
-    background-color: rgb(234, 240, 244);
+.super-button.download{
+    color: $blue-primary;
+    background-color: $blue-secondary;
 }
-
 
 .super-investor-card {
     position: relative;
@@ -241,6 +247,8 @@ h1, h2, h3, h4, h5 {
 .super-startup-img-container{
     width: 67.5px;
     height: 67.5px;
+    display: flex;
+    align-items: center;
 }
 
 .super-startup-img-sm{
@@ -274,43 +282,56 @@ h1, h2, h3, h4, h5 {
     max-width: 29.7px;
 }
 
-.super-startup-banner{
-    max-width: 100%;
-    border-radius: 15px;
-}
-
-.super-list-head-img{
-    width: 100% !important;
-    height: 175px;
-
-    border-radius: 15px !important;
-}
-
-.super-list-head-img.default{
-    background-color: #EFF3F6;
-}
-
-.super-list-head-labels{
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
-    top: 90px !important;
-}
-
-mat-drawer{
-    width: 275px;
-    padding: 20px;
-}
-
 .super-label-xl{
     font-size: 270% !important;
+    color: $gray-primary;
+
 }
 
 .super-list{
     border-radius: 15px;
+    border: none !important;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px $off-white-shadow;
+    background-color: white !important;
+
+    .header {
+        height: 175px;
+
+        img{
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+            filter: brightness(40%) !important;
+        }
+
+        .title{
+            position: absolute;
+            top: 33%;
+            font-family: poppins;
+            width: 100%;
+            color: white !important;
+        }
+    }
+
+    .body{
+        padding: 30px !important;
+
+        h1, h2, h3, h4, h5 {
+            color: $gray-primary;
+        }
+
+        p{
+            font-size: 92.5% !important;
+            color: $gray-tertiary;
+        }
+    }
+
+    mat-chip{
+        color: white !important;
+        background-color: $blue-tertiary !important;
+    }
 }
 
 .super-list.card{
@@ -373,11 +394,43 @@ mat-list-item strong {
     border: solid 1.25px rgb(188, 204, 215) !important;
 }
 
+.super-container{
+    .super-card{
+        margin-bottom: 2em;
+    }
+}
+
 .super-card{
     border-radius: 15px;
     font-size: 92.5%;
-    padding: 13.5px;
-    border: solid 1.25px rgb(188, 204, 215) !important;
+    padding: 30px !important;
+    border: none !important;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px $off-white-shadow;
+    background-color: white !important;
+
+    h1, h2, h3, h4, h5 {
+        font-weight: bold !important;
+        color: $gray-primary !important;
+    }
+    h1{
+        font-size: 250% !important;
+    }
+    h2{
+        font-size: 175% !important;
+    }
+    p{
+        color: $gray-tertiary;
+    }
+    .img-container{
+        max-width: 100%;
+        border-radius: 15px;
+        max-height: 453px;
+        overflow: hidden;        
+    }
+    mat-chip{
+        color: white !important;
+        background-color: $blue-tertiary !important;
+    }
 }
 
 .super-card.news{
@@ -386,7 +439,7 @@ mat-list-item strong {
 }
 
 .super-card.feature{
-    padding:.5rem !important;
+    padding:1rem !important;
 }
 
 .super-card-patent{
@@ -403,20 +456,6 @@ mat-list-item strong {
     border: solid 1.25px rgb(188, 204, 215) !important;
     padding-left: 18px !important;
     padding-right: 9px !important;
-}
-
-.super-column-header{
-    margin-bottom: 9px;
-}
-
-.super-column-header .card-body {
-    padding: 9px;
-}
-
-.super-column{
-    width: 225px;
-    height: 100%;
-    margin-right: 9px;
 }
 
 /* Animate items as they're being sorted. */
@@ -495,10 +534,6 @@ mat-chip {
     background-color: #ABBFCE !important;
     color: white !important;
     font-size: 90% !important;
-}
-
-p {
-    color: rgb(108, 117, 125) !important;
 }
 
 mat-dialog-container { 

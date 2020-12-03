@@ -78,11 +78,10 @@
   
     <!-- Card -->
     <div class="col-sm-6 col-lg-4 col-xl-4 mb-4" *ngFor="let card of cards" name="StartupCard">
-      <div class="card super-card z-depth-1 h-100" >
-        <div class="card-header pb-0 border-0 bg-transparent d-flex align-items-center">
+      <div class="super-card z-depth-1 h-100" >
+        <div class="pb-0 d-flex align-items-center">
           <div class="flex-grow-1 text-right">
             <button mat-button class="super-button new"> NEW </button>
-            
           </div>
           <div class="text-right">
 
@@ -94,7 +93,7 @@
           
             <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
               <div class="super-popover-content">
-                <mat-list class="super-list scale-to-fit">
+                <mat-list class="scale-to-fit">
                   <mat-list-item class="align-items-center mt-0 pointer">
                     <!-- TODO: clean up classes a bit -->
                     <span class="material-icons super-text-dark">
@@ -115,13 +114,13 @@
           </div>
         </div>
     
-        <div class="card-body pt-0">
+        <div>
     
           <div class="super-startup-img-container">
             <img class="super-startup-img" [src]="card.startupImgUrl" alt="Card image cap">
           </div>
         
-          <h1 class="mt-4 font-weight-bold pointer" [routerLink]="['/startup/' + card.startupId]" routerLinkActive="router-link-active" >{{card.name}}</h1>
+          <h2 class="mt-4" [routerLink]="['/startup/' + card.startupId]" routerLinkActive="router-link-active" >{{card.name}}</h2>
 
           <div class="mt-4">
             <p class="text-muted">{{card.description}}</p>
@@ -131,10 +130,8 @@
           <div class="mt-4">
             <h5 class="font-weight-bold">Industry Score: {{card.industryScore}}%</h5>
           </div>
-
-
           <!-- tags -->
-          <div class="mt-5">
+          <div class="mt-4">
             <mat-chip-list  aria-label="tags">
               <div *ngFor="let tag of card.industryTags; let i = index">
                 <mat-chip *ngIf="i < 3" class="super-chip">{{tag}}</mat-chip>

@@ -1,9 +1,6 @@
 
 
 <section class="row align-items-center">
-    <div class="col-4">
-        <h1 class="font-weight-bold super-label-xl">{{startup?.name}}</h1>
-    </div>
 
     <div class="col text-right">
 
@@ -23,290 +20,254 @@
     </div>
 </section>
 
-<div class="row mt-4" *ngIf="startup">
+<div class="mt-4 row super-container" *ngIf="startup">
     
-    <!-- main -->
-    <div class="col">
-
-        <div>
-            <p class="m-0 p-0">{{startup.description}}</p>
-        </div>
-
-        <div class="mt-4" *ngIf="startup.industryTags && startup.industryTags.length > 1">
-            <!-- tags -->
-            <mat-chip-list aria-label="tags">
-                <mat-chip *ngFor="let tag of startup.industryTags" class="super-chip">{{tag}}</mat-chip>
-            </mat-chip-list>
+    <!-- Startup Main-->
+    <div class="col-8">
+        <div class="super-card">
+                    
+            <h1>{{startup?.name}}</h1>
             
-        </div>
+            <p class="mt-3">{{startup.description}}</p>
 
-        
-        <!-- Banner img... video evenutally? -->
-        <div class="mt-4" *ngIf="startup.videoUrl && startup.videoUrl != ''">
-            <img class="super-startup-banner" [src]="startup.videoUrl" alt="Card image cap">
-        </div>
-        
-        <!-- file downloads -->
-        <div class="mt-4 d-flex">
-            <!-- TODO: download all pitch deck imgs-->
-            <div *ngIf="pitchDeckImgUrl">
-                <a target="_blank" [href]="pitchDeckImgUrl" download>
-                    <button mat-button class="align-items-center ml-1 super-button">
-                        <span class="material-icons m-0"> download </span>
-                        pitch deck
-                    </button>
-                </a>
-            </div>
-            <div *ngIf="startup.pagerImgUrl && startup.pagerImgUrl != ''">
-                <a target="_blank" [href]="startup.pagerImgUrl" download>
-                    <button mat-button class="align-items-center ml-1 super-button">
-                        <span class="material-icons m-0"> download </span>
-                        one-pager
-                    </button>
-                </a>
+            <!-- Banner img... video evenutally? -->
+            <div class="mt-3 img-container" *ngIf="startup.videoUrl && startup.videoUrl != ''" >
+                <img style="max-width:100%" [src]="startup.videoUrl" alt="Card image cap">
             </div>
 
-        </div>
+            <!-- tags -->
+            <div class="mt-3" *ngIf="startup.industryTags && startup.industryTags.length > 1">
+                <mat-chip-list aria-label="tags">
+                    <mat-chip *ngFor="let tag of startup.industryTags" class="super-chip">{{tag}}</mat-chip>
+                </mat-chip-list>
+            </div>
 
-        <!-- founder info -->
-        <div class="mt-4" *ngIf="startup.founderBackground && startup.founderBackground != ''">
-            <h1 class="font-weight-bold">Founder Background</h1>
-            <p class="mt-2">{{startup.founderBackground}}</p>
-        </div>
-
-        <!-- diligence -->
-        <div class="mt-4" *ngIf="startup.initialDiligence && startup.initialDiligence != ''">
-            <h1 class="font-weight-bold">Initial Diligence</h1>
-            <p class="mt-2">{{startup.initialDiligence}}</p>
-        </div>
-
-        <!-- TODO: customers logos -->
-        <div class="mt-4" *ngIf="startup.customerImgUrls && startup.customerImgUrls.length > 0">
-            <h1 class="font-weight-bold">Customers</h1>
-            <div class="d-flex mt-2">
-                <div class="p-2" *ngFor="let customerImg of startup.customerImgUrls">
-                    <img class="super-startup-img-md" [src]="customerImg" alt="Card image cap">
+            <!-- file downloads -->
+            <div class="mt-3 d-flex">
+                <div *ngIf="pitchDeckImgUrl">
+                    <a target="_blank" [href]="pitchDeckImgUrl" download>
+                        <button mat-button class="align-items-center super-button download">
+                            <span class="material-icons m-0"> download </span>
+                            pitch deck
+                        </button>
+                    </a>
                 </div>
-            </div>
-        </div>
-
-        <!-- Pricing -->
-        <div class="mt-4" *ngIf="startup.pricing && startup.pricing != ''">
-            <h1 class="font-weight-bold">Unit Pricing</h1>
-            <p class="mt-2">{{startup.pricing}}</p>
-        </div>
-
-        <!-- Key Product Features... small cards in rows -->
-        <div class="row mt-4" *ngIf="startup.features && startup.features.length > 0">
-            <div class="col-12">
-                <h1 class="font-weight-bold">Key Product Features</h1>
-            </div>
-            <div class="col-6 pr-0 mb-1 mt-2" *ngFor="let feature of startup.features">
-                <div class="card super-card feature h-100">
-                    <strong class="font-weight-bold">{{feature.title}}</strong>
-                    <div class="mt-1 mb-0">
-                        <p>{{feature.description}}</p>
-                    </div>
+                <div *ngIf="startup.pagerImgUrl && startup.pagerImgUrl != ''">
+                    <a target="_blank" [href]="startup.pagerImgUrl" download>
+                        <button mat-button class="align-items-center ml-2 super-button download">
+                            <span class="material-icons m-0"> download </span>
+                            one-pager
+                        </button>
+                    </a>
                 </div>
+
             </div>
         </div>
-
-        <!-- Company History -->
-        <div class=" mt-4" *ngIf="startup.historyImgUrl && startup.historyImgUrl != ''">
-            <h1 class="font-weight-bold">Company History</h1>
-            <div class="mt-2">
-                <img class="super-startup-banner" [src]="startup.historyImgUrl" alt="Card image cap">
-            </div>
-        </div>
-
-        <!-- Patents -->
-        <div class="row mt-4" *ngIf="startup.patents && startup.patents.length > 0">
-            <div class="col-12">
-                <h1 class="font-weight-bold">Patents</h1>
-            </div>
-            <!-- TODO: create class for "patent card" -->
-            <div class="col-12 pr-0 mb-1 mt-2" *ngFor="let patent of startup.patents">
-                <div class="card super-card patent">
-                    <strong class="font-weight-bold">Title</strong>
-                    <div class="mt-1 mb-0">
-                        <p>{{patent.title}}</p>
-                    </div>
-                    <strong class="font-weight-bold">Abstract</strong>
-                    <div class="mt-1 mb-0">
-                        <p>{{patent.abstract}}</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <strong class="font-weight-bold">Number</strong>
-                            <div class="mt-1 mb-0">
-                                <p>{{patent.number}}</p>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <strong class="font-weight-bold">Type</strong>
-                            <div class="mt-1 mb-0">
-                                <p>{{patent.type}}</p>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <strong class="font-weight-bold">Date Filed</strong>
-                            <div class="mt-1 mb-0">
-                                <p>{{patent.filled}}</p>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <strong class="font-weight-bold">Date Published</strong>
-                            <div class="mt-1 mb-0">
-                                <p>{{patent.date}}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-        <!-- Patents... card with startup data:
-            Title (Patent)
-            Number (Patent)
-            Abstract
-            Type
-            Filed (date)
-            date of patent
-        -->
-
     </div>
 
-    <!-- card -->
-    <div class="col-3" style="min-width: 350px;">
-        <div class="card super-card p-4" >
-            <div>
-
-                <div class="row">
-                    <div class="col">
-                        <img class="super-startup-img-md" [src]="startup.startupImgUrl" alt="Card image cap">
-                    </div>
-                    <div class="col text-right">
-                        <button mat-button class="ml-1 super-button new">NEW</button>
-                    </div>
+    <!-- Startup Detail Card -->
+    <div class="col-4" >
+        <div class="super-card">
+            <div class="row">
+                <div class="col">
+                    <img class="super-startup-img-md" [src]="startup.startupImgUrl" alt="Card image cap">
                 </div>
-
-                <mat-list role="list" class="super-list p-0 mt-4">
-                    
-                    <mat-list-item role="listitem" *ngIf="startup.founders && startup.founders.length > 0">
-                        <div class="row">
-                            <strong class="col-12">Founder(s):</strong>
-                            <div class="col">
-                                <span *ngFor="let founder of startup.founders; let i = index">{{ i+1 == startup.founders.length ? founder: founder + ", "}} </span>
-                            </div>
-                        </div>
-                    </mat-list-item>
-
-                    <mat-divider class="my-2"></mat-divider>
-
-                    <mat-list-item role="listitem">
-                        <div class="row">
-                            <strong class="col-12">Location:</strong>
-                            <div class="col-auto">
-                                <span>{{startup.location}}</span>
-                            </div>
-                        </div>
-                    </mat-list-item>
-
-                    <mat-list-item role="listitem">
-                        <div class="row">
-                            <strong class="col-12">Website:</strong>
-                            <div class="col-auto">
-                                <a [href]="startup.websiteURL">{{startup.websiteURL}}</a>
-                            </div>
-                        </div>
-                    </mat-list-item>
-
-
-                    <mat-list-item role="listitem">
-                        <div class="row">
-                            <strong class="col-12">Employees:</strong>
-                            <div class="col-auto">
-                                <span>{{startup.employeeCount}}</span>
-                            </div>
-                        </div>
-                    </mat-list-item>
-
-                    <mat-list-item role="listitem">
-                        <div class="row">
-                            <strong class="col-12">Total Funding:</strong>
-                            <div class="col-auto">
-                                <span>{{startup.funding}}</span>
-                            </div>
-                        </div>
-                    </mat-list-item>
-
-                    <mat-list-item role="listitem">
-                        <div class="row">
-                            <strong class="col-12">Last Funding Round:</strong>
-                            <div class="col-auto">
-                                <span>{{startup.lastFunding}}</span>
-                            </div>
-                        </div>
-                    </mat-list-item>
-
-                    <mat-list-item role="listitem">
-                        <div class="row">
-                            <strong class="col-12">Year Founded:</strong>
-                            <div class="col-auto">
-                                <span>{{startup.yearFounded}}</span>
-                            </div>
-                        </div>
-                    </mat-list-item>
-
-                    <mat-list-item role="listitem">
-                        <div class="row">
-                            <strong class="col-12">Notable Investors:</strong>
-                            <div class="col-auto">
-                                <span *ngFor="let investor of startup.notableInvestors; let i = index">{{ i+1 == startup.notableInvestors.length ? investor: investor + ", "}} </span>
-                            </div>
-                        </div>
-                    </mat-list-item>
-                    <!-- <mat-list-item role="listitem">
-                        <div class="row">
-                            <strong class="col-12 mb-2">Tech Stack:</strong>
-                            <p class="col-12" *ngFor="let tStack of startup.techStackTags; let i = index">{{ i+1 == startup.techStackTags.length ? tStack : tStack}} </p>
-                        </div>
-                    </mat-list-item>
-                    <mat-list-item class="mt-1 pt-" role="listitem">
-                        <strong>Oracle Application Integration:</strong>
-                        <span>{{startup.oracleIntegration ? "YES" : "NO"}}</span>
-                    </mat-list-item>
-                    <mat-list-item role="listitem">
-                        <div>
-                            <strong>SAP Application Integration:</strong>
-                            <span>{{startup.sapAppIntegration ? "YES" : "NO"}}</span>
-                        </div>
-
-                    </mat-list-item>
-                    <mat-list-item role="listitem">
-                        <div>
-                            <strong>CAC:</strong>
-                            <span>{{startup.sapAppIntegration ? "YES" : "NO"}}</span>
-                        </div>
-                    </mat-list-item>
-                    <mat-list-item role="listitem">
-                        <strong>Monthly Burn Rate:</strong>
-                        <span>{{startup.monthlyBurnRate}}</span>
-                    </mat-list-item>
-                    <mat-list-item role="listitem">
-                        <strong>Monthly Revenue:</strong>
-                        <span>{{startup.monthlyRevenue}}</span>
-                    </mat-list-item> -->
-                </mat-list>
+                <div class="col text-right">
+                    <button mat-button class="ml-1 super-button new">NEW</button>
+                </div>
             </div>
+
+            <mat-list role="list" class="super-list border-none p-0 mt-4" style="box-shadow: none;">
+                
+                <mat-list-item role="listitem" *ngIf="startup.founders && startup.founders.length > 0">
+                    <div class="row">
+                        <strong class="col-12">Founder(s):</strong>
+                        <div class="col">
+                            <span *ngFor="let founder of startup.founders; let i = index">{{ i+1 == startup.founders.length ? founder: founder + ", "}} </span>
+                        </div>
+                    </div>
+                </mat-list-item>
+
+                <mat-divider class="my-2"></mat-divider>
+
+                <mat-list-item role="listitem">
+                    <div class="row">
+                        <strong class="col-12">Location:</strong>
+                        <div class="col-auto">
+                            <span>{{startup.location}}</span>
+                        </div>
+                    </div>
+                </mat-list-item>
+
+                <mat-list-item role="listitem">
+                    <div class="row">
+                        <strong class="col-12">Website:</strong>
+                        <div class="col-auto">
+                            <a [href]="startup.websiteURL">{{startup.websiteURL}}</a>
+                        </div>
+                    </div>
+                </mat-list-item>
+
+                <mat-list-item role="listitem">
+                    <div class="row">
+                        <strong class="col-12">Employees:</strong>
+                        <div class="col-auto">
+                            <span>{{startup.employeeCount}}</span>
+                        </div>
+                    </div>
+                </mat-list-item>
+
+                <mat-list-item role="listitem">
+                    <div class="row">
+                        <strong class="col-12">Total Funding:</strong>
+                        <div class="col-auto">
+                            <span>{{startup.funding}}</span>
+                        </div>
+                    </div>
+                </mat-list-item>
+
+                <mat-list-item role="listitem">
+                    <div class="row">
+                        <strong class="col-12">Last Funding Round:</strong>
+                        <div class="col-auto">
+                            <span>{{startup.lastFunding}}</span>
+                        </div>
+                    </div>
+                </mat-list-item>
+
+                <mat-list-item role="listitem">
+                    <div class="row">
+                        <strong class="col-12">Year Founded:</strong>
+                        <div class="col-auto">
+                            <span>{{startup.yearFounded}}</span>
+                        </div>
+                    </div>
+                </mat-list-item>
+
+                <mat-list-item role="listitem">
+                    <div class="row">
+                        <strong class="col-12">Notable Investors:</strong>
+                        <div class="col-auto">
+                            <span *ngFor="let investor of startup.notableInvestors; let i = index">{{ i+1 == startup.notableInvestors.length ? investor: investor + ", "}} </span>
+                        </div>
+                    </div>
+                </mat-list-item>
+            </mat-list>
+
             <div class="w-100 text-center mt-5">
                 <button mat-flat-button class="super-button blue" (click)="requestUpdate()">
                     Request Intro
                 </button>
             </div>
         </div>
-
     </div>
+
+    <!-- Pricing -->
+    <div class="col-8" *ngIf="startup.pricing && startup.pricing != ''">
+        <div class="super-card">
+            <h1>Unit Pricing</h1>
+            <p class="mt-3">{{startup.pricing}}</p>
+        </div>
+    </div>
+
+    <!-- founder info -->
+    <div class="col-8" *ngIf="startup.founderBackground && startup.founderBackground != ''">
+        <div class="super-card">
+            <h1>Founder Background</h1>
+            <p class="mt-3">{{startup.founderBackground}}</p>
+        </div>
+    </div>
+
+    <!-- diligence -->
+    <div class="col-8" *ngIf="startup.initialDiligence && startup.initialDiligence != ''">
+        <div class="super-card">
+            <h1>Initial Diligence</h1>
+            <p class="mt-3">{{startup.initialDiligence}}</p>
+        </div>
+    </div>
+
+    <!-- TODO: customers logos -->
+    <div class="col-12" *ngIf="startup.customerImgUrls && startup.customerImgUrls.length > 0">
+        <div class="super-card">
+            <h1>Customers</h1>
+            <div class="mt-3 d-flex align-items-center">
+                <div style="width: 20%;" *ngFor="let customerImg of startup.customerImgUrls">
+                    <img class="super-startup-img-md" [src]="customerImg" alt="Card image cap">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Product Features... small cards in rows -->
+    <div class="col-12" *ngIf="startup.features && startup.features.length > 0">
+        <div class="row">
+            <div class="col-4 mb-3" *ngFor="let feature of startup.features">
+                <div class="super-card feature h-100">
+                    <strong class="font-weight-bold">{{feature.title}}</strong>
+                    <div class="mt-3 mb-0">
+                        <p>{{feature.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Company History -->
+    <div class="col-8 mt-3" *ngIf="startup.historyImgUrl && startup.historyImgUrl != ''">
+        <div class="super-card">
+            <h1 class="font-weight-bold">Company History</h1>
+            <div class="mt-2 img-container">
+                <img style="width: 100%;" [src]="startup.historyImgUrl" alt="Card image cap">
+            </div>
+        </div>
+    </div>
+
+    <!-- Patents -->
+    <div class="col-8" *ngIf="startup.patents && startup.patents.length > 0">
+        <div class="super-card">
+            <h1 class="font-weight-bold">Patents</h1>
+            <div class="row mt-3">
+                <!-- TODO: create class for "patent card" -->
+                <div class="col-12 pr-0" *ngFor="let patent of startup.patents">
+                    <div class="patent">
+                        <strong class="font-weight-bold">Title</strong>
+                        <div class="mt-1 mb-0">
+                            <p>{{patent.title}}</p>
+                        </div>
+                        <strong class="font-weight-bold">Abstract</strong>
+                        <div class="mt-1 mb-0">
+                            <p>{{patent.abstract}}</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <strong class="font-weight-bold">Number</strong>
+                                <div class="mt-1 mb-0">
+                                    <p>{{patent.number}}</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <strong class="font-weight-bold">Type</strong>
+                                <div class="mt-1 mb-0">
+                                    <p>{{patent.type}}</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <strong class="font-weight-bold">Date Filed</strong>
+                                <div class="mt-1 mb-0">
+                                    <p>{{patent.filled}}</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <strong class="font-weight-bold">Date Published</strong>
+                                <div class="mt-1 mb-0">
+                                    <p>{{patent.date}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
