@@ -27,7 +27,7 @@
         <div class="col-8">
 
             <!-- Startup Main-->
-            <div class="super-card" style="margin-bottom: 2em;">
+            <div class="super-card" >
                         
                 <h1>{{startup?.name}}</h1>
                 
@@ -68,8 +68,8 @@
             </div>
 
             <!-- Pricing -->
-            <div class="super-card" *ngIf="startup.pricing && startup.pricing != ''">
-                <h1>Unit Pricing</h1>
+            <div class="super-card" style="margin-top: 2em;" *ngIf="startup.pricing && startup.pricing != ''">
+                <h2>Unit Pricing</h2>
                 <p class="mt-3">{{startup.pricing}}</p>
             </div>
 
@@ -82,7 +82,7 @@
                 
                 <div class="row">
                     <div class="col">
-                        <img class="super-startup-img-md" [src]="startup.startupImgUrl" alt="Card image cap">
+                        <img class="super-startup-img-lg" [src]="startup.startupImgUrl" alt="Card image cap">
                     </div>
                     <div class="col text-right">
                         <button mat-button class="ml-1 super-button new">NEW</button>
@@ -181,29 +181,31 @@
 
     </div>
 
-    <div class="row super-row">
+    <div class="row super-row" *ngIf="startup.founderBackground != '' || startup.initialDiligence != ''">
+
         <!-- founder info -->
         <div class="col-8" *ngIf="startup.founderBackground && startup.founderBackground != ''">
             <div class="super-card h-100">
-                <h1>Founder Background</h1>
+                <h2>Founder Background</h2>
                 <p class="mt-3">{{startup.founderBackground}}</p>
             </div>
         </div>
 
         <!-- diligence -->
-        <div class="col-4"  *ngIf="startup.initialDiligence && startup.initialDiligence != ''">
-            <div class="super-card">
-                <h1>Initial Diligence</h1>
+        <div class="col"  *ngIf="startup.initialDiligence && startup.initialDiligence != ''">
+            <div class="super-card h-100">
+                <h2>Initial Diligence</h2>
                 <p class="mt-3">{{startup.initialDiligence}}</p>
             </div>
         </div>
+
     </div>
 
-    <div class="row super-row">
+    <div class="row super-row" *ngIf="startup.historyImgUrl != '' || startup.patents.length > 0">
         <!-- Company History -->
-        <div class="col-8" *ngIf="startup.historyImgUrl && startup.historyImgUrl != ''">
-            <div class="super-card">
-                <h1 class="font-weight-bold">Company History</h1>
+        <div class="col" *ngIf="startup.historyImgUrl && startup.historyImgUrl != ''">
+            <div class="super-card h-100">
+                <h2 class="font-weight-bold">Company History</h2>
                 <div class="mt-2 img-container">
                     <img style="width: 100%;" [src]="startup.historyImgUrl" alt="Card image cap">
                 </div>
@@ -213,8 +215,8 @@
         <!-- Patents -->
         <div class="col-4" *ngIf="startup.patents && startup.patents.length > 0">
             <div *ngFor="let patent of startup.patents; let i = index">
-                <div class="super-card"  *ngIf="patentIndex == i">
-                    <h1 class="font-weight-bold">Patents</h1>
+                <div class="super-card h-100"  *ngIf="patentIndex == i">
+                    <h2 class="font-weight-bold">Patents</h2>
                     <div class="row mt-3">
                         <!-- TODO: create class for "patent card" -->
                         <div class="col-12 pr-0" >
@@ -270,13 +272,13 @@
         </div>
     </div>
 
-    <div class="w-100 super-row" style="margin-bottom: 2em;">
+    <div class="w-100 super-row" style="margin-bottom: 2em;" *ngIf="startup.customerImgUrls && startup.customerImgUrls.length > 0">
         <!-- Cstomers Logos -->
-        <div class="w-100" *ngIf="startup.customerImgUrls && startup.customerImgUrls.length > 0">
+        <div class="w-100" >
             <div class="super-card">
-                <h1>Customers</h1>
+                <h2>Customers</h2>
                 <div class="mt-3 d-flex align-items-center">
-                    <div style="width: 20%;" *ngFor="let customerImg of startup.customerImgUrls">
+                    <div style="width: 20%;" class="text-center" *ngFor="let customerImg of startup.customerImgUrls">
                         <img class="super-startup-img-md" [src]="customerImg" alt="Card image cap">
                     </div>
                 </div>

@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  host: "http://localhost"
+  //host: "http://localhost"
+  host: "http://api.supercharge.work"
+
 };
 
 /*

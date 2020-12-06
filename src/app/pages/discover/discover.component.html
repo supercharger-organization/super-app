@@ -117,7 +117,7 @@
         <div>
     
           <div class="super-startup-img-container">
-            <img class="super-startup-img" [src]="card.startupImgUrl" alt="Card image cap">
+            <img class="super-startup-img-md" [src]="card.startupImgUrl" alt="Card image cap">
           </div>
         
           <h2 class="mt-4" [routerLink]="['/startup/' + card.startupId]" routerLinkActive="router-link-active" >{{card.name}}</h2>
@@ -132,7 +132,7 @@
           <div class="mt-4">
             <mat-chip-list aria-label="tags">
               <div *ngFor="let tag of card.industryTags; let i = index">
-                <mat-chip *ngIf="i < 2" class="super-chip">{{tag}}</mat-chip>
+                <mat-chip *ngIf="i <= 0" class="super-chip">{{tag}}</mat-chip>
                   <!-- <a *ngIf="i == 3" class="text-muted" [routerLink]="['/startup/' + card.startupId]" >
                     <span class="material-icons">
                       more_horiz
