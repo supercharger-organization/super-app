@@ -43,6 +43,34 @@ export class StartupDetailComponent implements OnInit {
 
   }
 
+  //HACK
+  nextStartup(){
+    this.startupService.get().subscribe(startups=>{
+      var index = startups.findIndex(startup => startup._id == this.startup._id);
+      if (index >= startups.length-1){
+        index = 0
+      }
+      else {
+        index = index +1;
+      }
+      this.startup = startups[index];
+    })
+  }
+
+  //HACK
+  previousStartup(){
+    this.startupService.get().subscribe(startups=>{
+      var index = startups.findIndex(startup => startup._id == this.startup._id);
+      if (index == 0){
+        index = startups.length-1;
+      }
+      else {
+        index = index -1;
+      }
+      this.startup = startups[index];
+    })
+  }
+
   requestUpdate(){
     var user = JSON.parse(localStorage.getItem("user"));
     var body = user.email + " requested an intro w/ " + this.startup.name;

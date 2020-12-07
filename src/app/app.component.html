@@ -38,25 +38,28 @@
 
         
         <!-- greeting -->
-        <div class="d-flex w-100 justify-content-center mt-5" *ngIf="user">
-            <div class="d-flex align-items-center" (click)="navigateToAdminPage()">
-                <div *ngIf="user.photoURL">
-                    <img class="super-startup-img-sm" [src]="user.photoURL" alt="Card image cap">
+        <div class="w-100 position-absolute ml-auto" style="bottom: 3rem; left: 0px;">
+            <div class="d-flex w-100 justify-content-center" *ngIf="user">
+                <div class="d-flex align-items-center" (click)="navigateToAdminPage()">
+                    <div *ngIf="user.photoURL">
+                        <img class="super-startup-img-sm" [src]="user.photoURL" alt="Card image cap">
+                    </div>
+                    <div class="ml-1">
+                        <strong>Welcome<br> {{user.displayName ? user.displayName : ""}}</strong>
+                    </div>
                 </div>
-                <div class="ml-1">
-                    <strong>Welcome<br> {{user.displayName ? user.displayName : ""}}</strong>
+            </div>
+            
+            <!-- Logout -->
+            <div class="d-flex w-100 justify-content-center mt-3">
+                <div class="d-flex align-items-center">
+                    <button mat-flat-button class="super-button sm danger" (click)="authService.SignOut()">
+                        Log Out
+                    </button>
                 </div>
             </div>
         </div>
-        
-        <!-- Logout -->
-        <div style="margin-top: 10%;" class="d-flex w-100 justify-content-center">
-            <div class="d-flex align-items-center">
-                <button mat-flat-button class="super-button sm danger" (click)="authService.SignOut()">
-                    Log Out
-                </button>
-            </div>
-        </div>
+
 
     </mat-drawer>
     
