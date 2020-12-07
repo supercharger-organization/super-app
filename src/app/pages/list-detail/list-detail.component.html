@@ -150,7 +150,7 @@
                       <h2 class="font-weight-bold pointer mb-0" [routerLink]="['/startup/' + card.startupId]" routerLinkActive="router-link-active">{{card.name}}</h2>
                     </div>
                   </div>
-                  <div class="col-2 text-right">
+                  <div class="col-auto text-right">
                     <button mat-icon-button color="primary"
                       [mdePopoverTriggerFor]="appPopover"
                       mdePopoverTriggerOn="click" #popoverTrigger="mdePopoverTrigger">
@@ -184,7 +184,9 @@
                 <!-- tags -->
                 <div class="mt-1">
                   <mat-chip-list  aria-label="tags">
-                    <mat-chip *ngFor="let tag of card.industryTags" class="super-chip">{{tag}}</mat-chip>
+                    <div  *ngFor="let tag of card.industryTags; let i = index">
+                      <mat-chip *ngIf="i <= 2" class="super-chip">{{tag}}</mat-chip>
+                    </div>
                   </mat-chip-list>
                 </div>
               </div>
