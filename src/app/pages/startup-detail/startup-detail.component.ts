@@ -25,6 +25,7 @@ export class StartupDetailComponent implements OnInit {
 
   constructor(
     private startupService: StartupService, 
+    private router: Router,
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private mailer: MailerService) {
@@ -43,8 +44,8 @@ export class StartupDetailComponent implements OnInit {
 
   }
 
-  //HACK
-  nextStartup(){
+//TODO: there is a better way to do this
+nextStartup(){
     this.startupService.get().subscribe(startups=>{
       var index = startups.findIndex(startup => startup._id == this.startup._id);
       if (index >= startups.length-1){
@@ -53,11 +54,12 @@ export class StartupDetailComponent implements OnInit {
       else {
         index = index +1;
       }
-      this.startup = startups[index];
+      let startup = startups[index];
+      this.router.navigate(["startup/"+startup._id])
     })
   }
 
-  //HACK
+  //TODO: there is a better way to do this
   previousStartup(){
     this.startupService.get().subscribe(startups=>{
       var index = startups.findIndex(startup => startup._id == this.startup._id);
@@ -67,7 +69,8 @@ export class StartupDetailComponent implements OnInit {
       else {
         index = index -1;
       }
-      this.startup = startups[index];
+      let startup = startups[index];
+      this.router.navigate(["startup/"+startup._id])
     })
   }
 

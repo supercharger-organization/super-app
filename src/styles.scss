@@ -426,9 +426,11 @@ mat-list-item strong {
     h2{
         font-size: 22px !important;
     }
+    a, span, strong, p{
+        font-size: 14px;
+    }
     p{
         color: $gray-tertiary;
-        font-size: 14px;
     }
     .img-container{
         max-width: 100%;

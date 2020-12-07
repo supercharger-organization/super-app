@@ -132,58 +132,63 @@
 
       <div class="mt-5">
 
-        <div class="card super-card-list z-depth-1 mt-3" *ngFor="let card of cards">
+        <div class="card super-card z-depth-1 mt-3" *ngFor="let card of cards">
   
           <div class="card-body row align-items-center">
     
-            <div class="col-2 col-sm-2 col-md-2 col-lg-1">
-              <img class="super-startup-img " [src]="card.startupImgUrl" alt="Card image cap">
+            <div class="col-auto">
+              <div>
+                <img class="super-startup-img-md" [src]="card.startupImgUrl" alt="Card image cap">
+              </div>
             </div>
+
             <div class="col">
-    
-              <div class="row align-items-center">
-                <div class="col d-flex align-items-center">
-                  <div >
-                    <h2 class="font-weight-bold pointer mb-0" [routerLink]="['/startup/' + card.startupId]" routerLinkActive="router-link-active">{{card.name}}</h2>
+              <div>
+                <div class="row align-items-center">
+                  <div class="col d-flex align-items-center">
+                    <div >
+                      <h2 class="font-weight-bold pointer mb-0" [routerLink]="['/startup/' + card.startupId]" routerLinkActive="router-link-active">{{card.name}}</h2>
+                    </div>
+                  </div>
+                  <div class="col-2 text-right">
+                    <button mat-icon-button color="primary"
+                      [mdePopoverTriggerFor]="appPopover"
+                      mdePopoverTriggerOn="click" #popoverTrigger="mdePopoverTrigger">
+                      <mat-icon >more_vert</mat-icon>
+                    </button>
+                  
+                    <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+                      <div class="super-popover-content">
+                        <mat-list class="super-list scale-to-fit">
+                          <mat-list-item class="align-items-center mt-0 pointer">
+                            <!-- TODO: clean up classes a bit -->
+                            <span class="material-icons super-text-dark">
+                              playlist_add
+                              </span>
+                            <span class="align-items-center super-text-dark text-sm" (click)="openListDialogue(card.startupId)">add to another list </span>
+                          </mat-list-item>
+                          <mat-list-item class="align-items-center mt-2 pointer">
+                            <span class="material-icons super-text-dark">
+                              delete
+                              </span>
+                            <span class="align-items-center super-text-dark text-sm" (click)="deleteStartupFromList(card.startupId)"> delete from list </span>                  
+                          </mat-list-item>
+                        </mat-list>
+                      </div>
+                    </mde-popover>
                   </div>
                 </div>
-                <div class="col-2 text-right">
-                  <button mat-icon-button color="primary"
-                    [mdePopoverTriggerFor]="appPopover"
-                    mdePopoverTriggerOn="click" #popoverTrigger="mdePopoverTrigger">
-                    <mat-icon >more_vert</mat-icon>
-                  </button>
-                
-                  <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
-                    <div class="super-popover-content">
-                      <mat-list class="super-list scale-to-fit">
-                        <mat-list-item class="align-items-center mt-0 pointer">
-                          <!-- TODO: clean up classes a bit -->
-                          <span class="material-icons super-text-dark">
-                            playlist_add
-                            </span>
-                          <span class="align-items-center super-text-dark text-sm" (click)="openListDialogue(card.startupId)">add to another list </span>
-                        </mat-list-item>
-                        <mat-list-item class="align-items-center mt-2 pointer">
-                          <span class="material-icons super-text-dark">
-                            delete
-                            </span>
-                          <span class="align-items-center super-text-dark text-sm" (click)="deleteStartupFromList(card.startupId)"> delete from list </span>                  
-                        </mat-list-item>
-                      </mat-list>
-                    </div>
-                  </mde-popover>
+      
+                <p class="card-text">{{card.description}}</p>
+        
+                <!-- tags -->
+                <div class="mt-1">
+                  <mat-chip-list  aria-label="tags">
+                    <mat-chip *ngFor="let tag of card.industryTags" class="super-chip">{{tag}}</mat-chip>
+                  </mat-chip-list>
                 </div>
               </div>
     
-              <p class="card-text">{{card.description}}</p>
-      
-              <!-- tags -->
-              <div class="mt-1">
-                <mat-chip-list  aria-label="tags">
-                  <mat-chip *ngFor="let tag of card.industryTags" class="super-chip">{{tag}}</mat-chip>
-                </mat-chip-list>
-              </div>
             </div>
     
     

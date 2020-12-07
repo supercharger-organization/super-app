@@ -112,7 +112,7 @@
                                 <div class="row">
                                     <strong class="col-12">Founder(s):</strong>
                                     <div class="col">
-                                        <span *ngFor="let founder of startup.founders; let i = index">{{ i+1 == startup.founders.length ? founder: founder + ", "}} </span>
+                                        <p *ngFor="let founder of startup.founders; let i = index">{{ i+1 == startup.founders.length ? founder: founder + ", "}} </p>
                                     </div>
                                 </div>
                             </mat-list-item>
@@ -123,7 +123,7 @@
                                 <div class="row">
                                     <strong class="col-12">Location:</strong>
                                     <div class="col-auto">
-                                        <span>{{startup.location}}</span>
+                                        <p>{{startup.location}}</p>
                                     </div>
                                 </div>
                             </mat-list-item>
@@ -141,7 +141,7 @@
                                 <div class="row">
                                     <strong class="col-12">Employees:</strong>
                                     <div class="col-auto">
-                                        <span>{{startup.employeeCount}}</span>
+                                        <p>{{startup.employeeCount}}</p>
                                     </div>
                                 </div>
                             </mat-list-item>
@@ -150,7 +150,7 @@
                                 <div class="row">
                                     <strong class="col-12">Total Funding:</strong>
                                     <div class="col-auto">
-                                        <span>{{startup.funding}}</span>
+                                        <p>{{startup.funding}}</p>
                                     </div>
                                 </div>
                             </mat-list-item>
@@ -159,7 +159,7 @@
                                 <div class="row">
                                     <strong class="col-12">Last Funding Round:</strong>
                                     <div class="col-auto">
-                                        <span>{{startup.lastFunding}}</span>
+                                        <p>{{startup.lastFunding}}</p>
                                     </div>
                                 </div>
                             </mat-list-item>
@@ -168,7 +168,7 @@
                                 <div class="row">
                                     <strong class="col-12">Year Founded:</strong>
                                     <div class="col-auto">
-                                        <span>{{startup.yearFounded}}</span>
+                                        <p>{{startup.yearFounded}}</p>
                                     </div>
                                 </div>
                             </mat-list-item>
@@ -177,7 +177,7 @@
                                 <div class="row">
                                     <strong class="col-12">Notable Investors:</strong>
                                     <div class="col-auto">
-                                        <span *ngFor="let investor of startup.notableInvestors; let i = index">{{ i+1 == startup.notableInvestors.length ? investor: investor + ", "}} </span>
+                                        <p *ngFor="let investor of startup.notableInvestors; let i = index">{{ i+1 == startup.notableInvestors.length ? investor: investor + ", "}} </p>
                                     </div>
                                 </div>
                             </mat-list-item>
